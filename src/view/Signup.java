@@ -44,9 +44,11 @@ public class Signup extends javax.swing.JFrame {
         Flashcard_Logo = new javax.swing.JLabel();
         email_Text_Field = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1285, 760));
@@ -185,27 +187,29 @@ public class Signup extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 350, 760);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 2887.png"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(500, 150, 740, 480);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(430, 40, 160, 210);
-
-        jLabel1.setText("jLabel1");
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 65)); // NOI18N
+        jLabel1.setText("Flashcard Study ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(690, 80, 37, 16);
+        jLabel1.setBounds(570, 280, 540, 120);
+
+        jLabel4.setFont(new java.awt.Font("Cambria", 1, 45)); // NOI18N
+        jLabel4.setText("Learn More, Stress Less");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(570, 360, 570, 71);
+
+        jLabel5.setFont(new java.awt.Font("Cambria", 0, 20)); // NOI18N
+        jLabel5.setText("Create flashcards and crush exams, with the magic of spaced");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(560, 430, 560, 40);
+
+        jLabel6.setFont(new java.awt.Font("Cambria", 0, 20)); // NOI18N
+        jLabel6.setText("repetetion. Join our community of smart learners.");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(610, 460, 490, 29);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 162 (3).png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(470, 160, 671, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -323,9 +327,11 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JTextField confirm_password_Text_Field;
     private javax.swing.JTextField email_Text_Field;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField password_Text_Field;
     private javax.swing.JTextField username_Text_Field;
     // End of variables declaration//GEN-END:variables
