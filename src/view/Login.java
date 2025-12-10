@@ -42,15 +42,29 @@ public class Login extends javax.swing.JFrame {
         ForgotPasswordButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(1285, 760));
+        setSize(new java.awt.Dimension(1288, 751));
         getContentPane().setLayout(null);
 
         Username.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
@@ -138,7 +152,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signupp.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(-20, 0, 170, 178);
+        jLabel2.setBounds(-10, 0, 170, 178);
 
         jPanel1.setBackground(new java.awt.Color(30, 98, 165));
 
@@ -150,49 +164,141 @@ public class Login extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 770, Short.MAX_VALUE)
+            .addGap(0, 790, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 350, 770);
+        jPanel1.setBounds(0, 0, 350, 790);
 
-        jLabel4.setFont(new java.awt.Font("Cambria", 1, 65)); // NOI18N
-        jLabel4.setText("Flashcard Study ");
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 65)); // NOI18N
+        jLabel1.setText("Flashcard Study ");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(570, 270, 540, 120);
+
+        jLabel4.setFont(new java.awt.Font("Cambria", 1, 45)); // NOI18N
+        jLabel4.setText("Learn More, Stress Less");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(580, 320, 520, 77);
+        jLabel4.setBounds(570, 350, 570, 71);
 
-        jLabel5.setFont(new java.awt.Font("Cambria", 1, 45)); // NOI18N
-        jLabel5.setText("Learn More, Stress Less");
+        jLabel5.setFont(new java.awt.Font("Cambria", 0, 20)); // NOI18N
+        jLabel5.setText("Create flashcards and crush exams, with the magic of spaced");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(580, 380, 510, 53);
+        jLabel5.setBounds(560, 420, 560, 40);
+
+        jLabel10.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel10.setText("Heart");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(480, 0, 120, 40);
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (5).png"))); // NOI18N
+        jLabel22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 3));
+        getContentPane().add(jLabel22);
+        jLabel22.setBounds(410, 10, 186, 230);
 
         jLabel6.setFont(new java.awt.Font("Cambria", 0, 20)); // NOI18N
-        jLabel6.setText("Create flashcards and crush exams, with the magic of spaced");
+        jLabel6.setText("repetetion. Join our community of smart learners.");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(570, 446, 620, 30);
+        jLabel6.setBounds(610, 450, 490, 40);
 
-        jLabel7.setFont(new java.awt.Font("Cambria", 0, 20)); // NOI18N
-        jLabel7.setText("repetetion. Join our community of smart learners.");
+        jLabel9.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel9.setText("What is the area of circle?");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(1060, 180, 160, 30);
+
+        jLabel17.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel17.setText("Name the flag");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(1120, 478, 90, 50);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (16).png"))); // NOI18N
+        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 3));
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(1040, 10, 186, 230);
+
+        jLabel15.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel15.setText("Computer parts");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(390, 480, 110, 40);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel6);
+        jPanel6.setBounds(390, 510, 100, 30);
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (20).png"))); // NOI18N
+        jLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 3));
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(1070, 490, 186, 230);
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (17).png"))); // NOI18N
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(1040, 490, 240, 250);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (3).png"))); // NOI18N
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(610, 460, 530, 50);
+        jLabel7.setBounds(370, -20, 300, 300);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 162 (3).png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(470, 170, 700, 400);
+        jLabel13.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel13.setForeground(new java.awt.Color(232, 232, 232));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (14).png"))); // NOI18N
+        jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 3));
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(380, 490, 186, 230);
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (15).png"))); // NOI18N
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(360, 500, 240, 220);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (4).png"))); // NOI18N
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(1020, -10, 250, 260);
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 162 (3).png"))); // NOI18N
+        getContentPane().add(jLabel23);
+        jLabel23.setBounds(470, 150, 671, 410);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel5);
+        jPanel5.setBounds(1050, 220, 116, 20);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+            .addGap(0, 940, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
+            .addGap(0, 780, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(430, 20, 160, 190);
+        jPanel2.setBounds(350, 0, 940, 780);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -274,14 +380,28 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Password;
     private javax.swing.JLabel Username;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
