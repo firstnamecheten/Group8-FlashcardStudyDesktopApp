@@ -40,25 +40,30 @@ public class Login extends javax.swing.JFrame {
         CreateAccountButton = new javax.swing.JButton();
         Login = new javax.swing.JLabel();
         ForgotPasswordButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1285, 760));
         getContentPane().setLayout(null);
 
-        Username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Username.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        Username.setForeground(new java.awt.Color(255, 255, 255));
         Username.setText("Username");
         getContentPane().add(Username);
-        Username.setBounds(20, 120, 70, 16);
+        Username.setBounds(20, 190, 90, 16);
 
-        Password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Password.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        Password.setForeground(new java.awt.Color(255, 255, 255));
         Password.setText("Password");
         getContentPane().add(Password);
-        Password.setBounds(20, 210, 70, 16);
+        Password.setBounds(20, 310, 90, 16);
 
-        username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        username.setForeground(new java.awt.Color(102, 102, 102));
-        username.setText("Enter the username");
+        username.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
+        username.setForeground(new java.awt.Color(153, 153, 153));
+        username.setText(" Enter the username");
+        username.setBorder(null);
         username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 usernameFocusGained(evt);
@@ -68,11 +73,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(username);
-        username.setBounds(20, 140, 300, 30);
+        username.setBounds(20, 220, 300, 40);
 
-        password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        password.setForeground(new java.awt.Color(102, 102, 102));
-        password.setText("Enter the password");
+        password.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
+        password.setForeground(new java.awt.Color(153, 153, 153));
+        password.setText(" Enter the password");
+        password.setBorder(null);
         password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 passwordFocusGained(evt);
@@ -83,42 +89,53 @@ public class Login extends javax.swing.JFrame {
         });
         password.addActionListener(this::passwordActionPerformed);
         getContentPane().add(password);
-        password.setBounds(20, 230, 300, 30);
+        password.setBounds(20, 340, 300, 40);
 
+        jLabel3.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Or");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(160, 460, 23, 22);
+        jLabel3.setBounds(160, 580, 23, 22);
 
-        LoginButton.setBackground(new java.awt.Color(0, 102, 204));
-        LoginButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LoginButton.setBackground(new java.awt.Color(23, 150, 255));
+        LoginButton.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         LoginButton.setForeground(new java.awt.Color(255, 255, 255));
         LoginButton.setText("Login");
         LoginButton.setBorder(null);
         LoginButton.addActionListener(this::LoginButtonActionPerformed);
         getContentPane().add(LoginButton);
-        LoginButton.setBounds(130, 410, 80, 40);
+        LoginButton.setBounds(130, 510, 80, 40);
 
-        CreateAccountButton.setBackground(new java.awt.Color(0, 153, 153));
-        CreateAccountButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        CreateAccountButton.setBackground(new java.awt.Color(23, 150, 255));
+        CreateAccountButton.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        CreateAccountButton.setForeground(new java.awt.Color(255, 255, 255));
         CreateAccountButton.setText("Create a new account");
         CreateAccountButton.setBorder(null);
         CreateAccountButton.addActionListener(this::CreateAccountButtonActionPerformed);
         getContentPane().add(CreateAccountButton);
-        CreateAccountButton.setBounds(70, 490, 200, 40);
+        CreateAccountButton.setBounds(70, 630, 200, 40);
 
-        Login.setFont(new java.awt.Font("Cambria Math", 1, 36)); // NOI18N
+        Login.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
+        Login.setForeground(new java.awt.Color(255, 255, 255));
         Login.setText("LOGIN");
         getContentPane().add(Login);
-        Login.setBounds(100, 20, 130, 50);
+        Login.setBounds(160, 40, 190, 50);
 
-        ForgotPasswordButton.setBackground(new java.awt.Color(0, 102, 204));
+        ForgotPasswordButton.setBackground(new java.awt.Color(23, 150, 255));
+        ForgotPasswordButton.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         ForgotPasswordButton.setForeground(new java.awt.Color(255, 255, 255));
         ForgotPasswordButton.setText("Forgot password?");
+        ForgotPasswordButton.setBorder(null);
         ForgotPasswordButton.addActionListener(this::ForgotPasswordButtonActionPerformed);
         getContentPane().add(ForgotPasswordButton);
-        ForgotPasswordButton.setBounds(190, 280, 130, 23);
+        ForgotPasswordButton.setBounds(190, 390, 130, 30);
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signupp.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(-20, 0, 170, 178);
+
+        jPanel1.setBackground(new java.awt.Color(30, 98, 165));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,6 +150,10 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 350, 770);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 2887.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(500, 180, 640, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,7 +176,7 @@ public class Login extends javax.swing.JFrame {
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
         // TODO add your handling code here:
-        if(username.getText().equals("Enter the username")){
+        if(username.getText().equals(" Enter the username")){
             username.setText("");
         }
     }//GEN-LAST:event_usernameFocusGained
@@ -163,13 +184,13 @@ public class Login extends javax.swing.JFrame {
     private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
         // TODO add your handling code here:
         if(username.getText().equals("")){
-            username.setText("Enter the username");
+            username.setText(" Enter the username");
         }
     }//GEN-LAST:event_usernameFocusLost
 
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
         // TODO add your handling code here:
-        if(password.getText().equals("Enter the password")){
+        if(password.getText().equals(" Enter the password")){
             password.setText("");
         }
     }//GEN-LAST:event_passwordFocusGained
@@ -177,7 +198,7 @@ public class Login extends javax.swing.JFrame {
     private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
         // TODO add your handling code here:
         if(password.getText().equals("")){
-            password.setText("Enter the password");
+            password.setText(" Enter the password");
         }
     }//GEN-LAST:event_passwordFocusLost
 
@@ -213,6 +234,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton LoginButton;
     private javax.swing.JLabel Password;
     private javax.swing.JLabel Username;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField password;

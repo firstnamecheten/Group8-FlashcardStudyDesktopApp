@@ -60,10 +60,10 @@ public class UserController {
         @Override                                                       // we are implementing something below so for that we have to write @Override.
         public void actionPerformed(ActionEvent e){             // import add garneh (actionPerform gara bhaneko cha . SignupListener lai thichyo bhaneh k chai actionPerform garcha tesko bhitra chai lekhnu paryo. (Aba yo public void actionPerformed bhitra lekhnu paryo)
             try {                                                
-                String username = userView.getUsernameField().getText();   // ahileh maileh kah ko use garirako ho ? --> signup ko kata banako yo--> UserModel bhitra(constructor haina yo constructor bhitra) (main method ma lekhthiyo ni ho testai garera liyehko ho)
-                String email = userView.getEmailField().getText();         // Note: in this case on controller we only use gettext not int even though int. Only in dao we write setString setInt etc.
-                String password = userView.getPasswordField().getText();   // yeta j password ko field rakheko cha 
-                UserModel usermodel = new UserModel(username, email, password);         //Note only through file name we can click Ctrl and click it to see if it is working or not (Verify)
+                String username_Text_field = userView.getUsernameField().getText();   // ahileh maileh kah ko use garirako ho ? --> signup ko kata banako yo--> UserModel bhitra(constructor haina yo constructor bhitra) (main method ma lekhthiyo ni ho testai garera liyehko ho)
+                String email_Text_Field = userView.getEmailField().getText();         // Note: in this case on controller we only use gettext not int even though int. Only in dao we write setString setInt etc.
+                String password_Text_Field = userView.getPasswordField().getText();   // yeta j password ko field rakheko cha 
+                UserModel usermodel = new UserModel(username_Text_field, email_Text_Field, password_Text_Field);         //Note only through file name we can click Ctrl and click it to see if it is working or not (Verify)
                 boolean check = userdao.check(usermodel);   //yesleh check method call garcha UserDao ma bhako. Jaba yo method call huncha kunchai method call huneh bhayo?--> check method in UserDao file!.
                 if (check) {
                     JOptionPane.showMessageDialog(userView, "Duplicated user");  // yesleh same username cha bhanneh duplicated user message dekhauneh bhayo screen ma. 

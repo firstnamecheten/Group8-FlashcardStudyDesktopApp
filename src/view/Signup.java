@@ -4,20 +4,23 @@
  */
 package view;
 
-import java.awt.event.ActionListener;            // we are importing event
-
-
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author LENOVO
  */
-public class Signup extends javax.swing.JFrame {                
-private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Signup.class.getName());
+public class Signup extends javax.swing.JFrame {
+    
+      private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Signup.class.getName());
+
+    
 
     public Signup() {
         initComponents();
-            }
+        setSize(1285,760);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,272 +31,321 @@ private static final java.util.logging.Logger logger = java.util.logging.Logger.
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginbtnDemo = new javax.swing.JButton();
-        signupBtn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        ConfirmPassword = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
-        confirmpassword = new javax.swing.JTextField();
-        Password = new javax.swing.JLabel();
-        Email = new javax.swing.JLabel();
-        emailText = new javax.swing.JTextField();
-        password = new javax.swing.JTextField();
+        username_Text_Field = new javax.swing.JTextField();
+        password_Text_Field = new javax.swing.JTextField();
+        Login_Button = new javax.swing.JButton();
+        Signup_Title = new javax.swing.JLabel();
+        Signup_Button = new javax.swing.JButton();
+        confirm_password_Text_Field = new javax.swing.JTextField();
         Username = new javax.swing.JLabel();
-        SIGNUPNOW = new javax.swing.JLabel();
+        Email = new javax.swing.JLabel();
+        Password = new javax.swing.JLabel();
+        Confirm_password = new javax.swing.JLabel();
+        Flashcard_Logo = new javax.swing.JLabel();
+        email_Text_Field = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1285, 760));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
-        loginbtnDemo.setBackground(new java.awt.Color(33, 151, 255));
-        loginbtnDemo.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        loginbtnDemo.setForeground(new java.awt.Color(255, 255, 255));
-        loginbtnDemo.setText("Login");
-        loginbtnDemo.setBorder(null);
-        loginbtnDemo.addActionListener(this::loginbtnDemoActionPerformed);
-        getContentPane().add(loginbtnDemo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, 110, 40));
-
-        signupBtn.setBackground(new java.awt.Color(0, 153, 255));
-        signupBtn.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        signupBtn.setForeground(new java.awt.Color(255, 255, 255));
-        signupBtn.setText("Signup ");
-        signupBtn.setBorder(null);
-        signupBtn.addActionListener(this::signupBtnActionPerformed);
-        getContentPane().add(signupBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 670, 110, 40));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, -1, -1));
-
-        ConfirmPassword.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        ConfirmPassword.setForeground(new java.awt.Color(255, 255, 255));
-        ConfirmPassword.setText("Confirm password");
-        getContentPane().add(ConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 200, 30));
-
-        username.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        username.setForeground(new java.awt.Color(153, 153, 153));
-        username.setText("  Enter the username");
-        username.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
-        username.addFocusListener(new java.awt.event.FocusAdapter() {
+        username_Text_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
+        username_Text_Field.setForeground(new java.awt.Color(153, 153, 153));
+        username_Text_Field.setText(" Enter the username");
+        username_Text_Field.setBorder(null);
+        username_Text_Field.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                usernameFocusGained(evt);
+                username_Text_FieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                usernameFocusLost(evt);
+                username_Text_FieldFocusLost(evt);
             }
         });
-        username.addActionListener(this::usernameActionPerformed);
-        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 300, 50));
+        username_Text_Field.addActionListener(this::username_Text_FieldActionPerformed);
+        getContentPane().add(username_Text_Field);
+        username_Text_Field.setBounds(20, 180, 310, 40);
 
-        confirmpassword.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        confirmpassword.setForeground(new java.awt.Color(153, 153, 153));
-        confirmpassword.setText("  Re-type password to confirm");
-        confirmpassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
-        confirmpassword.addFocusListener(new java.awt.event.FocusAdapter() {
+        password_Text_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
+        password_Text_Field.setForeground(new java.awt.Color(153, 153, 153));
+        password_Text_Field.setText(" Enter the password");
+        password_Text_Field.setBorder(null);
+        password_Text_Field.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                confirmpasswordFocusGained(evt);
+                password_Text_FieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                confirmpasswordFocusLost(evt);
+                password_Text_FieldFocusLost(evt);
             }
         });
-        confirmpassword.addActionListener(this::confirmpasswordActionPerformed);
-        getContentPane().add(confirmpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 300, 50));
+        password_Text_Field.addActionListener(this::password_Text_FieldActionPerformed);
+        getContentPane().add(password_Text_Field);
+        password_Text_Field.setBounds(20, 430, 310, 40);
 
-        Password.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        Password.setForeground(new java.awt.Color(255, 255, 255));
-        Password.setText("Password");
-        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 120, 30));
+        Login_Button.setBackground(new java.awt.Color(23, 150, 255));
+        Login_Button.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        Login_Button.setForeground(new java.awt.Color(255, 255, 255));
+        Login_Button.setText("Login");
+        Login_Button.setBorder(null);
+        Login_Button.addActionListener(this::Login_ButtonActionPerformed);
+        getContentPane().add(Login_Button);
+        Login_Button.setBounds(50, 660, 90, 40);
 
-        Email.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        Email.setForeground(new java.awt.Color(255, 255, 255));
-        Email.setText("Email");
-        getContentPane().add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 90, 30));
+        Signup_Title.setBackground(new java.awt.Color(26, 98, 169));
+        Signup_Title.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
+        Signup_Title.setForeground(new java.awt.Color(255, 255, 255));
+        Signup_Title.setText("SIGN UP");
+        getContentPane().add(Signup_Title);
+        Signup_Title.setBounds(140, 30, 210, 63);
 
-        emailText.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        emailText.setForeground(new java.awt.Color(153, 153, 153));
-        emailText.setText("  Enter the email");
-        emailText.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
-        emailText.addFocusListener(new java.awt.event.FocusAdapter() {
+        Signup_Button.setBackground(new java.awt.Color(23, 150, 255));
+        Signup_Button.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        Signup_Button.setForeground(new java.awt.Color(255, 255, 255));
+        Signup_Button.setText("Signup");
+        Signup_Button.setBorder(null);
+        getContentPane().add(Signup_Button);
+        Signup_Button.setBounds(160, 660, 90, 40);
+
+        confirm_password_Text_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
+        confirm_password_Text_Field.setForeground(new java.awt.Color(153, 153, 153));
+        confirm_password_Text_Field.setText(" Re-type to confirm password");
+        confirm_password_Text_Field.setBorder(null);
+        confirm_password_Text_Field.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                emailTextFocusGained(evt);
+                confirm_password_Text_FieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                emailTextFocusLost(evt);
+                confirm_password_Text_FieldFocusLost(evt);
             }
         });
-        emailText.addActionListener(this::emailTextActionPerformed);
-        getContentPane().add(emailText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 300, 50));
-
-        password.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        password.setForeground(new java.awt.Color(153, 153, 153));
-        password.setText("  Enter the password");
-        password.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 5, true));
-        password.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passwordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                passwordFocusLost(evt);
-            }
-        });
-        password.addActionListener(this::passwordActionPerformed);
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 300, 50));
+        confirm_password_Text_Field.addActionListener(this::confirm_password_Text_FieldActionPerformed);
+        getContentPane().add(confirm_password_Text_Field);
+        confirm_password_Text_Field.setBounds(20, 550, 310, 40);
 
         Username.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         Username.setForeground(new java.awt.Color(255, 255, 255));
         Username.setText("Username");
-        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 150, 30));
+        getContentPane().add(Username);
+        Username.setBounds(20, 150, 90, 22);
 
-        SIGNUPNOW.setFont(new java.awt.Font("Cambria", 0, 48)); // NOI18N
-        SIGNUPNOW.setForeground(new java.awt.Color(255, 255, 255));
-        SIGNUPNOW.setText("SIGN UP");
-        getContentPane().add(SIGNUPNOW, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 190, 80));
+        Email.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        Email.setForeground(new java.awt.Color(255, 255, 255));
+        Email.setText("Email");
+        getContentPane().add(Email);
+        Email.setBounds(20, 280, 50, 22);
 
-        jPanel1.setBackground(new java.awt.Color(24, 97, 171));
-        jPanel1.setForeground(new java.awt.Color(242, 242, 242));
+        Password.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        Password.setForeground(new java.awt.Color(255, 255, 255));
+        Password.setText("Password");
+        getContentPane().add(Password);
+        Password.setBounds(20, 400, 80, 22);
+
+        Confirm_password.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        Confirm_password.setForeground(new java.awt.Color(255, 255, 255));
+        Confirm_password.setText("Confirm password");
+        getContentPane().add(Confirm_password);
+        Confirm_password.setBounds(20, 520, 150, 22);
+
+        Flashcard_Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signupp.png"))); // NOI18N
+        Flashcard_Logo.setText("jLabel6");
+        getContentPane().add(Flashcard_Logo);
+        Flashcard_Logo.setBounds(-30, 10, 170, 150);
+
+        email_Text_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
+        email_Text_Field.setForeground(new java.awt.Color(153, 153, 153));
+        email_Text_Field.setText(" Enter the email");
+        email_Text_Field.setBorder(null);
+        email_Text_Field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                email_Text_FieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                email_Text_FieldFocusLost(evt);
+            }
+        });
+        email_Text_Field.addActionListener(this::email_Text_FieldActionPerformed);
+        getContentPane().add(email_Text_Field);
+        email_Text_Field.setBounds(20, 310, 310, 40);
+
+        jPanel1.setBackground(new java.awt.Color(30, 98, 165));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGap(0, 350, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 770, Short.MAX_VALUE)
+            .addGap(0, 760, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 350, 760);
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/signupp.png"))); // NOI18N
-        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel11.setPreferredSize(new java.awt.Dimension(68, 56));
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 170, 180));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 2887.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(500, 150, 740, 480);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(430, 40, 160, 210);
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(690, 80, 37, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+    private void username_Text_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_Text_FieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
+    }//GEN-LAST:event_username_Text_FieldActionPerformed
 
-    private void confirmpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmpasswordActionPerformed
+    private void password_Text_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_Text_FieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_confirmpasswordActionPerformed
+    }//GEN-LAST:event_password_Text_FieldActionPerformed
 
-    private void signupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupBtnActionPerformed
+    private void confirm_password_Text_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_password_Text_FieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_signupBtnActionPerformed
+    }//GEN-LAST:event_confirm_password_Text_FieldActionPerformed
 
-    private void loginbtnDemoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnDemoActionPerformed
+    private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_loginbtnDemoActionPerformed
+    }//GEN-LAST:event_Login_ButtonActionPerformed
 
-    private void emailTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextActionPerformed
+    private void username_Text_FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_username_Text_FieldFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextActionPerformed
-
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
-
-    private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
-        // TODO add your handling code here:
-        if(username.getText().equals("  Enter the username")){
-            username.setText("");
+        if(username_Text_Field.getText().equals(" Enter the username")){
+            username_Text_Field.setText("");
         }
-    }//GEN-LAST:event_usernameFocusGained
+    }//GEN-LAST:event_username_Text_FieldFocusGained
 
-    private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
+    private void username_Text_FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_username_Text_FieldFocusLost
         // TODO add your handling code here:
-        if(username.getText().equals("")){
-            username.setText("  Enter the username");
-    }//GEN-LAST:event_usernameFocusLost
-    }
-    private void confirmpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmpasswordFocusGained
-        // TODO add your handling code here:
-        if(confirmpassword.getText().equals("  Re-type password to confirm")){
-            confirmpassword.setText("");
-    }    
-    }//GEN-LAST:event_confirmpasswordFocusGained
+        if(username_Text_Field.getText().equals("")){
+            username_Text_Field.setText(" Enter the username");
+        }
+    }//GEN-LAST:event_username_Text_FieldFocusLost
 
-    private void confirmpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmpasswordFocusLost
+    private void password_Text_FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password_Text_FieldFocusGained
         // TODO add your handling code here:
-        if(confirmpassword.getText().equals("")){
-            confirmpassword.setText("  Re-type password to confirm");
-    }
-    }//GEN-LAST:event_confirmpasswordFocusLost
+        if(password_Text_Field.getText().equals(" Enter the password")){
+            password_Text_Field.setText("");
+        }
+    }//GEN-LAST:event_password_Text_FieldFocusGained
 
-    private void emailTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextFocusGained
+    private void password_Text_FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password_Text_FieldFocusLost
         // TODO add your handling code here:
-        if(emailText.getText().equals("  Enter the email")){
-            emailText.setText("");
-    }
-    }//GEN-LAST:event_emailTextFocusGained
+        if(password_Text_Field.getText().equals("")){
+            password_Text_Field.setText(" Enter the password");
+        }
+    }//GEN-LAST:event_password_Text_FieldFocusLost
 
-    private void emailTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextFocusLost
+    private void confirm_password_Text_FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirm_password_Text_FieldFocusGained
         // TODO add your handling code here:
-        if(emailText.getText().equals("")){
-            emailText.setText("  Enter the email");
-    }
-    }//GEN-LAST:event_emailTextFocusLost
+        if(confirm_password_Text_Field.getText().equals(" Re-type to confirm password")){
+            confirm_password_Text_Field.setText("");
+    }      
+    }//GEN-LAST:event_confirm_password_Text_FieldFocusGained
 
-    private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
+    private void confirm_password_Text_FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirm_password_Text_FieldFocusLost
         // TODO add your handling code here:
-        if(password.getText().equals("  Enter the password")){
-            password.setText("");
-    }
-    }//GEN-LAST:event_passwordFocusGained
+        if(password_Text_Field.getText().equals("")){
+            password_Text_Field.setText(" Re-type to confirm password");
+        }
+    }//GEN-LAST:event_confirm_password_Text_FieldFocusLost
 
-    private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
+    private void email_Text_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_Text_FieldActionPerformed
         // TODO add your handling code here:
-        if(password.getText().equals("")){
-            password.setText("  Enter the password");
-    }
-    }//GEN-LAST:event_passwordFocusLost
+    }//GEN-LAST:event_email_Text_FieldActionPerformed
+
+    private void email_Text_FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_email_Text_FieldFocusGained
+        // TODO add your handling code here:
+        if(email_Text_Field.getText().equals(" Enter the email")){
+            email_Text_Field.setText("");
+    }     
+    }//GEN-LAST:event_email_Text_FieldFocusGained
+
+    private void email_Text_FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_email_Text_FieldFocusLost
+        // TODO add your handling code here:
+        if(email_Text_Field.getText().equals("")){
+            email_Text_Field.setText(" Enter the email");
+        }
+    }//GEN-LAST:event_email_Text_FieldFocusLost
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-                java.awt.EventQueue.invokeLater(() -> new Signup().setVisible(true));
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new Signup().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ConfirmPassword;
+    private javax.swing.JLabel Confirm_password;
     private javax.swing.JLabel Email;
+    private javax.swing.JLabel Flashcard_Logo;
+    private javax.swing.JButton Login_Button;
     private javax.swing.JLabel Password;
-    private javax.swing.JLabel SIGNUPNOW;
+    private javax.swing.JButton Signup_Button;
+    private javax.swing.JLabel Signup_Title;
     private javax.swing.JLabel Username;
-    private javax.swing.JTextField confirmpassword;
-    private javax.swing.JTextField emailText;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JTextField confirm_password_Text_Field;
+    private javax.swing.JTextField email_Text_Field;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton loginbtnDemo;
-    private javax.swing.JTextField password;
-    private javax.swing.JButton signupBtn;
-    private javax.swing.JTextField username;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField password_Text_Field;
+    private javax.swing.JTextField username_Text_Field;
     // End of variables declaration//GEN-END:variables
-    
+
     public void AddUserListener(ActionListener listener){
-        signupBtn.addActionListener(listener);
+        Signup_Button.addActionListener(listener);
     }
-    public void LoginButtonListener(ActionListener listener){     //Same button name cannot be so we wrote LoginButtonListener written!
-        loginbtnDemo.addActionListener(listener);
+    public void LoginButtonListener(ActionListener listener){
+        Login_Button.addActionListener(listener);
     }
-    public javax.swing.JTextField getPasswordField(){           // textfield bata user ko input linu paryo teslai store garnu paryo haina!
-        return password;                                        // jun return garirako yesko name ko sanga milnu paryo variable sanga milnu paryo tya mathi (private javax.swing.JTextField password;) yo sanga milnu paryo
+    public javax.swing.JTextField getPasswordField(){
+        return password_Text_Field; 
     }
     public javax.swing.JTextField getConfirmPasswordField(){
-        return confirmpassword;
+        return confirm_password_Text_Field; 
     }
-    public javax.swing.JTextField getEmailField(){              // javax.swing.JTextField because user ko input store garnu ko lagi. So tesko lagi get method banako. Yo hamileh controller ma use garcha. 
-        return emailText;
+    public javax.swing.JTextField getEmailField(){
+        return email_Text_Field; 
     }
     public javax.swing.JTextField getUsernameField(){
-        return username;
+        return username_Text_Field; 
     }
 }
-
-//database--> mysqlconnection --> usermodel --> userdao bata --> tesbata signup bata activate garcha--> tya bata hami controller ma jancham ani tespachi save huncha
