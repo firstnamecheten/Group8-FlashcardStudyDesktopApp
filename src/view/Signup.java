@@ -4,7 +4,10 @@
  */
 package view;
 
+import controller.UserController;
 import java.awt.event.ActionListener;
+import java.swing.JTextField;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -275,7 +278,7 @@ public class Signup extends javax.swing.JFrame {
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (17).png"))); // NOI18N
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(1040, 490, 240, 250);
+        jLabel12.setBounds(1040, 490, 240, 230);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (3).png"))); // NOI18N
         getContentPane().add(jLabel7);
@@ -330,7 +333,7 @@ public class Signup extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(340, 0, 940, 860);
+        jPanel2.setBounds(350, 0, 940, 860);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -409,32 +412,23 @@ public class Signup extends javax.swing.JFrame {
         if(email_Text_Field.getText().equals("")){
             email_Text_Field.setText(" Enter the email");
         }
+       
     }//GEN-LAST:event_email_Text_FieldFocusLost
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Signup().setVisible(true));
+        Signup signupView = new Signup();
+            controller.UserController controller = new controller.UserController(signupView);
+            controller.open();
+        });
+
+
     }
+   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Confirm_password;
@@ -490,4 +484,5 @@ public class Signup extends javax.swing.JFrame {
     public javax.swing.JTextField getUsernameField(){
         return username_Text_Field; 
     }
-}
+
+

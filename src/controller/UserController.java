@@ -20,8 +20,7 @@ public class UserController {
     public UserController(Signup userView) {                     // constructor banauneh code line ho yo using file name UserController.  Note: We are writing Signup userView inside parenthesis because we are giving the controller access to the Signup form.
         this.userView = userView;
         
-        userView.AddUserListener(new SignUpListener());
-        userView.LoginButtonListener(new LoginListener());// In this line code move your cursor to the AddUserListener and click Ctrl and left click mouse to see if it immediately navigates to Signup file where AddUserListener is! If it navigates then u are on the right path. Note: We click this to verify (milirako cha ki chaina bhanerah we check).
+       // In this line code move your cursor to the AddUserListener and click Ctrl and left click mouse to see if it immediately navigates to Signup file where AddUserListener is! If it navigates then u are on the right path. Note: We click this to verify (milirako cha ki chaina bhanerah we check).
     }
 
     public void open(){          // this is open method ahd it opens this.userView 
@@ -56,29 +55,38 @@ public class UserController {
     }
 
     
-    class SignUpListener implements ActionListener {            // we removed
-        @Override                                                       // we are implementing something below so for that we have to write @Override.
-        public void actionPerformed(ActionEvent e){             // import add garneh (actionPerform gara bhaneko cha . SignupListener lai thichyo bhaneh k chai actionPerform garcha tesko bhitra chai lekhnu paryo. (Aba yo public void actionPerformed bhitra lekhnu paryo)
-            try {                                                
-                String username_Text_field = userView.getUsernameField().getText();   // ahileh maileh kah ko use garirako ho ? --> signup ko kata banako yo--> UserModel bhitra(constructor haina yo constructor bhitra) (main method ma lekhthiyo ni ho testai garera liyehko ho)
-                String email_Text_Field = userView.getEmailField().getText();         // Note: in this case on controller we only use gettext not int even though int. Only in dao we write setString setInt etc.
-                String password_Text_Field = userView.getPasswordField().getText();   // yeta j password ko field rakheko cha 
-                UserModel usermodel = new UserModel(username_Text_field, email_Text_Field, password_Text_Field);         //Note only through file name we can click Ctrl and click it to see if it is working or not (Verify)
-                boolean check = userdao.check(usermodel);   //yesleh check method call garcha UserDao ma bhako. Jaba yo method call huncha kunchai method call huneh bhayo?--> check method in UserDao file!.
-                if (check) {
-                    JOptionPane.showMessageDialog(userView, "Duplicated user");  // yesleh same username cha bhanneh duplicated user message dekhauneh bhayo screen ma. 
-                }else{
-                    userdao.signUp(usermodel); 
-                    JOptionPane.showMessageDialog(userView, "Successful");  
-                    Login lc = new Login();
-                    LoginController log = new LoginController(lc);
-                    close();
-                    log.open();
-                   // yesleh new different username cha bhanneh Successful message dekhauneh bhayo screen ma.
-                }
-            }catch (Exception ext) {                            
-                System.out.println(ext.getMessage());                         
+    class SignUpListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        String username_Text_field = userView.getUsernameField().getText();
+        String password_Text_Field = userView.getPasswordField().getText();
+        String confirmPassword_Text_Field = userView.getConfirmPasswordField().getText();
+        String email_Text_Field = userView.getEmailField().getText();
+
+        // ✅ Check password match
+        if (!password_Text_Field.equals(confirmPassword_Text_Field)) {
+            JOptionPane.showMessageDialog(userView, "Passwords do not match!");
+            return;
         }
-    }         
-   }
+
+        UserModel usermodel = new UserModel(username_Text_field, password_Text_Field, email_Text_Field);
+
+        boolean check = userdao.check(usermodel);
+        if (check) {
+            JOptionPane.showMessageDialog(userView, "Duplicated user");
+        } else {
+            userdao.signUp(usermodel);
+            JOptionPane.showMessageDialog(userView, "Signup successful!");
+
+            Login loginView = new Login();
+            LoginController loginController = new LoginController(loginView);
+            userView.dispose();
+            loginController.open();
+        }
+    }
 }
+}
+
+
+

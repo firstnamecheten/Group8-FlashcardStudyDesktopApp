@@ -8,39 +8,82 @@ import database.MySqlConnection;
 import model.UserModel;
 import java.sql.*;
 
+public class UserDao {
 
-public class UserDao {                                             //userdao jasma query lekcha --> sql ko query insert garnu ko lagi signup method banako cha yaha, yeh leh communication garcha 
-    MySqlConnection mysql = new MySqlConnection();               
-    
-    public void signUp(UserModel user){                         // yo method leh jun user bata ako data lai store gardincha
-        Connection conn = mysql.openConnection();
-        String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)"; 
-        try(PreparedStatement pstm = conn.prepareStatement(sql)){
-            pstm.setString(1, user.getUsername());     //this is used to add field eg for flascard we have
+    public static UserModel login(String username, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    private MySqlConnection mysql = new MySqlConnection();
+    private String email_Text_Field;
+
+    // Signup user
+    public void signUp(UserModel user) {
+        String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        try (Connection conn = mysql.openConnection();
+             PreparedStatement pstm = conn.prepareStatement(sql)) {
+            pstm.setString(1, user.getUsername());
             pstm.setString(2, user.getEmail());
             pstm.setString(3, user.getPassword());
             pstm.executeUpdate();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println("Error inserting user: " + ex);
-        } finally{
-            mysql.closeConnection(conn);
         }
-        
     }
-    public boolean check(UserModel user){                     //yehleh check garcha yo user cha ki nai duplicate user cha ki nai hercha 
-        Connection conn = mysql.openConnection();
-        String sql = "select * from users where email = ? or username = ?";
-        try(PreparedStatement pstm = conn.prepareStatement(sql)){
-            pstm.setString(1, user.getEmail());     //this is used to add field eg for flascard we have
-            pstm.setString(2, user.getUsername());
-            ResultSet result = pstm.executeQuery();
-            return result.next();
-        }catch(Exception ex){
-            System.out.println(ex);
-        } finally{
-            mysql.closeConnection(conn);
+
+    // Check duplicate username/email
+    public boolean exists(UserModel user) {
+        String sql = "SELECT * FROM users WHERE username = ? OR email = ?";
+        try (Connection conn = mysql.openConnection();
+             PreparedStatement pstm = conn.prepareStatement(sql)) {
+            pstm.setString(1, user.getUsername());
+            pstm.setString(2, user.getEmail());
+            ResultSet rs = pstm.executeQuery();
+            return rs.next();
+        } catch (Exception ex) {
+            System.out.println("Error checking user: " + ex);
+            return false;
         }
-        return false;
+    }
+
+    // Login with username + password
+    public UserModel getUserByUsername(String username) {
+    Connection conn = mysql.openConnection();
+    UserModel user = null;
+    String sql = "SELECT * FROM users WHERE username = ?";
+    
+    try(PreparedStatement pstm = conn.prepareStatement(sql)){
+        pstm.setString(1, username);
+        ResultSet rs = pstm.executeQuery();
+        if(rs.next()){
+            user = new UserModel(rs.getString("username"), rs.getString("password"), email_Text_Field);
+        }
+    } catch(Exception e) {
+        System.out.println(e);
+    } finally {
+        mysql.closeConnection(conn);
+    }
+    return user;
+}
+
+public void updatePassword(UserModel user){
+    Connection conn = mysql.openConnection();
+    String sql = "UPDATE users SET password=? WHERE username=?";
+    
+    try(PreparedStatement pstm = conn.prepareStatement(sql)){
+        pstm.setString(1, user.getPassword());
+        pstm.setString(2, user.getUsername());
+        pstm.executeUpdate();
+    } catch(Exception e){
+        System.out.println(e);
+    } finally {
+        mysql.closeConnection(conn);
     }
 }
+
+    public boolean check(UserModel usermodel) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+}
+    
+
 // this was made to check username and email. Check garcha jaba samma rows sakidaina taba samma. Yedi same cha bhane tya value store garirako huncha. Yo method call garcha. Jaba yo method call huncha kunchai method call huneh bhayo?--> check method!
