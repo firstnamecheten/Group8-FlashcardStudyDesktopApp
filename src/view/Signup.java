@@ -196,11 +196,11 @@ public class Signup extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 350, 760);
+        jPanel1.setBounds(0, 0, 350, 750);
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 65)); // NOI18N
         jLabel1.setText("Flashcard Study ");
@@ -326,11 +326,11 @@ public class Signup extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(350, 0, 940, 750);
+        jPanel2.setBounds(340, 0, 940, 860);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
