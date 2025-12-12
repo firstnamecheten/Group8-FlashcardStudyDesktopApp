@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import database.MySqlConnection;
@@ -10,80 +6,127 @@ import java.sql.*;
 
 public class UserDao {
 
-    public static UserModel login(String username, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    private MySqlConnection mysql = new MySqlConnection();
-    private String email_Text_Field;
+    private final MySqlConnection mysql = new MySqlConnection();
 
-    // Signup user
+    // ✅ SIGNUP
     public void signUp(UserModel user) {
-        String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO signup_history (username, email, password) VALUES (?, ?, ?)";
+
         try (Connection conn = mysql.openConnection();
-             PreparedStatement pstm = conn.prepareStatement(sql)) {
-            pstm.setString(1, user.getUsername());
-            pstm.setString(2, user.getEmail());
-            pstm.setString(3, user.getPassword());
-            pstm.executeUpdate();
-        } catch (Exception ex) {
-            System.out.println("Error inserting user: " + ex);
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPassword());
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("Signup error: " + e);
         }
     }
 
-    // Check duplicate username/email
-    public boolean exists(UserModel user) {
-        String sql = "SELECT * FROM users WHERE username = ? OR email = ?";
+    // ✅ CHECK DUPLICATE USER
+    public boolean check(UserModel user) {
+        String sql = "SELECT * FROM signup_history WHERE username=? OR email=?";
+
         try (Connection conn = mysql.openConnection();
-             PreparedStatement pstm = conn.prepareStatement(sql)) {
-            pstm.setString(1, user.getUsername());
-            pstm.setString(2, user.getEmail());
-            ResultSet rs = pstm.executeQuery();
-            return rs.next();
-        } catch (Exception ex) {
-            System.out.println("Error checking user: " + ex);
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getEmail());
+            return ps.executeQuery().next();
+
+        } catch (Exception e) {
+            System.out.println("Check error: " + e);
             return false;
         }
     }
 
-    // Login with username + password
-    public UserModel getUserByUsername(String username) {
-    Connection conn = mysql.openConnection();
-    UserModel user = null;
-    String sql = "SELECT * FROM users WHERE username = ?";
-    
-    try(PreparedStatement pstm = conn.prepareStatement(sql)){
-        pstm.setString(1, username);
-        ResultSet rs = pstm.executeQuery();
-        if(rs.next()){
-            user = new UserModel(rs.getString("username"), rs.getString("password"), email_Text_Field);
+    // ✅ LOGIN (used by LoginController.tryLogin)
+    public UserModel login(String username, String password) {
+        String sql = "SELECT * FROM signup_history WHERE username=? AND password=?";
+
+        try (Connection conn = mysql.openConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new UserModel(
+                        rs.getInt("user_id"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password")
+                );
+            }
+
+        } catch (Exception e) {
+            System.out.println("Login error: " + e);
         }
-    } catch(Exception e) {
-        System.out.println(e);
-    } finally {
-        mysql.closeConnection(conn);
-    }
-    return user;
-}
 
-public void updatePassword(UserModel user){
-    Connection conn = mysql.openConnection();
-    String sql = "UPDATE users SET password=? WHERE username=?";
-    
-    try(PreparedStatement pstm = conn.prepareStatement(sql)){
-        pstm.setString(1, user.getPassword());
-        pstm.setString(2, user.getUsername());
-        pstm.executeUpdate();
-    } catch(Exception e){
-        System.out.println(e);
-    } finally {
-        mysql.closeConnection(conn);
+        return null;
     }
-}
 
-    public boolean check(UserModel usermodel) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    // ✅ INSERT LOGIN HISTORY (called in LoginButtonListener)
+    public void insertLoginHistory(int userId, String username) {
+        String sql = "INSERT INTO login_history (user_id, username) VALUES (?, ?)";
+
+        try (Connection conn = mysql.openConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            ps.setString(2, username);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("Login history error: " + e);
+        }
+    }
+
+    // ✅ GET USER BY USERNAME (used in Forgot Password)
+    public UserModel getUserByUsername(String username) {
+        String sql = "SELECT * FROM signup_history WHERE username=?";
+
+        try (Connection conn = mysql.openConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new UserModel(
+                        rs.getInt("user_id"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password")
+                );
+            }
+
+        } catch (Exception e) {
+            System.out.println("Get user error: " + e);
+        }
+
+        return null;
+    }
+
+    // ✅ UPDATE PASSWORD (used in Forgot Password)
+    public void updatePassword(UserModel user) {
+        String sql = "UPDATE signup_history SET password=? WHERE username=?";
+
+        try (Connection conn = mysql.openConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, user.getPassword());
+            ps.setString(2, user.getUsername());
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("Password update error: " + e);
+        }
     }
 }
-    
 
 // this was made to check username and email. Check garcha jaba samma rows sakidaina taba samma. Yedi same cha bhane tya value store garirako huncha. Yo method call garcha. Jaba yo method call huncha kunchai method call huneh bhayo?--> check method!

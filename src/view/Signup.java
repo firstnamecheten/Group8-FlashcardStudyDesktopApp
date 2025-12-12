@@ -4,9 +4,10 @@
  */
 package view;
 
+
 import controller.UserController;
 import java.awt.event.ActionListener;
-import java.swing.JTextField;
+import javax.swing.JButton;
 import javax.swing.JPasswordField;
 
 /**
@@ -17,12 +18,13 @@ public class Signup extends javax.swing.JFrame {
     
       private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Signup.class.getName());
 
-    
-
+      
     public Signup() {
         initComponents();
         setSize(1285,760);
     }
+    
+    
     
 
     /**
@@ -418,15 +420,14 @@ public class Signup extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> new Signup().setVisible(true));
-        Signup signupView = new Signup();
-            controller.UserController controller = new controller.UserController(signupView);
-            controller.open();
-        });
+ public static void main(String args[]) {
+    java.awt.EventQueue.invokeLater(() -> {
+        Signup view = new Signup();               // Create only ONE Signup view
+        UserController controller = new UserController(view); // Attach controller
+        view.setVisible(true);                    // Show the same view
+    });
+}
 
-
-    }
    
 
 
@@ -467,7 +468,7 @@ public class Signup extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void AddUserListener(ActionListener listener){
-        Signup_Button.addActionListener(listener);
+    Signup_Button.addActionListener(listener);
     }
     public void LoginButtonListener(ActionListener listener){
         Login_Button.addActionListener(listener);
@@ -484,5 +485,7 @@ public class Signup extends javax.swing.JFrame {
     public javax.swing.JTextField getUsernameField(){
         return username_Text_Field; 
     }
+}
+
 
 
