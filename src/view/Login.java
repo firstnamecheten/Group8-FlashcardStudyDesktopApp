@@ -5,6 +5,7 @@
 package view;
 
 import controller.LoginController;
+import controller.UserController;
 import java.awt.event.ActionListener;
 
 /**
@@ -313,9 +314,10 @@ public class Login extends javax.swing.JFrame {
 
     private void CreateAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccountButtonActionPerformed
         // TODO add your handling code here:
-        LoginController controller = new LoginController(this);
-        controller.openSignUpPage();
-        this.dispose();                        
+        Signup signupView = new Signup();                      // Create signup window
+        UserController SignupController = new UserController(signupView);  
+        signupView.setVisible(true);                           // Show signup page
+        this.dispose();                         
     }//GEN-LAST:event_CreateAccountButtonActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
@@ -430,4 +432,5 @@ public class Login extends javax.swing.JFrame {
     public javax.swing.JTextField getUsernameField(){
         return username;
     }
+
 }

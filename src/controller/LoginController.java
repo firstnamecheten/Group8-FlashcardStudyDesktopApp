@@ -5,8 +5,9 @@
 package controller;
 
 import dao.UserDao;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import model.UserModel;
 import view.Dashboard;
 import view.Login;
@@ -14,87 +15,121 @@ import view.Signup;
 
 public class LoginController {
 
-    private Login loginView;
-
-    public LoginController(Login loginView) {
-        this.loginView = loginView;
-    }
+    private final Login loginView;
+    private final UserDao userdao = new UserDao();   // ✅ have ONE DAO here
     private int loginAttempts = 0;
     private final int MAX_ATTEMPTS = 5;
 
-public boolean login(String username, String password) {
-    if(loginAttempts >= MAX_ATTEMPTS){
-        JOptionPane.showMessageDialog(null, "Too many wrong tries! Please wait 5 seconds.");
-        try { Thread.sleep(5000); } catch (InterruptedException e) {}
-        loginAttempts = 0;
-        return false;
+    // ✅ CORRECT CONSTRUCTOR
+    public LoginController(Login loginView) {
+        this.loginView = loginView;
+
+        // Attach listeners from Login view
+        loginView.LoginButtonListener(new LoginButtonListener());
+        loginView.ForgotPasswordButtonListener(new ForgotPasswordButtonListener());
+        loginView.CreateAccountButtonListener(new CreateAccountButtonListener());
     }
 
-    UserDao dao = new UserDao();
-    UserModel user = dao.login(username, password);
-
-    if(user != null){
-        loginAttempts = 0;
-        return true;
-    } else {
-        loginAttempts++;
-        JOptionPane.showMessageDialog(null, "Wrong username or password! Attempt " 
-                                      + loginAttempts + " of " + MAX_ATTEMPTS);
-        return false;
-    }
-}
-    
-    // OPEN LOGIN VIEW
+    // ✅ Show login window
     public void open() {
-        loginView.setVisible(true);
+        this.loginView.setVisible(true);
     }
 
-    // FORGOT PASSWORD HANDLER
-    public void handleForgotPassword() {
-    String username = JOptionPane.showInputDialog(null, "Enter your username:");
+    // ✅ Close login window
+    public void close() {
+        this.loginView.dispose();
+    }
 
-    if(username == null || username.isEmpty()) return; // user cancelled
+    // ✅ MAIN LOGIN LOGIC (uses DAO and returns UserModel)
+    private UserModel tryLogin(String username, String password) {
 
-    UserDao dao = new UserDao(); // create instance
-    UserModel user = dao.getUserByUsername(username); // use instance
-
-    if(user != null){
-        String newPassword = JOptionPane.showInputDialog(null, "Enter your new password:");
-        if(newPassword != null && !newPassword.isEmpty()){
-            user.setPassword(newPassword);
-            dao.updatePassword(user);  // update password in the database
-            JOptionPane.showMessageDialog(null, "Password updated successfully!");
+        if (loginAttempts >= MAX_ATTEMPTS) {
+            JOptionPane.showMessageDialog(null, "Too many wrong tries! Please wait 5 seconds.");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                // ignore
+            }
+            loginAttempts = 0;
+            return null;
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "Username not found!");
-    }
-}
 
-    public void attachLoginListener() {
-    loginView.addLoginButtonListener(e -> {
-        JTextField username = loginView.getUsernameField();
-        JTextField password = loginView.getPasswordField();
+        UserModel user = userdao.login(username, password);
 
-        if (login(username, password)) {
-            JOptionPane.showMessageDialog(null, "Login successful!");
-
-            Dashboard dash = new Dashboard();
-            dash.setVisible(true);
-            loginView.dispose();
+        if (user != null) {
+            loginAttempts = 0;
+            return user;
         } else {
-            JOptionPane.showMessageDialog(null, "Invalid username or password!");
+            loginAttempts++;
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Wrong username or password! Attempt " + loginAttempts + " of " + MAX_ATTEMPTS
+            );
+            return null;
         }
-    });
-}
-
-    // OPEN SIGNUP PAGE FROM LOGIN
-    public void openSignUpPage() {
-        Signup signup = new Signup();
-        signup.setVisible(true);
     }
 
-    private boolean login(JTextField username, JTextField password) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    // ✅ LISTENER: LOGIN BUTTON
+    class LoginButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            String username = loginView.getUsernameField().getText();
+            String password = loginView.getPasswordField().getText();
+
+            // use the login logic
+            UserModel user = tryLogin(username, password);
+
+            if (user != null) {
+                JOptionPane.showMessageDialog(null, "Login successful!");
+
+                // Insert login history
+                userdao.insertLoginHistory(user.getUserId(), user.getUsername());
+
+                // Open dashboard
+                Dashboard dash = new Dashboard();
+                dash.setVisible(true);
+                loginView.dispose();
+            }
+        }
+    }
+
+    // ✅ LISTENER: FORGOT PASSWORD
+    class ForgotPasswordButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            handleForgotPassword();
+        }
+    }
+
+    // ✅ LISTENER: SIGNUP BUTTON
+    class CreateAccountButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Signup signup = new Signup();
+            UserController uc = new UserController(signup);
+            uc.open();
+            loginView.dispose();
+        }
+    }
+
+    // ✅ Forgot password logic
+    public void handleForgotPassword() {
+        String username = JOptionPane.showInputDialog(null, "Enter your username:");
+
+        if (username == null || username.isEmpty()) return;
+
+        UserModel user = userdao.getUserByUsername(username);
+
+        if (user != null) {
+            String newPassword = JOptionPane.showInputDialog(null, "Enter your new password:");
+            if (newPassword != null && !newPassword.isEmpty()) {
+                user.setPassword(newPassword);
+                userdao.updatePassword(user);
+                JOptionPane.showMessageDialog(null, "Password updated successfully!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Username not found!");
+        }
     }
 }
-
