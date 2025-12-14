@@ -433,4 +433,8 @@ public class Login extends javax.swing.JFrame {
         return username;
     }
 
+    public Object getLoginButton() {
+         return LoginButton;
+    }
+
 }

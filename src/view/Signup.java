@@ -71,7 +71,6 @@ public class Signup extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1285, 760));
         getContentPane().setLayout(null);
 
         username_Text_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N

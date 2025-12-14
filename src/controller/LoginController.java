@@ -19,6 +19,7 @@ public class LoginController {
     private final UserDao userdao = new UserDao();   // ✅ have ONE DAO here
     private int loginAttempts = 0;
     private final int MAX_ATTEMPTS = 5;
+    private long lockoutEndTime = 0; // ✅ timestamp when lockout ends
 
     // ✅ CORRECT CONSTRUCTOR
     public LoginController(Login loginView) {
@@ -39,7 +40,12 @@ public class LoginController {
     public void close() {
         this.loginView.dispose();
     }
-
+    
+    private void setLoginEnabled(boolean enabled) {
+    loginView.getUsernameField().setEnabled(enabled);
+    loginView.getPasswordField().setEnabled(enabled);
+    loginView.getLoginButton().setEnabled(enabled);
+}
     // ✅ MAIN LOGIN LOGIC (uses DAO and returns UserModel)
     private UserModel tryLogin(String username, String password) {
 
@@ -71,28 +77,70 @@ public class LoginController {
 
     // ✅ LISTENER: LOGIN BUTTON
     class LoginButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
-            String username = loginView.getUsernameField().getText();
-            String password = loginView.getPasswordField().getText();
+        long now = System.currentTimeMillis();
 
-            // use the login logic
-            UserModel user = tryLogin(username, password);
-
-            if (user != null) {
-                JOptionPane.showMessageDialog(null, "Login successful!");
-
-                // Insert login history
-                userdao.insertLoginHistory(user.getUserId(), user.getUsername());
-
-                // Open dashboard
-                Dashboard dash = new Dashboard();
-                dash.setVisible(true);
-                loginView.dispose();
-            }
+        // ✅ Check if user is still locked out
+        if (now < lockoutEndTime) {
+            long remainingSeconds = (lockoutEndTime - now) / 1000;
+            JOptionPane.showMessageDialog(
+                loginView,
+                "Too many attempts! Try again in " + remainingSeconds + " seconds."
+            );
+            return;
         }
+
+        String username = loginView.getUsernameField().getText().trim();
+        String password = loginView.getPasswordField().getText().trim();
+
+        UserModel user = userdao.login(username, password);
+
+        if (user != null) {
+            loginAttempts = 0;
+
+            userdao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
+
+            Dashboard d = new Dashboard();
+            d.setVisible(true);
+            loginView.dispose();
+            return;
+        }
+
+        // ❌ Wrong login
+        loginAttempts++;
+
+        if (loginAttempts >= MAX_ATTEMPTS) {
+
+            // ✅ Lock for 5 minutes
+            lockoutEndTime = System.currentTimeMillis() + (5 * 60 * 1000);
+
+            // ✅ Disable login UI
+            setLoginEnabled(false);
+
+            JOptionPane.showMessageDialog(
+                loginView,
+                "Too many wrong attempts! Login disabled for 5 minutes."
+            );
+
+            // ✅ Re-enable after 5 minutes using Swing Timer
+            new javax.swing.Timer(5 * 60 * 1000, event -> {
+                setLoginEnabled(true);
+                loginAttempts = 0;
+                lockoutEndTime = 0;
+                JOptionPane.showMessageDialog(loginView, "You can try logging in again now.");
+            }).start();
+
+            return;
+        }
+
+        JOptionPane.showMessageDialog(
+            loginView,
+            "Wrong username or password! Attempt " + loginAttempts + " of " + MAX_ATTEMPTS
+        );
     }
+}
 
     // ✅ LISTENER: FORGOT PASSWORD
     class ForgotPasswordButtonListener implements ActionListener {

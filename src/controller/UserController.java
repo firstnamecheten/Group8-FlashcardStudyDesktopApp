@@ -63,7 +63,7 @@ public class UserController {
             }
 
             // ✅ Create model
-            UserModel usermodel = new UserModel(username, email, password);
+            UserModel usermodel = new UserModel(username, email, password, confirmPassword);
 
             // ✅ Check if user exists
             boolean exists = userdao.check(usermodel);

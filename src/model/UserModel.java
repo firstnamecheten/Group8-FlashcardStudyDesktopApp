@@ -10,21 +10,23 @@ public class UserModel {
     private String username;
     private String password;
     private String email;
-
+    private String confirmpassword;
+    
     // Constructor for SIGNUP (no user_id yet)
-    public UserModel(String username, String password, String email_Text_Field) {
+    public UserModel(String username, String email, String password, String confirmpassword) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.confirmpassword = confirmpassword;
 
     }
 
     // Constructor for LOGIN (data coming from database)
-    public UserModel(int user_id, String username, String email, String password) {
-        this.user_id = user_id;
+    public UserModel(int user_id, String username, String email) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.user_id = user_id;
     }
 
     // GETTERS & SETTERS
@@ -59,6 +61,14 @@ public class UserModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+     public String getconfirmpassword() {
+        return confirmpassword;
+    }
+
+    public void setconfirmpassword(String confirmpassword) {
+        this.confirmpassword = confirmpassword;
     }
 }
 
