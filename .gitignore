@@ -1,2 +1,4 @@
-
-nbproject/private
+src/database
+nbproject/private/
+build/
+*.class
