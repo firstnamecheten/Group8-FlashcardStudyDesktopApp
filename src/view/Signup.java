@@ -349,6 +349,12 @@ public class Signup extends javax.swing.JFrame {
 
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
         // TODO add your handling code here:
+        Login loginView = new Login();
+        controller.LoginController lc = new controller.LoginController(loginView);
+        lc.open();
+        this.dispose();
+
+
     }//GEN-LAST:event_Login_ButtonActionPerformed
 
     private void username_Text_FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_username_Text_FieldFocusGained
@@ -388,8 +394,8 @@ public class Signup extends javax.swing.JFrame {
 
     private void confirm_password_Text_FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirm_password_Text_FieldFocusLost
         // TODO add your handling code here:
-        if(password_Text_Field.getText().equals("")){
-            password_Text_Field.setText(" Re-type to confirm password");
+        if(confirm_password_Text_Field.getText().equals("")){
+            confirm_password_Text_Field.setText(" Re-type to confirm password");
         }
     }//GEN-LAST:event_confirm_password_Text_FieldFocusLost
 
