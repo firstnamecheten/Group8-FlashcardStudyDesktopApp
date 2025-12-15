@@ -92,6 +92,7 @@ public class Dashtwo extends javax.swing.JFrame {
         accountPopupMenu.add(logoutMenuItem);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         topPanel1.setBackground(new java.awt.Color(255, 255, 255));
         topPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 51, 51)));
@@ -123,6 +124,9 @@ public class Dashtwo extends javax.swing.JFrame {
         jButton4.setBorder(null);
         topPanel1.add(jButton4);
         jButton4.setBounds(190, 20, 80, 40);
+
+        getContentPane().add(topPanel1);
+        topPanel1.setBounds(0, 0, 780, 70);
 
         centerpanel.setBackground(new java.awt.Color(255, 255, 255));
         centerpanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -175,63 +179,45 @@ public class Dashtwo extends javax.swing.JFrame {
         centerpanel.add(jButton1);
         jButton1.setBounds(120, 70, 350, 60);
 
+        getContentPane().add(centerpanel);
+        centerpanel.setBounds(99, 140, 601, 350);
+
         jTextField3.setBackground(new java.awt.Color(242, 242, 242));
         jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField3.setText("Home");
         jTextField3.setBorder(null);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(centerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(topPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(centerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
-        );
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(99, 88, 130, 50);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_accountButtonActionPerformed
-    
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void accountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMouseClicked
-        // TODO add your handling code here:
-        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) { // Left click only
-        // Show popup aligned to the RIGHT bottom of the button
-        int x = accountButton.getWidth() - accountPopupMenu.getPreferredSize().width;
-        int y = accountButton.getHeight();
-        accountPopupMenu.show(accountButton, x, y);
-    }
-    }//GEN-LAST:event_accountButtonMouseClicked
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-    private void toggleDarkMode() {
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accountButtonActionPerformed
+
+    private void accountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) { // Left click only
+            // Show popup aligned to the RIGHT bottom of the button
+            int x = accountButton.getWidth() - accountPopupMenu.getPreferredSize().width;
+            int y = accountButton.getHeight();
+            accountPopupMenu.show(accountButton, x, y);
+        }
+    }//GEN-LAST:event_accountButtonMouseClicked
+        private void toggleDarkMode() {
     isDarkMode = !isDarkMode;
 
     if (isDarkMode) {
