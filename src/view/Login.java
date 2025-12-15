@@ -4,7 +4,10 @@
  */
 package view;
 
+import controller.LoginController;
+import controller.UserController;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
@@ -20,7 +23,10 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setSize(1285,760);
+        
+
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -243,7 +249,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (17).png"))); // NOI18N
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(1040, 490, 240, 250);
+        jLabel12.setBounds(1040, 490, 240, 230);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (3).png"))); // NOI18N
         getContentPane().add(jLabel7);
@@ -309,6 +315,10 @@ public class Login extends javax.swing.JFrame {
 
     private void CreateAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccountButtonActionPerformed
         // TODO add your handling code here:
+        Signup signupView = new Signup();                      // Create signup window
+        UserController SignupController = new UserController(signupView);  
+        signupView.setVisible(true);                           // Show signup page
+        this.dispose();                         
     }//GEN-LAST:event_CreateAccountButtonActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
@@ -317,6 +327,8 @@ public class Login extends javax.swing.JFrame {
 
     private void ForgotPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForgotPasswordButtonActionPerformed
         // TODO add your handling code here:
+        LoginController controller = new LoginController(this);
+        controller.handleForgotPassword();
     }//GEN-LAST:event_ForgotPasswordButtonActionPerformed
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
@@ -421,4 +433,9 @@ public class Login extends javax.swing.JFrame {
     public javax.swing.JTextField getUsernameField(){
         return username;
     }
+
+    public JButton getLoginButton() {
+         return LoginButton;
+    }
+
 }
