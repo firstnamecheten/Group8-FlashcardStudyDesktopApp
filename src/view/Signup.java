@@ -4,7 +4,11 @@
  */
 package view;
 
+
+import controller.UserController;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -14,14 +18,11 @@ public class Signup extends javax.swing.JFrame {
     
       private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Signup.class.getName());
 
-    
-
+      
     public Signup() {
         initComponents();
         setSize(1285,760);
     }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,7 +67,6 @@ public class Signup extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1285, 760));
         getContentPane().setLayout(null);
 
         username_Text_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
@@ -196,11 +196,11 @@ public class Signup extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 350, 760);
+        jPanel1.setBounds(0, 0, 350, 750);
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 65)); // NOI18N
         jLabel1.setText("Flashcard Study ");
@@ -275,7 +275,7 @@ public class Signup extends javax.swing.JFrame {
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (17).png"))); // NOI18N
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(1040, 490, 240, 250);
+        jLabel12.setBounds(1040, 490, 240, 230);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (3).png"))); // NOI18N
         getContentPane().add(jLabel7);
@@ -326,11 +326,11 @@ public class Signup extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(350, 0, 940, 750);
+        jPanel2.setBounds(350, 0, 940, 860);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -409,32 +409,22 @@ public class Signup extends javax.swing.JFrame {
         if(email_Text_Field.getText().equals("")){
             email_Text_Field.setText(" Enter the email");
         }
+       
     }//GEN-LAST:event_email_Text_FieldFocusLost
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+ public static void main(String args[]) {
+    java.awt.EventQueue.invokeLater(() -> {
+        Signup view = new Signup();               // Create only ONE Signup view
+        UserController controller = new UserController(view); // Attach controller
+        view.setVisible(true);                    // Show the same view
+    });
+}
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Signup().setVisible(true));
-    }
+   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Confirm_password;
@@ -473,7 +463,7 @@ public class Signup extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void AddUserListener(ActionListener listener){
-        Signup_Button.addActionListener(listener);
+    Signup_Button.addActionListener(listener);
     }
     public void LoginButtonListener(ActionListener listener){
         Login_Button.addActionListener(listener);
@@ -491,3 +481,6 @@ public class Signup extends javax.swing.JFrame {
         return username_Text_Field; 
     }
 }
+
+
+
