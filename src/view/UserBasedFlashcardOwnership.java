@@ -46,7 +46,6 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         topPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        topPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 153)));
         topPanel1.setLayout(null);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
