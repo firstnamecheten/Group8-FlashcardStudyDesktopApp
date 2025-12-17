@@ -6,7 +6,7 @@ package model;
 
 public class UserModel {
     
-    private int user_id;
+    private int user_id;         //from MySQL
     private String username;
     private String password;
     private String email;
