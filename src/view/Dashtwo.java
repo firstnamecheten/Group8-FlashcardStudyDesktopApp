@@ -100,7 +100,7 @@ public class Dashtwo extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
         topPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 10, 60, 50);
+        jLabel3.setBounds(100, 10, 60, 50);
 
         accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acc.png"))); // NOI18N
         accountButton.setBorder(null);
@@ -111,19 +111,20 @@ public class Dashtwo extends javax.swing.JFrame {
         });
         accountButton.addActionListener(this::accountButtonActionPerformed);
         topPanel1.add(accountButton);
-        accountButton.setBounds(710, 0, 60, 60);
+        accountButton.setBounds(650, 10, 60, 50);
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setText("Home");
         jButton3.setBorder(null);
+        jButton3.addActionListener(this::jButton3ActionPerformed);
         topPanel1.add(jButton3);
-        jButton3.setBounds(100, 20, 80, 40);
+        jButton3.setBounds(200, 20, 80, 40);
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton4.setText("Library");
         jButton4.setBorder(null);
         topPanel1.add(jButton4);
-        jButton4.setBounds(190, 20, 80, 40);
+        jButton4.setBounds(280, 20, 80, 40);
 
         getContentPane().add(topPanel1);
         topPanel1.setBounds(0, 0, 780, 70);
@@ -217,6 +218,10 @@ public class Dashtwo extends javax.swing.JFrame {
             accountPopupMenu.show(accountButton, x, y);
         }
     }//GEN-LAST:event_accountButtonMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
         private void toggleDarkMode() {
     isDarkMode = !isDarkMode;
 
