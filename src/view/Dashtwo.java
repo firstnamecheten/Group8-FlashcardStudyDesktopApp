@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Projectflashcards;
+package view;
 
 /**
  *
@@ -14,7 +14,7 @@ public class Dashtwo extends javax.swing.JFrame {
     // === ADD THESE VARIABLES at the top with other declarations ===
     private boolean isDarkMode;
     /**
-     * Creates new form Dashtwo 
+     * Creates new form 
      */
     public Dashtwo() {
         initComponents();
