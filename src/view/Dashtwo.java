@@ -241,8 +241,8 @@ public class Dashtwo extends javax.swing.JFrame {
         centerpanel.setBackground(new java.awt.Color(45, 45, 45));
 
         // Text colors to light
-        jTextField9.setForeground(new java.awt.Color(200, 200, 200));
-        jTextField10.setForeground(new java.awt.Color(200, 200, 200));
+        
+    
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
         jTextField3.setBackground(new java.awt.Color(45, 45, 45));
         jTextField2.setForeground(new java.awt.Color(180, 180, 180));
@@ -256,8 +256,7 @@ public class Dashtwo extends javax.swing.JFrame {
         topPanel1.setBackground(new java.awt.Color(255, 255, 255));
         centerpanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField10.setForeground(new java.awt.Color(0, 0, 0));
+       
         jTextField3.setForeground(new java.awt.Color(0, 0, 0));
         jTextField3.setBackground(new java.awt.Color(242, 242, 242));
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
