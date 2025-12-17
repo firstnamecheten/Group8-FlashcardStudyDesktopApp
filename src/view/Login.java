@@ -314,7 +314,7 @@ public class Login extends javax.swing.JFrame {
     private void ForgotPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForgotPasswordButtonActionPerformed
         // TODO add your handling code here:
         LoginController controller = new LoginController(this);
-        controller.handleForgotPassword();
+        
     }//GEN-LAST:event_ForgotPasswordButtonActionPerformed
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
