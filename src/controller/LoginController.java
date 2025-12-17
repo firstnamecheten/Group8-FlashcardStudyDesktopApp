@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import model.UserModel;
-import view.Dashboard;
+import view.Dashtwo;
 import view.Login;
 import view.Signup;
 
@@ -111,7 +111,7 @@ public class LoginController {
                 JOptionPane.showMessageDialog(loginView, "Login successful!");
                 userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
 
-                Dashboard d = new Dashboard();
+                Dashtwo d = new Dashtwo();
                 d.setVisible(true);
                 loginView.dispose();
             }
