@@ -7,6 +7,7 @@ package view;
 import controller.LoginController;
 import controller.UserController;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
@@ -50,21 +51,20 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
@@ -190,88 +190,75 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(560, 420, 560, 40);
 
-        jLabel10.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
-        jLabel10.setText("Heart");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(480, 0, 120, 40);
-
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (5).png"))); // NOI18N
-        jLabel22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 3));
-        getContentPane().add(jLabel22);
-        jLabel22.setBounds(410, 10, 186, 230);
-
-        jLabel6.setFont(new java.awt.Font("Cambria", 0, 20)); // NOI18N
-        jLabel6.setText("repetetion. Join our community of smart learners.");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(610, 450, 490, 40);
+        jLabel18.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
+        jLabel18.setText("Heart");
+        getContentPane().add(jLabel18);
+        jLabel18.setBounds(470, 0, 120, 60);
 
         jLabel9.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         jLabel9.setText("What is the area of circle?");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(1060, 180, 160, 30);
+        jLabel9.setBounds(1070, 150, 160, 30);
+
+        jLabel6.setFont(new java.awt.Font("Cambria", 0, 20)); // NOI18N
+        jLabel6.setText("repetetion. Join our community of smart learners.");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(610, 440, 490, 40);
 
         jLabel17.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         jLabel17.setText("Name the flag");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(1120, 478, 90, 50);
+        jLabel17.setBounds(1130, 500, 90, 50);
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (16).png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (31).png"))); // NOI18N
         jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 3));
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(1040, 10, 186, 230);
+        jLabel11.setBounds(1060, 20, 170, 200);
 
         jLabel15.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
         jLabel15.setText("Computer parts");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(390, 480, 110, 40);
+        jLabel15.setBounds(420, 500, 110, 40);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel6);
-        jPanel6.setBounds(390, 510, 100, 30);
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (20).png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (37).png"))); // NOI18N
         jLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 3));
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(1070, 490, 186, 230);
+        jLabel16.setBounds(1080, 510, 170, 200);
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (17).png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (38).png"))); // NOI18N
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(1040, 490, 240, 230);
+        jLabel12.setBounds(1050, 520, 190, 190);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (3).png"))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (30).png"))); // NOI18N
+        jLabel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 3));
+        jLabel19.setMaximumSize(new java.awt.Dimension(170, 200));
+        jLabel19.setMinimumSize(new java.awt.Dimension(170, 200));
+        jLabel19.setPreferredSize(new java.awt.Dimension(170, 200));
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(400, 20, 170, 200);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (26).png"))); // NOI18N
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(370, -20, 300, 300);
+        jLabel7.setBounds(370, 30, 170, 200);
 
         jLabel13.setBackground(new java.awt.Color(204, 204, 204));
         jLabel13.setForeground(new java.awt.Color(232, 232, 232));
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (14).png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (34).png"))); // NOI18N
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 3));
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(380, 490, 186, 230);
+        jLabel13.setBounds(380, 510, 170, 200);
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (15).png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (35).png"))); // NOI18N
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(360, 500, 240, 220);
+        jLabel14.setBounds(400, 520, 170, 200);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (4).png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (32).png"))); // NOI18N
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(1020, -10, 250, 260);
+        jLabel8.setBounds(1090, -10, 250, 260);
 
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 162 (3).png"))); // NOI18N
-        getContentPane().add(jLabel23);
-        jLabel23.setBounds(470, 150, 671, 410);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 162 (3).png"))); // NOI18N
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(470, 150, 671, 410);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -299,11 +286,11 @@ public class Login extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(350, 0, 940, 780);
+        jPanel2.setBounds(350, -110, 940, 860);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -327,7 +314,7 @@ public class Login extends javax.swing.JFrame {
     private void ForgotPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForgotPasswordButtonActionPerformed
         // TODO add your handling code here:
         LoginController controller = new LoginController(this);
-        controller.handleForgotPassword();
+        
     }//GEN-LAST:event_ForgotPasswordButtonActionPerformed
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
@@ -391,7 +378,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Password;
     private javax.swing.JLabel Username;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -399,9 +385,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -412,7 +399,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
@@ -433,7 +419,7 @@ public class Login extends javax.swing.JFrame {
         return username;
     }
 
-    public Object getLoginButton() {
+    public JButton getLoginButton() {
          return LoginButton;
     }
 
