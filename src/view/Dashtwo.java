@@ -18,6 +18,7 @@ public class Dashtwo extends javax.swing.JFrame {
      */
     public Dashtwo() {
         initComponents();
+        setSize(1285,760);
         // === CUSTOM CODE STARTS HERE ===
 
     // Track dark mode state
@@ -31,6 +32,9 @@ public class Dashtwo extends javax.swing.JFrame {
     studyHistoryMenuItem.addActionListener(e -> openStudyHistory());
 
     logoutMenuItem.addActionListener(e -> logout());
+    
+    accountMenuItem.addActionListener(e -> openUserBasedFlashcardOwnership());
+
 
     // Better popup alignment (right-aligned under button)
     // We'll improve the mouse click handler next
@@ -39,7 +43,18 @@ public class Dashtwo extends javax.swing.JFrame {
 
 // === ADD THESE METHODS anywhere in the class (below main or at the bottom) ===
 
+    private void openUserBasedFlashcardOwnership() {
+    // Close the popup if open
+    accountPopupMenu.setVisible(false);
     
+    // Open the UserBasedFlashcardOwnership frame
+    UserBasedFlashcardOwnership page = new UserBasedFlashcardOwnership();
+    page.setVisible(true);
+
+    // Optionally, close the current dashboard if you want
+    // this.dispose();
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,48 +77,44 @@ public class Dashtwo extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         centerpanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
 
         accountPopupMenu.setBackground(new java.awt.Color(102, 102, 102));
         accountPopupMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(200, 200, 200), new java.awt.Color(150, 150, 150), new java.awt.Color(80, 80, 82), new java.awt.Color(100, 100, 100)));
 
-        accountMenuItem.setIcon(new javax.swing.ImageIcon("C:\\Users\\bipin ranabhat\\OneDrive\\Documents\\img\\menuAcc.png")); // NOI18N
         accountMenuItem.setText("Account");
         accountMenuItem.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(200, 200, 200), new java.awt.Color(150, 150, 150), new java.awt.Color(80, 80, 80), new java.awt.Color(100, 100, 100)));
         accountPopupMenu.add(accountMenuItem);
 
-        darkModeMenuItem.setIcon(new javax.swing.ImageIcon("C:\\Users\\bipin ranabhat\\OneDrive\\Documents\\img\\darkmode.png")); // NOI18N
         darkModeMenuItem.setText("Dark mode/ Light mode");
         accountPopupMenu.add(darkModeMenuItem);
 
-        fontSizeMenuItem.setIcon(new javax.swing.ImageIcon("C:\\Users\\bipin ranabhat\\OneDrive\\Documents\\img\\fontsize.png")); // NOI18N
         fontSizeMenuItem.setText("Font size");
         accountPopupMenu.add(fontSizeMenuItem);
 
-        studyHistoryMenuItem.setIcon(new javax.swing.ImageIcon("C:\\Users\\bipin ranabhat\\OneDrive\\Documents\\img\\studyhistory.png")); // NOI18N
         studyHistoryMenuItem.setText("Study history");
         accountPopupMenu.add(studyHistoryMenuItem);
 
-        logoutMenuItem.setIcon(new javax.swing.ImageIcon("C:\\Users\\bipin ranabhat\\OneDrive\\Documents\\img\\logout.png")); // NOI18N
         logoutMenuItem.setText("Log out");
         accountPopupMenu.add(logoutMenuItem);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         topPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        topPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        topPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         topPanel1.setLayout(null);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\bipin ranabhat\\OneDrive\\Documents\\img\\logo.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
         topPanel1.add(jLabel3);
         jLabel3.setBounds(100, 10, 60, 50);
 
-        accountButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\bipin ranabhat\\OneDrive\\Documents\\img\\acc.png")); // NOI18N
+        accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (40).png"))); // NOI18N
         accountButton.setBorder(null);
         accountButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -112,24 +123,38 @@ public class Dashtwo extends javax.swing.JFrame {
         });
         accountButton.addActionListener(this::accountButtonActionPerformed);
         topPanel1.add(accountButton);
-        accountButton.setBounds(720, 10, 50, 50);
+        accountButton.setBounds(1130, 10, 50, 50);
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         jButton3.setText("Home");
         jButton3.setBorder(null);
         jButton3.addActionListener(this::jButton3ActionPerformed);
         topPanel1.add(jButton3);
         jButton3.setBounds(200, 20, 80, 40);
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         jButton4.setText("Library");
         jButton4.setBorder(null);
         topPanel1.add(jButton4);
         jButton4.setBounds(280, 20, 80, 40);
 
+        getContentPane().add(topPanel1);
+        topPanel1.setBounds(0, 0, 1330, 70);
+
         centerpanel.setBackground(new java.awt.Color(255, 255, 255));
-        centerpanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        centerpanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         centerpanel.setLayout(null);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit 17.png"))); // NOI18N
+        centerpanel.add(jLabel1);
+        jLabel1.setBounds(510, 60, 40, 80);
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setText("              Create Cards");
+        jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+        centerpanel.add(jButton1);
+        jButton1.setBounds(80, 70, 930, 60);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -159,51 +184,23 @@ public class Dashtwo extends javax.swing.JFrame {
         centerpanel.add(jPanel8);
         jPanel8.setBounds(310, 230, 0, 0);
 
+        jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
         jTextField2.setText("QUICK START");
         jTextField2.setBorder(null);
         jTextField2.addActionListener(this::jTextField2ActionPerformed);
         centerpanel.add(jTextField2);
-        jTextField2.setBounds(120, 30, 100, 30);
+        jTextField2.setBounds(80, 30, 100, 30);
 
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\bipin ranabhat\\OneDrive\\Documents\\img\\edit 17.png")); // NOI18N
-        jButton2.addActionListener(this::jButton2ActionPerformed);
-        centerpanel.add(jButton2);
-        jButton2.setBounds(250, 90, 20, 20);
-
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("              Create Cards");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-        centerpanel.add(jButton1);
-        jButton1.setBounds(120, 70, 350, 60);
+        getContentPane().add(centerpanel);
+        centerpanel.setBounds(100, 150, 1080, 550);
 
         jTextField3.setBackground(new java.awt.Color(242, 242, 242));
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
         jTextField3.setText("Home");
         jTextField3.setBorder(null);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(centerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(topPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(centerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(99, 88, 130, 50);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -215,16 +212,13 @@ public class Dashtwo extends javax.swing.JFrame {
     dialog.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
         // TODO add your handling code here:
+      
     }//GEN-LAST:event_accountButtonActionPerformed
 
     private void accountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMouseClicked
@@ -240,7 +234,9 @@ public class Dashtwo extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-        private void toggleDarkMode() {
+
+   
+    private void toggleDarkMode() {
     isDarkMode = !isDarkMode;
 
     if (isDarkMode) {
@@ -279,6 +275,7 @@ public class Dashtwo extends javax.swing.JFrame {
     revalidate();
 }
 
+       
 private void showFontSizeOptions() {
     // Simple example - you can improve with dialog
     String[] options = {"Small", "Medium", "Large"};
@@ -346,9 +343,9 @@ private void logout() {
     private javax.swing.JMenuItem darkModeMenuItem;
     private javax.swing.JMenuItem fontSizeMenuItem;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
