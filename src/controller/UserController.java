@@ -10,7 +10,7 @@ import view.Login;
 
 public class UserController {
 
-    private final UserDao userdao = new UserDao();
+    private final UserDao userDao = new UserDao();
     private final Signup userView;
 
     public UserController(Signup userView) {
@@ -29,7 +29,7 @@ public class UserController {
         this.userView.dispose();
     }
 
-    // ✅ When user clicks "Login" button
+    // When user clicks "Login" button on Signup page
     class LoginListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -40,51 +40,51 @@ public class UserController {
         }
     }
 
-    // ✅ When user clicks "Sign Up" button
+    // When user clicks "Signup" button
     class SignUpListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                // ✅ Get text safely
-                String username = userView.getUsernameField().getText();
-                String email = userView.getEmailField().getText();
-                String password = userView.getPasswordField().getText();
-                String confirmPassword = userView.getConfirmPasswordField().getText();
+                // Inside SignUpListener
+                String username = userView.getUsernameField().getText().trim();
+                String email = userView.getEmailField().getText().trim();
+                String password = userView.getPasswordField().getText().trim();
+                String confirmPassword = userView.getConfirmPasswordField().getText().trim();
 
-                 // ✅ Normalize null → ""
-                username = username == null ? "" : username.trim();
-                email = email == null ? "" : email.trim();
-                password = password == null ? "" : password.trim();
-                confirmPassword = confirmPassword == null ? "" : confirmPassword.trim();
+                // Treat placeholders as empty
+                if (username.equals("Enter the username") || username.equals(" Enter the username")) username = "";
+                if (email.equals("Enter the email") || email.equals(" Enter the email")) email = "";
+                if (password.equals("Enter the password") || password.equals(" Enter the password")) password = "";
+                if (confirmPassword.equals("Re-type to confirm password") || confirmPassword.equals(" Re-type to confirm password")) confirmPassword = "";
 
-                // ✅ Required fields check FIRST
-                if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                JOptionPane.showMessageDialog(userView, "All fields are required!");
-                return;
+// Required fields check
+if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+    JOptionPane.showMessageDialog(userView, "All fields are required!");
+    return;
 }
 
-                // ✅ Password match check SECOND
-                if (!password.equals(confirmPassword)) {
-                JOptionPane.showMessageDialog(userView, "Passwords do not match!");
-                return;
+// Password match check
+if (!password.equals(confirmPassword)) {
+    JOptionPane.showMessageDialog(userView, "Passwords do not match!");
+    return;
 }
 
-                // ✅ Create model
-                UserModel usermodel = new UserModel(username.trim(), email.trim(), password.trim(), confirmPassword.trim());
+                // Create model
+                UserModel usermodel = new UserModel(username, email, password, confirmPassword);
 
-                // ✅ Check if user already exists
-                if (userdao.check(usermodel)) {
+                // Check if user already exists
+                if (userDao.check(usermodel)) {
                     JOptionPane.showMessageDialog(userView, "User already exists!");
                     return;
                 }
 
-                // ✅ Save user
-                userdao.signUp(usermodel);
+                // Save user
+                userDao.signUp(usermodel);
 
-                // ✅ Success message
+                // Success message
                 JOptionPane.showMessageDialog(userView, "Signup successful!");
 
-                // ✅ Redirect to login page
+                // Redirect to login page
                 Login loginView = new Login();
                 LoginController loginController = new LoginController(loginView);
                 loginController.open();
@@ -97,8 +97,10 @@ public class UserController {
         }
     }
 
-    // ✅ Helper method for clean validation
+    // Helper (not strictly needed but kept if you want it)
     private boolean isEmpty(String s) {
         return s == null || s.trim().isEmpty();
     }
 }
+
+         
