@@ -30,7 +30,7 @@ public class UserController {
     }
 
     // When user clicks "Login" button on Signup page
-    class LoginListener implements ActionListener {
+    private class LoginListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             Login loginView = new Login();
@@ -41,36 +41,33 @@ public class UserController {
     }
 
     // When user clicks "Signup" button
-    class SignUpListener implements ActionListener {
+    private class SignUpListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                // Inside SignUpListener
                 String username = userView.getUsernameField().getText().trim();
-                String email = userView.getEmailField().getText().trim();
                 String password = userView.getPasswordField().getText().trim();
                 String confirmPassword = userView.getConfirmPasswordField().getText().trim();
 
                 // Treat placeholders as empty
-                if (username.equals("Enter the username") || username.equals(" Enter the username")) username = "";
-                if (email.equals("Enter the email") || email.equals(" Enter the email")) email = "";
-                if (password.equals("Enter the password") || password.equals(" Enter the password")) password = "";
-                if (confirmPassword.equals("Re-type to confirm password") || confirmPassword.equals(" Re-type to confirm password")) confirmPassword = "";
+                if (username.startsWith("Enter")) username = "";
+                if (password.startsWith("Enter")) password = "";
+                if (confirmPassword.startsWith("Re-type")) confirmPassword = "";
 
-// Required fields check
-if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-    JOptionPane.showMessageDialog(userView, "All fields are required!");
-    return;
-}
+                // Required fields check
+                if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                    JOptionPane.showMessageDialog(userView, "All fields are required!");
+                    return;
+                }
 
-// Password match check
-if (!password.equals(confirmPassword)) {
-    JOptionPane.showMessageDialog(userView, "Passwords do not match!");
-    return;
-}
+                // Password match check
+                if (!password.equals(confirmPassword)) {
+                    JOptionPane.showMessageDialog(userView, "Passwords do not match!");
+                    return;
+                }
 
                 // Create model
-                UserModel usermodel = new UserModel(username, email, password, confirmPassword);
+                UserModel usermodel = new UserModel(username, password, confirmPassword);
 
                 // Check if user already exists
                 if (userDao.check(usermodel)) {
@@ -79,27 +76,26 @@ if (!password.equals(confirmPassword)) {
                 }
 
                 // Save user
-                userDao.signUp(usermodel);
+                UserModel newUser = userDao.signUp(usermodel);
+                if (newUser == null) {
+                    JOptionPane.showMessageDialog(userView, "Signup failed!");
+                    return;
+                }
 
-                // Success message
+                // ✅ Success message
                 JOptionPane.showMessageDialog(userView, "Signup successful!");
 
-                // Redirect to login page
-                Login loginView = new Login();
-                LoginController loginController = new LoginController(loginView);
-                loginController.open();
+                // ✅ Close signup and return to Login
                 userView.dispose();
+                Login loginView = new Login();
+                LoginController controller = new LoginController(loginView);
+                controller.open();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(userView, "Something went wrong!");
             }
         }
-    }
-
-    // Helper (not strictly needed but kept if you want it)
-    private boolean isEmpty(String s) {
-        return s == null || s.trim().isEmpty();
     }
 }
 

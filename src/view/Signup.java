@@ -42,12 +42,9 @@ public class Signup extends javax.swing.JFrame {
         Signup_Button = new javax.swing.JButton();
         confirm_password_Text_Field = new javax.swing.JTextField();
         Username = new javax.swing.JLabel();
-        Email = new javax.swing.JLabel();
         Password = new javax.swing.JLabel();
         Confirm_password = new javax.swing.JLabel();
         Flashcard_Logo = new javax.swing.JLabel();
-        email_Text_Field = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -67,6 +64,7 @@ public class Signup extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -101,7 +99,7 @@ public class Signup extends javax.swing.JFrame {
         });
         password_Text_Field.addActionListener(this::password_Text_FieldActionPerformed);
         getContentPane().add(password_Text_Field);
-        password_Text_Field.setBounds(20, 430, 310, 40);
+        password_Text_Field.setBounds(20, 330, 310, 40);
 
         Login_Button.setBackground(new java.awt.Color(23, 150, 255));
         Login_Button.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
@@ -110,7 +108,7 @@ public class Signup extends javax.swing.JFrame {
         Login_Button.setBorder(null);
         Login_Button.addActionListener(this::Login_ButtonActionPerformed);
         getContentPane().add(Login_Button);
-        Login_Button.setBounds(50, 660, 90, 40);
+        Login_Button.setBounds(80, 630, 90, 40);
 
         Signup_Title.setBackground(new java.awt.Color(26, 98, 169));
         Signup_Title.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
@@ -125,7 +123,7 @@ public class Signup extends javax.swing.JFrame {
         Signup_Button.setText("Signup");
         Signup_Button.setBorder(null);
         getContentPane().add(Signup_Button);
-        Signup_Button.setBounds(160, 660, 90, 40);
+        Signup_Button.setBounds(180, 630, 90, 40);
 
         confirm_password_Text_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
         confirm_password_Text_Field.setForeground(new java.awt.Color(153, 153, 153));
@@ -141,7 +139,7 @@ public class Signup extends javax.swing.JFrame {
         });
         confirm_password_Text_Field.addActionListener(this::confirm_password_Text_FieldActionPerformed);
         getContentPane().add(confirm_password_Text_Field);
-        confirm_password_Text_Field.setBounds(20, 550, 310, 40);
+        confirm_password_Text_Field.setBounds(20, 480, 310, 40);
 
         Username.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         Username.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,60 +147,22 @@ public class Signup extends javax.swing.JFrame {
         getContentPane().add(Username);
         Username.setBounds(20, 150, 90, 22);
 
-        Email.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        Email.setForeground(new java.awt.Color(255, 255, 255));
-        Email.setText("Email");
-        getContentPane().add(Email);
-        Email.setBounds(20, 280, 50, 22);
-
         Password.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         Password.setForeground(new java.awt.Color(255, 255, 255));
         Password.setText("Password");
         getContentPane().add(Password);
-        Password.setBounds(20, 400, 80, 22);
+        Password.setBounds(20, 300, 80, 22);
 
         Confirm_password.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         Confirm_password.setForeground(new java.awt.Color(255, 255, 255));
         Confirm_password.setText("Confirm password");
         getContentPane().add(Confirm_password);
-        Confirm_password.setBounds(20, 520, 150, 22);
+        Confirm_password.setBounds(20, 450, 150, 22);
 
         Flashcard_Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signupp.png"))); // NOI18N
         Flashcard_Logo.setText("jLabel6");
         getContentPane().add(Flashcard_Logo);
         Flashcard_Logo.setBounds(-30, 10, 170, 150);
-
-        email_Text_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        email_Text_Field.setForeground(new java.awt.Color(153, 153, 153));
-        email_Text_Field.setText(" Enter the email");
-        email_Text_Field.setBorder(null);
-        email_Text_Field.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                email_Text_FieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                email_Text_FieldFocusLost(evt);
-            }
-        });
-        email_Text_Field.addActionListener(this::email_Text_FieldActionPerformed);
-        getContentPane().add(email_Text_Field);
-        email_Text_Field.setBounds(20, 310, 310, 40);
-
-        jPanel1.setBackground(new java.awt.Color(30, 98, 165));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 350, 750);
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 65)); // NOI18N
         jLabel1.setText("Flashcard Study ");
@@ -321,6 +281,22 @@ public class Signup extends javax.swing.JFrame {
         getContentPane().add(jPanel2);
         jPanel2.setBounds(350, -110, 940, 860);
 
+        jPanel1.setBackground(new java.awt.Color(30, 98, 165));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 750, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 350, 750);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -388,25 +364,6 @@ public class Signup extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_confirm_password_Text_FieldFocusLost
 
-    private void email_Text_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_Text_FieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_email_Text_FieldActionPerformed
-
-    private void email_Text_FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_email_Text_FieldFocusGained
-        // TODO add your handling code here:
-        if(email_Text_Field.getText().equals(" Enter the email")){
-            email_Text_Field.setText("");
-    }     
-    }//GEN-LAST:event_email_Text_FieldFocusGained
-
-    private void email_Text_FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_email_Text_FieldFocusLost
-        // TODO add your handling code here:
-        if(email_Text_Field.getText().equals("")){
-            email_Text_Field.setText(" Enter the email");
-        }
-       
-    }//GEN-LAST:event_email_Text_FieldFocusLost
-
     /**
      * @param args
      */
@@ -423,7 +380,6 @@ public class Signup extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Confirm_password;
-    private javax.swing.JLabel Email;
     private javax.swing.JLabel Flashcard_Logo;
     private javax.swing.JButton Login_Button;
     private javax.swing.JLabel Password;
@@ -431,7 +387,6 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JLabel Signup_Title;
     private javax.swing.JLabel Username;
     private javax.swing.JTextField confirm_password_Text_Field;
-    private javax.swing.JTextField email_Text_Field;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -467,9 +422,6 @@ public class Signup extends javax.swing.JFrame {
     }
     public javax.swing.JTextField getConfirmPasswordField(){
         return confirm_password_Text_Field; 
-    }
-    public javax.swing.JTextField getEmailField(){
-        return email_Text_Field; 
     }
     public javax.swing.JTextField getUsernameField(){
         return username_Text_Field; 
