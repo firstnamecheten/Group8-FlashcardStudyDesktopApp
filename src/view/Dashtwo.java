@@ -1,59 +1,152 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-/**
- *
- * @author bipin ranabhat
- */
+import controller.LoginController;
+import model.UserModel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 public class Dashtwo extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dashtwo.class.getName());
-    // === ADD THESE VARIABLES at the top with other declarations ===
+
+    private static final java.util.logging.Logger logger =
+            java.util.logging.Logger.getLogger(Dashtwo.class.getName());
+
     private boolean isDarkMode;
-    /**
-     * Creates new form Dashtwo 
-     */
+
+    // Keep track of the current logged-in user
+    private final UserModel currentUser;
+
+    /** Creates new form Dashtwo (preferred: with user context) */
+    public Dashtwo(UserModel user) {
+        initComponents();
+        setSize(1285, 760);
+        this.currentUser = user;
+        wireMenuActions();
+    }
+
+    /** No-arg constructor (needed for GUI builder or fallback) */
     public Dashtwo() {
         initComponents();
-        setSize(1285,760);
-        // === CUSTOM CODE STARTS HERE ===
+        setSize(1285, 760);
+        this.currentUser = null; // fallback
+        wireMenuActions();
+    }
 
-    // Track dark mode state
-    isDarkMode = false;
+    /** Centralized wiring of menu actions to avoid duplication */
+    private void wireMenuActions() {
+        isDarkMode = false;
 
-    // Add action listeners to menu items
-    darkModeMenuItem.addActionListener(e -> toggleDarkMode());
+        if (darkModeMenuItem != null) darkModeMenuItem.addActionListener(e -> toggleDarkMode());
+        if (fontSizeMenuItem != null) fontSizeMenuItem.addActionListener(e -> showFontSizeOptions());
+        if (studyHistoryMenuItem != null) studyHistoryMenuItem.addActionListener(e -> openStudyHistory());
+        if (logoutMenuItem != null) logoutMenuItem.addActionListener(e -> logout());
+        if (accountMenuItem != null) accountMenuItem.addActionListener(e -> openUserBasedFlashcardOwnership());
+    }
 
-    fontSizeMenuItem.addActionListener(e -> showFontSizeOptions());
-
-    studyHistoryMenuItem.addActionListener(e -> openStudyHistory());
-
-    logoutMenuItem.addActionListener(e -> logout());
-    
-    accountMenuItem.addActionListener(e -> openUserBasedFlashcardOwnership());
-
-
-    // Better popup alignment (right-aligned under button)
-    // We'll improve the mouse click handler next
-}
-
-
-// === ADD THESE METHODS anywhere in the class (below main or at the bottom) ===
+    // === Navigation/actions ===
 
     private void openUserBasedFlashcardOwnership() {
-    // Close the popup if open
-    accountPopupMenu.setVisible(false);
-    
-    // Open the UserBasedFlashcardOwnership frame
-    UserBasedFlashcardOwnership page = new UserBasedFlashcardOwnership();
-    page.setVisible(true);
+        if (accountPopupMenu != null) {
+            accountPopupMenu.setVisible(false);
+        }
 
-    // Optionally, close the current dashboard if you want
-    // this.dispose();
-}
+        UserBasedFlashcardOwnership page = (currentUser != null)
+                ? new UserBasedFlashcardOwnership(currentUser)
+                : new UserBasedFlashcardOwnership();
+        page.setVisible(true);
+    }
+
+    private void logout() {
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Are you sure you want to log out?",
+                "Logout",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            this.dispose();
+            SwingUtilities.invokeLater(() -> {
+                Login loginView = new Login();
+                LoginController controller = new LoginController(loginView);
+                controller.open();
+            });
+        }
+    }
+
+    // === UI behavior ===
+
+    private void toggleDarkMode() {
+        isDarkMode = !isDarkMode;
+
+        if (isDarkMode) {
+            getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+            topPanel1.setBackground(new java.awt.Color(40, 40, 40));
+            centerpanel.setBackground(new java.awt.Color(45, 45, 45));
+
+            Home_Button.setForeground(new java.awt.Color(200, 200, 200));
+            Library_Button.setForeground(new java.awt.Color(200, 200, 200));
+            Home_Label.setForeground(new java.awt.Color(255, 255, 255));
+            Home_Label.setBackground(new java.awt.Color(45, 45, 45));
+            jTextField2.setForeground(new java.awt.Color(180, 180, 180));
+
+            darkModeMenuItem.setText(" Light mode");
+        } else {
+            getContentPane().setBackground(new java.awt.Color(240, 240, 240));
+            topPanel1.setBackground(new java.awt.Color(255, 255, 255));
+            centerpanel.setBackground(new java.awt.Color(255, 255, 255));
+
+            Home_Button.setForeground(new java.awt.Color(0, 0, 0));
+            Library_Button.setForeground(new java.awt.Color(0, 0, 0));
+            Home_Label.setForeground(new java.awt.Color(0, 0, 0));
+            Home_Label.setBackground(new java.awt.Color(242, 242, 242));
+            jTextField2.setForeground(new java.awt.Color(153, 153, 153));
+
+            darkModeMenuItem.setText(" Dark mode");
+        }
+
+        repaint();
+        revalidate();
+    }
+
+    private void showFontSizeOptions() {
+        String[] options = {"Small", "Medium", "Large"};
+        int choice = JOptionPane.showOptionDialog(
+                this,
+                "Choose font size",
+                "Font Size",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, options, options[1]
+        );
+
+        java.awt.Font current = Home_Label.getFont();
+        switch (choice) {
+            case 0 -> Home_Label.setFont(current.deriveFont(14f));
+            case 1 -> Home_Label.setFont(current.deriveFont(18f));
+            case 2 -> Home_Label.setFont(current.deriveFont(24f));
+            default -> { /* no change */ }
+        }
+    }
+
+    private void openStudyHistory() {
+        JOptionPane.showMessageDialog(
+                this,
+                "Study History feature coming soon!",
+                "Study History",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+
+    // Entry point if this frame is run directly
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            Login loginView = new Login();
+            LoginController controller = new LoginController(loginView);
+            controller.open();
+        });
+    }
+
+
 
 
     /**
@@ -74,15 +167,15 @@ public class Dashtwo extends javax.swing.JFrame {
         topPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         accountButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Home_Button = new javax.swing.JButton();
+        Library_Button = new javax.swing.JButton();
         centerpanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Create_Button = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        Home_Label = new javax.swing.JLabel();
 
         accountPopupMenu.setBackground(new java.awt.Color(102, 102, 102));
         accountPopupMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(200, 200, 200), new java.awt.Color(150, 150, 150), new java.awt.Color(80, 80, 82), new java.awt.Color(100, 100, 100)));
@@ -125,18 +218,18 @@ public class Dashtwo extends javax.swing.JFrame {
         topPanel1.add(accountButton);
         accountButton.setBounds(1130, 10, 50, 50);
 
-        jButton3.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        jButton3.setText("Home");
-        jButton3.setBorder(null);
-        jButton3.addActionListener(this::jButton3ActionPerformed);
-        topPanel1.add(jButton3);
-        jButton3.setBounds(200, 20, 80, 40);
+        Home_Button.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        Home_Button.setText("Home");
+        Home_Button.setBorder(null);
+        Home_Button.addActionListener(this::Home_ButtonActionPerformed);
+        topPanel1.add(Home_Button);
+        Home_Button.setBounds(200, 20, 80, 40);
 
-        jButton4.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        jButton4.setText("Library");
-        jButton4.setBorder(null);
-        topPanel1.add(jButton4);
-        jButton4.setBounds(280, 20, 80, 40);
+        Library_Button.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        Library_Button.setText("Library");
+        Library_Button.setBorder(null);
+        topPanel1.add(Library_Button);
+        Library_Button.setBounds(280, 20, 80, 40);
 
         getContentPane().add(topPanel1);
         topPanel1.setBounds(0, 0, 1330, 70);
@@ -149,12 +242,12 @@ public class Dashtwo extends javax.swing.JFrame {
         centerpanel.add(jLabel1);
         jLabel1.setBounds(510, 60, 40, 80);
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("              Create Cards");
-        jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-        centerpanel.add(jButton1);
-        jButton1.setBounds(80, 70, 930, 60);
+        Create_Button.setBackground(new java.awt.Color(204, 204, 204));
+        Create_Button.setText("              Create Cards");
+        Create_Button.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        Create_Button.addActionListener(this::Create_ButtonActionPerformed);
+        centerpanel.add(Create_Button);
+        Create_Button.setBounds(80, 70, 930, 60);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -195,22 +288,20 @@ public class Dashtwo extends javax.swing.JFrame {
         getContentPane().add(centerpanel);
         centerpanel.setBounds(100, 150, 1080, 550);
 
-        jTextField3.setBackground(new java.awt.Color(242, 242, 242));
-        jTextField3.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
-        jTextField3.setText("Home");
-        jTextField3.setBorder(null);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(99, 88, 130, 50);
+        Home_Label.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        Home_Label.setText("Home");
+        getContentPane().add(Home_Label);
+        Home_Label.setBounds(100, 90, 140, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    NewDeckDialog dialog = new NewDeckDialog(this, true);  // opens your popup
-    dialog.setLocationRelativeTo(this);  // centers it nicely
-    dialog.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void Create_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_ButtonActionPerformed
+    UserBasedFlashcardOwnership page = new UserBasedFlashcardOwnership(currentUser);
+    page.setVisible(true);
+
+
+    }//GEN-LAST:event_Create_ButtonActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -222,137 +313,37 @@ public class Dashtwo extends javax.swing.JFrame {
     }//GEN-LAST:event_accountButtonActionPerformed
 
     private void accountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMouseClicked
-        // TODO add your handling code here:
         if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) { // Left click only
-            // Show popup aligned to the RIGHT bottom of the button
             int x = accountButton.getWidth() - accountPopupMenu.getPreferredSize().width;
             int y = accountButton.getHeight();
             accountPopupMenu.show(accountButton, x, y);
         }
     }//GEN-LAST:event_accountButtonMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_Home_ButtonActionPerformed
 
-   
-    private void toggleDarkMode() {
-    isDarkMode = !isDarkMode;
-
-    if (isDarkMode) {
-        // Dark theme colors
-        getContentPane().setBackground(new java.awt.Color(30, 30, 30));
-        topPanel1.setBackground(new java.awt.Color(40, 40, 40));
-        centerpanel.setBackground(new java.awt.Color(45, 45, 45));
-
-        // Text colors to light
-        jButton3.setForeground(new java.awt.Color(200, 200, 200));
-        jButton4.setForeground(new java.awt.Color(200, 200, 200));
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setBackground(new java.awt.Color(45, 45, 45));
-        jTextField2.setForeground(new java.awt.Color(180, 180, 180));
-
-        // Update menu text
-        darkModeMenuItem.setText(" Light mode");
-
-    } else {
-        // Light theme (original)
-        getContentPane().setBackground(new java.awt.Color(240, 240, 240)); // or system default
-        topPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        centerpanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setBackground(new java.awt.Color(242, 242, 242));
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-
-        darkModeMenuItem.setText(" Dark mode");
-    }
-
-    // Repaint everything
-    repaint();
-    revalidate();
-}
-
-       
-private void showFontSizeOptions() {
-    // Simple example - you can improve with dialog
-    String[] options = {"Small", "Medium", "Large"};
-    int choice = javax.swing.JOptionPane.showOptionDialog(this,
-            "Choose font size", "Font Size",
-            javax.swing.JOptionPane.DEFAULT_OPTION,
-            javax.swing.JOptionPane.QUESTION_MESSAGE,
-            null, options, options[1]);
-
-    // Apply based on choice (example)
-    java.awt.Font current = jTextField3.getFont();
-    switch (choice) {
-        case 0 -> jTextField3.setFont(current.deriveFont(14f));
-        case 1 -> jTextField3.setFont(current.deriveFont(18f));
-        case 2 -> jTextField3.setFont(current.deriveFont(24f));
-    }
-}
-
-private void openStudyHistory() {
-    javax.swing.JOptionPane.showMessageDialog(this, "Study History feature coming soon!", "Study History", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-}
-
-private void logout() {
-    int confirm = javax.swing.JOptionPane.showConfirmDialog(this,
-            "Are you sure you want to log out?", "Logout",
-            javax.swing.JOptionPane.YES_NO_OPTION);
-
-    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-        // Go back to login screen or exit
-        this.dispose(); // close current window
-        // new LoginFrame().setVisible(true); // if you have login form
-    } 
-}
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (Exception ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Dashtwo().setVisible(true));
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Create_Button;
+    private javax.swing.JButton Home_Button;
+    private javax.swing.JLabel Home_Label;
+    private javax.swing.JButton Library_Button;
     private javax.swing.JButton accountButton;
     private javax.swing.JMenuItem accountMenuItem;
     private javax.swing.JPopupMenu accountPopupMenu;
     private javax.swing.JPanel centerpanel;
     private javax.swing.JMenuItem darkModeMenuItem;
     private javax.swing.JMenuItem fontSizeMenuItem;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JMenuItem logoutMenuItem;
     private javax.swing.JMenuItem studyHistoryMenuItem;
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
+
 }
