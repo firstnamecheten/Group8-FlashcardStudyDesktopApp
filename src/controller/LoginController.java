@@ -27,13 +27,8 @@ public class LoginController {
         loginView.CreateAccountButtonListener(new CreateAccountButtonListener());
     }
 
-    public void open() {
-        loginView.setVisible(true);
-    }
-
-    public void close() {
-        loginView.dispose();
-    }
+    public void open() { loginView.setVisible(true); }
+    public void close() { loginView.dispose(); }
 
     private void setLoginEnabled(boolean enabled) {
         loginView.getUsernameField().setEnabled(enabled);
@@ -43,7 +38,6 @@ public class LoginController {
 
     // ================= LOGIN LOGIC =================
     private UserModel tryLogin(String username, String password) {
-
         long now = System.currentTimeMillis();
         if (now < lockoutEndTime) {
             long remainingSeconds = (lockoutEndTime - now) / 1000;
@@ -58,11 +52,10 @@ public class LoginController {
 
         if (user != null) {
             loginAttempts = 0;
-            return user;
+            return user; // ✅ return user, don't show popup here
         }
 
         loginAttempts++;
-
         if (loginAttempts >= MAX_ATTEMPTS) {
             lockoutEndTime = System.currentTimeMillis() + (5 * 60 * 1000);
             setLoginEnabled(false);
@@ -93,7 +86,6 @@ public class LoginController {
     class LoginButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             String username = loginView.getUsernameField().getText().trim();
             String password = loginView.getPasswordField().getText().trim();
 
@@ -108,10 +100,11 @@ public class LoginController {
             UserModel user = tryLogin(username, password);
 
             if (user != null) {
+                // ✅ Success popup appears only here
                 JOptionPane.showMessageDialog(loginView, "Login successful!");
                 userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
 
-                Dashtwo d = new Dashtwo();
+                Dashtwo d = new Dashtwo(user); // ✅ pass user context
                 d.setVisible(true);
                 loginView.dispose();
             }
@@ -122,7 +115,6 @@ public class LoginController {
     class ForgotPasswordButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             if (forgotInProgress) return;
 
             forgotInProgress = true;
@@ -145,9 +137,8 @@ public class LoginController {
         }
     }
 
-    // ================= FORGOT PASSWORD LOGIC (ONE POPUP) =================
+    // ================= FORGOT PASSWORD LOGIC =================
     private void handleForgotPassword() {
-
         JTextField usernameField = new JTextField();
         JPasswordField newPasswordField = new JPasswordField();
 

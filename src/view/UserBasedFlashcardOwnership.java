@@ -1,29 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 package view;
 
+import model.UserModel;
 import view.Dashtwo;
-/**
- *
- * @author LENOVO
- */
+
 public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UserBasedFlashcardOwnership.class.getName());
-    
 
-    /**
-     * Creates new form UserBasedFlashcardOwnership
-     */
+    private static final java.util.logging.Logger logger =
+        java.util.logging.Logger.getLogger(UserBasedFlashcardOwnership.class.getName());
+
+    // ✅ Add this field to store the logged-in user
+    private final UserModel currentUser;
+
+    /** No-arg constructor (used by GUI builder or fallback) */
     public UserBasedFlashcardOwnership() {
-    initComponents();
-    setSize(1285,760);
-
-    
+        initComponents();
+        setSize(1285, 760);
+        this.currentUser = null; // fallback
     }
+
+    /** Preferred constructor with user context */
+    public UserBasedFlashcardOwnership(UserModel user) {
+        initComponents();
+        setSize(1285, 760);
+        this.currentUser = user;
+
+        // ✅ Populate fields with user info
+        Username_Text_Field.setText(user.getUsername());
+        UserID_Text_Field.setText(String.valueOf(user.getUserId()));
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,24 +42,22 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
         centerpanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        Edit_Profile_Button = new javax.swing.JButton();
+        Username_Text_Field = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jTextField3 = new javax.swing.JTextField();
-        password_Text_Field = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        update_password_Text_Field = new javax.swing.JTextField();
+        Copy_Button = new javax.swing.JButton();
         UserID_Text_Field = new javax.swing.JTextField();
-        email_Text_Field = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        ID_Label = new javax.swing.JLabel();
         topPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         Home_Button = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Library_Button = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Save_Button = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,79 +95,73 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
         centerpanel.add(jPanel8);
         jPanel8.setBounds(310, 230, 0, 0);
 
-        jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setText("@useremail.com");
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
-        centerpanel.add(jTextField2);
-        jTextField2.setBounds(120, 60, 120, 20);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (39).png"))); // NOI18N
         centerpanel.add(jLabel1);
-        jLabel1.setBounds(10, 10, 110, 100);
+        jLabel1.setBounds(20, 10, 110, 100);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Screenshot 2025-12-17 205936.png"))); // NOI18N
         centerpanel.add(jLabel4);
-        jLabel4.setBounds(890, 0, 20, 40);
+        jLabel4.setBounds(870, 0, 30, 60);
 
-        jButton2.setText("       Edit public profile");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
-        centerpanel.add(jButton2);
-        jButton2.setBounds(870, 10, 160, 23);
+        Edit_Profile_Button.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        Edit_Profile_Button.setText("       Edit public profile");
+        Edit_Profile_Button.addActionListener(this::Edit_Profile_ButtonActionPerformed);
+        centerpanel.add(Edit_Profile_Button);
+        Edit_Profile_Button.setBounds(850, 16, 180, 30);
 
-        jTextField1.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
-        jTextField1.setText("Username");
-        jTextField1.setBorder(null);
-        centerpanel.add(jTextField1);
-        jTextField1.setBounds(120, 30, 140, 30);
+        Username_Text_Field.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        Username_Text_Field.setBorder(null);
+        Username_Text_Field.addActionListener(this::Username_Text_FieldActionPerformed);
+        centerpanel.add(Username_Text_Field);
+        Username_Text_Field.setBounds(130, 40, 140, 40);
 
         getContentPane().add(centerpanel);
         centerpanel.setBounds(119, 140, 1050, 120);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel1.setForeground(new java.awt.Color(153, 153, 153));
         jPanel1.setLayout(null);
 
-        jTextField3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(153, 153, 153));
         jTextField3.setText("Password");
         jTextField3.setBorder(null);
         jTextField3.addActionListener(this::jTextField3ActionPerformed);
         jPanel1.add(jTextField3);
-        jTextField3.setBounds(590, 20, 120, 30);
+        jTextField3.setBounds(30, 30, 120, 30);
 
-        password_Text_Field.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        password_Text_Field.setText("useremail@gmail.com");
-        jPanel1.add(password_Text_Field);
-        password_Text_Field.setBounds(590, 50, 230, 40);
+        update_password_Text_Field.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        update_password_Text_Field.setText("Update password");
+        update_password_Text_Field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                update_password_Text_FieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                update_password_Text_FieldFocusLost(evt);
+            }
+        });
+        update_password_Text_Field.addActionListener(this::update_password_Text_FieldActionPerformed);
+        jPanel1.add(update_password_Text_Field);
+        update_password_Text_Field.setBounds(30, 60, 200, 50);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Screenshot 2025-12-17 225511.png"))); // NOI18N
-        jButton6.setBorder(null);
-        jButton6.addActionListener(this::jButton6ActionPerformed);
-        jPanel1.add(jButton6);
-        jButton6.setBounds(70, 360, 30, 30);
+        Copy_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Screenshot 2025-12-17 225511.png"))); // NOI18N
+        Copy_Button.setBorder(null);
+        Copy_Button.addActionListener(this::Copy_ButtonActionPerformed);
+        jPanel1.add(Copy_Button);
+        Copy_Button.setBounds(60, 360, 40, 30);
 
-        UserID_Text_Field.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        UserID_Text_Field.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         UserID_Text_Field.setForeground(new java.awt.Color(153, 153, 153));
-        UserID_Text_Field.setText("ID: 01");
         UserID_Text_Field.setBorder(null);
         UserID_Text_Field.addActionListener(this::UserID_Text_FieldActionPerformed);
         jPanel1.add(UserID_Text_Field);
-        UserID_Text_Field.setBounds(20, 360, 60, 30);
+        UserID_Text_Field.setBounds(40, 350, 60, 50);
 
-        email_Text_Field.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        email_Text_Field.setText("useremail@gmail.com");
-        jPanel1.add(email_Text_Field);
-        email_Text_Field.setBounds(20, 50, 540, 40);
-
-        jTextField6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField6.setText("Email");
-        jTextField6.setBorder(null);
-        jTextField6.addActionListener(this::jTextField6ActionPerformed);
-        jPanel1.add(jTextField6);
-        jTextField6.setBounds(20, 20, 120, 30);
+        ID_Label.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        ID_Label.setForeground(new java.awt.Color(153, 153, 153));
+        ID_Label.setText("ID:");
+        jPanel1.add(ID_Label);
+        ID_Label.setBounds(20, 366, 20, 20);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(120, 280, 1050, 400);
@@ -177,18 +174,18 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
         topPanel1.add(jLabel3);
         jLabel3.setBounds(120, 0, 60, 60);
 
-        Home_Button.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        Home_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Home_Button.setText("Home");
         Home_Button.setBorder(null);
         Home_Button.addActionListener(this::Home_ButtonActionPerformed);
         topPanel1.add(Home_Button);
         Home_Button.setBounds(200, 10, 80, 40);
 
-        jButton4.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        jButton4.setText("Library");
-        jButton4.setBorder(null);
-        topPanel1.add(jButton4);
-        jButton4.setBounds(290, 10, 80, 40);
+        Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        Library_Button.setText("Library");
+        Library_Button.setBorder(null);
+        topPanel1.add(Library_Button);
+        Library_Button.setBounds(290, 10, 80, 40);
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (40).png"))); // NOI18N
         jButton5.setBorder(null);
@@ -199,15 +196,15 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
         getContentPane().add(topPanel1);
         topPanel1.setBounds(0, 0, 1290, 70);
 
-        jButton1.setBackground(new java.awt.Color(0, 141, 237));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Save");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-        getContentPane().add(jButton1);
-        jButton1.setBounds(1100, 100, 70, 25);
+        Save_Button.setBackground(new java.awt.Color(0, 141, 237));
+        Save_Button.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Save_Button.setForeground(new java.awt.Color(255, 255, 255));
+        Save_Button.setText("Save");
+        Save_Button.addActionListener(this::Save_ButtonActionPerformed);
+        getContentPane().add(Save_Button);
+        Save_Button.setBounds(1100, 85, 70, 40);
 
-        jLabel2.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setText("Account");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(120, 90, 110, 30);
@@ -218,28 +215,24 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
          // Open Dashtwo dashboard
-    Dashtwo dashboard = new Dashtwo();
-    dashboard.setVisible(true);
+        Dashtwo dashboard = new Dashtwo(currentUser); // ✅ now this works
+        dashboard.setVisible(true);
+        this.dispose();
 
-    // Close the current UserBasedFlashcardOwnership window
-    this.dispose();
+
     }//GEN-LAST:event_Home_ButtonActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Save_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Save_ButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void Edit_Profile_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_Profile_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_Edit_Profile_ButtonActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -249,13 +242,31 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UserID_Text_FieldActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void Copy_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Copy_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_Copy_ButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void update_password_Text_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_password_Text_FieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_update_password_Text_FieldActionPerformed
+
+    private void Username_Text_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Username_Text_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Username_Text_FieldActionPerformed
+
+    private void update_password_Text_FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_update_password_Text_FieldFocusGained
+        // TODO add your handling code here:
+        if(update_password_Text_Field.getText().equals("Update password")){
+            update_password_Text_Field.setText("");
+        }
+    }//GEN-LAST:event_update_password_Text_FieldFocusGained
+
+    private void update_password_Text_FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_update_password_Text_FieldFocusLost
+        // TODO add your handling code here:
+        if(update_password_Text_Field.getText().equals("")){
+            update_password_Text_Field.setText("Update password");
+        }
+    }//GEN-LAST:event_update_password_Text_FieldFocusLost
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -290,15 +301,16 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Copy_Button;
+    private javax.swing.JButton Edit_Profile_Button;
     private javax.swing.JButton Home_Button;
+    private javax.swing.JLabel ID_Label;
+    private javax.swing.JButton Library_Button;
+    private javax.swing.JButton Save_Button;
     private javax.swing.JTextField UserID_Text_Field;
+    private javax.swing.JTextField Username_Text_Field;
     private javax.swing.JPanel centerpanel;
-    private javax.swing.JTextField email_Text_Field;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -306,11 +318,8 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField password_Text_Field;
     private javax.swing.JPanel topPanel1;
+    private javax.swing.JTextField update_password_Text_Field;
     // End of variables declaration//GEN-END:variables
 }
