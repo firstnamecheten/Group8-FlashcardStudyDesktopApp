@@ -423,4 +423,12 @@ public class Login extends javax.swing.JFrame {
          return LoginButton;
     }
 
+    public JButton getForgotPasswordButton() {
+        return ForgotPasswordButton;
+    }
+
+    public JButton getCreateAccountButton() {
+        return CreateAccountButton;
+    }
+
 }

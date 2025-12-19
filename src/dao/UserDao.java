@@ -14,15 +14,14 @@ public class UserDao {
 
     // SIGNUP: now RETURNS the user with generated user_id
     public UserModel signUp(UserModel user) {
-        String sql = "INSERT INTO signup_history (username, email, password, confirmpassword) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO signup_history (username, password, confirmpassword) VALUES (?, ?, ?)";
 
         try (Connection conn = mysql.openConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setString(1, user.getUsername());
-            ps.setString(2, user.getEmail());
-            ps.setString(3, user.getPassword());
-            ps.setString(4, user.getconfirmpassword());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getconfirmpassword());
             ps.executeUpdate();
 
             try (ResultSet rs = ps.getGeneratedKeys()) {
@@ -41,13 +40,12 @@ public class UserDao {
 
     // CHECK DUPLICATE USER
     public boolean check(UserModel user) {
-        String sql = "SELECT * FROM signup_history WHERE username = ? OR email = ?";
+        String sql = "SELECT * FROM signup_history WHERE username = ?";
 
         try (Connection conn = mysql.openConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, user.getUsername());
-            ps.setString(2, user.getEmail());
             return ps.executeQuery().next();
 
         } catch (Exception e) {
@@ -70,7 +68,6 @@ public class UserDao {
                 return new UserModel(
                         rs.getInt("user_id"),
                         rs.getString("username"),
-                        rs.getString("email"),
                         rs.getString("password")
                 );
             }
@@ -109,7 +106,6 @@ public class UserDao {
                 return new UserModel(
                         rs.getInt("user_id"),
                         rs.getString("username"),
-                        rs.getString("email"),
                         rs.getString("password")
                 );
             }
