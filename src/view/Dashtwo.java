@@ -165,9 +165,9 @@ public class Dashtwo extends javax.swing.JFrame {
         studyHistoryMenuItem = new javax.swing.JMenuItem();
         logoutMenuItem = new javax.swing.JMenuItem();
         topPanel1 = new javax.swing.JPanel();
+        Home_Button = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         accountButton = new javax.swing.JButton();
-        Home_Button = new javax.swing.JButton();
         Library_Button = new javax.swing.JButton();
         centerpanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -203,6 +203,13 @@ public class Dashtwo extends javax.swing.JFrame {
         topPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         topPanel1.setLayout(null);
 
+        Home_Button.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
+        Home_Button.setText("Home");
+        Home_Button.setBorder(null);
+        Home_Button.addActionListener(this::Home_ButtonActionPerformed);
+        topPanel1.add(Home_Button);
+        Home_Button.setBounds(200, 20, 80, 40);
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
         topPanel1.add(jLabel3);
         jLabel3.setBounds(100, 10, 60, 50);
@@ -217,13 +224,6 @@ public class Dashtwo extends javax.swing.JFrame {
         accountButton.addActionListener(this::accountButtonActionPerformed);
         topPanel1.add(accountButton);
         accountButton.setBounds(1130, 10, 50, 50);
-
-        Home_Button.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
-        Home_Button.setText("Home");
-        Home_Button.setBorder(null);
-        Home_Button.addActionListener(this::Home_ButtonActionPerformed);
-        topPanel1.add(Home_Button);
-        Home_Button.setBounds(200, 20, 80, 40);
 
         Library_Button.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
         Library_Button.setText("Library");
