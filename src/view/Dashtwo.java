@@ -297,8 +297,12 @@ public class Dashtwo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Create_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_ButtonActionPerformed
-    UserBasedFlashcardOwnership page = new UserBasedFlashcardOwnership(currentUser);
-    page.setVisible(true);
+    // Pass the current frame (Dashtwo) as parent
+    NewDeckDialog dialog = new NewDeckDialog(Dashtwo.this, true);
+    dialog.setLocationRelativeTo(Dashtwo.this); // Center on dashboard
+    dialog.setVisible(true); // Show the popup
+
+
 
 
     }//GEN-LAST:event_Create_ButtonActionPerformed
