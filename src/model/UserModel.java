@@ -21,6 +21,10 @@ public class UserModel {
         this.password = password;
     }
 
+    public UserModel() {
+        
+    }
+
     // GETTERS & SETTERS
     public int getUserId() {
         return user_id;

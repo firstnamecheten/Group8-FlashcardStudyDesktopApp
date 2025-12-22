@@ -64,15 +64,15 @@ public class Signup extends javax.swing.JFrame {
         show_confirm_password = new javax.swing.JCheckBox();
         Password_Field = new javax.swing.JPasswordField();
         Confirm_Password_Field = new javax.swing.JPasswordField();
-        show_password = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        show_password = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
         username_Text_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        username_Text_Field.setForeground(new java.awt.Color(51, 51, 51));
+        username_Text_Field.setForeground(new java.awt.Color(102, 102, 102));
         username_Text_Field.setText(" Enter the username");
         username_Text_Field.setBorder(null);
         username_Text_Field.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -244,24 +244,16 @@ public class Signup extends javax.swing.JFrame {
         show_confirm_password.setBounds(170, 530, 170, 18);
 
         Password_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        Password_Field.setForeground(new java.awt.Color(51, 51, 51));
+        Password_Field.setForeground(new java.awt.Color(102, 102, 102));
         Password_Field.setBorder(null);
         getContentPane().add(Password_Field);
         Password_Field.setBounds(20, 330, 310, 40);
 
         Confirm_Password_Field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        Confirm_Password_Field.setForeground(new java.awt.Color(51, 51, 51));
+        Confirm_Password_Field.setForeground(new java.awt.Color(102, 102, 102));
         Confirm_Password_Field.setBorder(null);
         getContentPane().add(Confirm_Password_Field);
         Confirm_Password_Field.setBounds(20, 480, 310, 40);
-
-        show_password.setBackground(new java.awt.Color(30, 98, 165));
-        show_password.setForeground(new java.awt.Color(255, 255, 255));
-        show_password.setText("Show password");
-        show_password.setBorder(null);
-        show_password.addActionListener(this::show_passwordActionPerformed);
-        getContentPane().add(show_password);
-        show_password.setBounds(212, 380, 120, 18);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -281,15 +273,27 @@ public class Signup extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(30, 98, 165));
 
+        show_password.setBackground(new java.awt.Color(30, 98, 165));
+        show_password.setForeground(new java.awt.Color(255, 255, 255));
+        show_password.setText("Show password");
+        show_password.setBorder(null);
+        show_password.addActionListener(this::show_passwordActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(217, Short.MAX_VALUE)
+                .addComponent(show_password, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(378, Short.MAX_VALUE)
+                .addComponent(show_password)
+                .addGap(354, 354, 354))
         );
 
         getContentPane().add(jPanel1);
