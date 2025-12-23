@@ -198,7 +198,7 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
         Save_Button.setText("Save");
         Save_Button.addActionListener(this::Save_ButtonActionPerformed);
         getContentPane().add(Save_Button);
-        Save_Button.setBounds(1110, 90, 70, 40);
+        Save_Button.setBounds(1110, 100, 70, 30);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setText("Account");
