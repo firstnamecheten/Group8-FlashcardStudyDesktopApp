@@ -86,10 +86,13 @@ public class UserController {
                 JOptionPane.showMessageDialog(userView, "Signup successful!");
 
                 // ✅ Close signup and return to Login
-                userView.dispose();
                 Login loginView = new Login();
-                LoginController controller = new LoginController(loginView);
-                controller.open();
+                LoginController loginController = new LoginController(loginView);
+                loginController.open();
+
+                // hide signup
+                userView.dispose(); // closes the signup frame
+                
 
             } catch (Exception ex) {
                 ex.printStackTrace();
