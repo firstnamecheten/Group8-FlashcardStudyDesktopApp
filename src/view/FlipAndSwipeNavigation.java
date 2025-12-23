@@ -31,10 +31,8 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
         topPanel1 = new javax.swing.JPanel();
         Home_Button = new javax.swing.JButton();
         Logo_label = new javax.swing.JLabel();
-        accountButton = new javax.swing.JButton();
         Library_Button = new javax.swing.JButton();
         centerpanel = new javax.swing.JPanel();
-        Create_Button = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         QuickStart_label = new javax.swing.JTextField();
@@ -57,17 +55,6 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
         topPanel1.add(Logo_label);
         Logo_label.setBounds(100, 10, 60, 50);
 
-        accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (40).png"))); // NOI18N
-        accountButton.setBorder(null);
-        accountButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                accountButtonMouseClicked(evt);
-            }
-        });
-        accountButton.addActionListener(this::accountButtonActionPerformed);
-        topPanel1.add(accountButton);
-        accountButton.setBounds(1130, 10, 50, 50);
-
         Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Library_Button.setText("Library");
         Library_Button.setBorder(null);
@@ -77,14 +64,6 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
         centerpanel.setBackground(new java.awt.Color(255, 255, 255));
         centerpanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         centerpanel.setLayout(null);
-
-        Create_Button.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        Create_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit 17.png"))); // NOI18N
-        Create_Button.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        Create_Button.setLabel("      Create Cards");
-        Create_Button.addActionListener(this::Create_ButtonActionPerformed);
-        centerpanel.add(Create_Button);
-        Create_Button.setBounds(80, 70, 930, 60);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -164,26 +143,6 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
 
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
-    private void accountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMouseClicked
-        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) { // Left click only
-            int x = accountButton.getWidth() - accountPopupMenu.getPreferredSize().width;
-            int y = accountButton.getHeight();
-            accountPopupMenu.show(accountButton, x, y);
-        }
-    }//GEN-LAST:event_accountButtonMouseClicked
-
-    private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_accountButtonActionPerformed
-
-    private void Create_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_ButtonActionPerformed
-        // Pass the current frame (Dashtwo) as parent
-        NewDeckDialog dialog = new NewDeckDialog(Dashtwo.this, true);
-        dialog.setLocationRelativeTo(Dashtwo.this); // Center on dashboard
-        dialog.setVisible(true); // Show the popup
-    }//GEN-LAST:event_Create_ButtonActionPerformed
-
     private void QuickStart_labelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuickStart_labelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_QuickStart_labelActionPerformed
@@ -214,13 +173,11 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Create_Button;
     private javax.swing.JButton Home_Button;
     private javax.swing.JLabel Home_Label;
     private javax.swing.JButton Library_Button;
     private javax.swing.JLabel Logo_label;
     private javax.swing.JTextField QuickStart_label;
-    private javax.swing.JButton accountButton;
     private javax.swing.JPanel centerpanel;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
