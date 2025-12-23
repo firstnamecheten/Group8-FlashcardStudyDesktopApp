@@ -70,33 +70,28 @@ public class UserController {
                 UserModel usermodel = new UserModel(username, password, confirmPassword);
 
                 // Check if user already exists
-                if (userDao.check(usermodel)) {
-                    JOptionPane.showMessageDialog(userView, "User already exists!");
-                    return;
+                if (userDao.checkUser(usermodel)) {
+                JOptionPane.showMessageDialog(userView, "User already exists!");
+                return;
                 }
 
-                // Save user
-                UserModel newUser = userDao.signUp(usermodel);
-                if (newUser == null) {
-                    JOptionPane.showMessageDialog(userView, "Signup failed!");
-                    return;
-                }
+                // Save user (wrapped in try block)
+                userDao.signup(usermodel);
 
-                // ✅ Success message
+                // ✓ Success message
                 JOptionPane.showMessageDialog(userView, "Signup successful!");
 
-                // ✅ Close signup and return to Login
+                // ✓ Close signup and return to Login
                 Login loginView = new Login();
                 LoginController loginController = new LoginController(loginView);
                 loginController.open();
 
                 // hide signup
                 userView.dispose(); // closes the signup frame
-                
 
             } catch (Exception ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(userView, "Something went wrong!");
+                ex.printStackTrace(); // optional for debugging
+                JOptionPane.showMessageDialog(userView, "Signup failed!");
             }
         }
     }
