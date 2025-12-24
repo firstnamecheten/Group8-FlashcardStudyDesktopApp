@@ -1,6 +1,7 @@
 package dao;
 
 import database.MySqlConnection;
+import java.sql.Statement;
 import model.UserModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -120,5 +121,47 @@ public class UserDao {
             mysql.closeConnection(conn);
         }
     }
+    
+    // Save a new deck
+    public int addDeck(int userId, String deckName) {
+    Connection conn = mysql.openConnection();
+    String sql = "INSERT INTO decks (user_id, deck_name) VALUES (?, ?)";
+    try (PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        pstmt.setInt(1, userId);
+        pstmt.setString(2, deckName);
+        pstmt.executeUpdate();
+
+        try (ResultSet rs = pstmt.getGeneratedKeys()) {
+            if (rs.next()) {
+                return rs.getInt(1); // ✅ return the new deck_id
+            }
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        mysql.closeConnection(conn);
+    }
+    return -1; // only if something failed
 }
+    // ✅ Later: Save a flashcard
+    public void addFlashcard(int deckId, String question, String answer) {
+        Connection conn = mysql.openConnection();
+        String sql = "INSERT INTO flashcards (deck_id, question, answer) VALUES (?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, deckId);
+            pstmt.setString(2, question);
+            pstmt.setString(3, answer);
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mysql.closeConnection(conn);
+        }
+    }
+
+
+
+}
+
+
 // this was made to check username and email. Check garcha jaba samma rows sakidaina taba samma. Yedi same cha bhane tya value store garirako huncha. Yo method call garcha. Jaba yo method call huncha kunchai method call huneh bhayo?--> check method!

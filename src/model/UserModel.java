@@ -20,6 +20,8 @@ public class UserModel {
         this.username = username;
         this.password = password;
     }
+    
+    
 
     // GETTERS & SETTERS
     public int getUserId() {
