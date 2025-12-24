@@ -4,20 +4,42 @@
  */
 package view;
 
+import model.UserModel;
+
 /**
  *
  * @author LENOVO
  */
 public class CreateFlashcards extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CreateFlashcards.class.getName());
 
+
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CreateFlashcards.class.getName());
+    private final int deckId;
+    private UserModel currentUser;
     /**
      * Creates new form CreateFlashcards
      */
+    public CreateFlashcards(int deckId, String deckName, UserModel currentUser) {
+    this.deckId = deckId;          // keep ID hidden for database use
+    this.currentUser = currentUser; // ✅ store the user for later use
+    initComponents();
+    setSize(1285, 760);
+    NewDeckName.setText(deckName); // show only the name in the text field
+    
+    // ✅ Log the deckId for debugging
+    logger.info("Opened CreateFlashcards for deckId: " + deckId);
+
+
+    }
+
+    // Default constructor (optional, for testing)
     public CreateFlashcards() {
         initComponents();
+        setSize(1285, 760);
+        this.deckId = 0;
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,10 +62,9 @@ public class CreateFlashcards extends javax.swing.JFrame {
         Front_Text = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Back_Text = new javax.swing.JTextField();
-        Home_Label = new javax.swing.JLabel();
         NextButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         tickButton = new javax.swing.JButton();
+        NewDeckName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -167,6 +188,7 @@ public class CreateFlashcards extends javax.swing.JFrame {
         Back_Text.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         Back_Text.setForeground(new java.awt.Color(153, 153, 153));
         Back_Text.setText("Enter text here");
+        Back_Text.setBorder(null);
         Back_Text.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 Back_TextFocusGained(evt);
@@ -182,21 +204,11 @@ public class CreateFlashcards extends javax.swing.JFrame {
         getContentPane().add(centerpanel);
         centerpanel.setBounds(100, 150, 1080, 530);
 
-        Home_Label.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-        Home_Label.setForeground(new java.awt.Color(153, 153, 153));
-        Home_Label.setText("Home/ Java Language/");
-        getContentPane().add(Home_Label);
-        Home_Label.setBounds(140, 80, 160, 50);
-
         NextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arr.png"))); // NOI18N
         NextButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
+        NextButton.addActionListener(this::NextButtonActionPerformed);
         getContentPane().add(NextButton);
         NextButton.setBounds(100, 90, 30, 30);
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-        jLabel1.setText("Add new card");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(300, 90, 110, 30);
 
         tickButton.setBackground(new java.awt.Color(0, 153, 255));
         tickButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -206,11 +218,23 @@ public class CreateFlashcards extends javax.swing.JFrame {
         getContentPane().add(tickButton);
         tickButton.setBounds(1110, 100, 70, 40);
 
+        NewDeckName.setBackground(new java.awt.Color(240, 240, 240));
+        NewDeckName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        NewDeckName.setBorder(null);
+        getContentPane().add(NewDeckName);
+        NewDeckName.setBounds(150, 90, 64, 30);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
+        // Close this flashcards window
+        this.dispose();
+
+        // Open the Dashtwo dashboard again
+        Dashtwo dashboard = new Dashtwo(currentUser); // pass currentUser if needed
+        dashboard.setVisible(true);
 
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
@@ -250,6 +274,15 @@ public class CreateFlashcards extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Back_TextFocusLost
 
+    private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
+        // TODO add your handling code here:
+        // Same behavior for arrow/tick button: go back to Dashtwo
+        this.dispose();
+        Dashtwo dashboard = new Dashtwo(currentUser);
+        dashboard.setVisible(true);
+
+    }//GEN-LAST:event_NextButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -279,12 +312,11 @@ public class CreateFlashcards extends javax.swing.JFrame {
     private javax.swing.JTextField Back_Text;
     private javax.swing.JTextField Front_Text;
     private javax.swing.JButton Home_Button;
-    private javax.swing.JLabel Home_Label;
     private javax.swing.JButton Library_Button;
     private javax.swing.JLabel Logo_label;
+    private javax.swing.JTextField NewDeckName;
     private javax.swing.JButton NextButton;
     private javax.swing.JPanel centerpanel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

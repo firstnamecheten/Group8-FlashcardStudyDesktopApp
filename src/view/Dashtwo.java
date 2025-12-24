@@ -4,6 +4,11 @@ import controller.LoginController;
 import model.UserModel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
+
 
 public class Dashtwo extends javax.swing.JFrame {
 
@@ -12,12 +17,20 @@ public class Dashtwo extends javax.swing.JFrame {
 
     // ✅ Track the currently active dashboard
     private static Dashtwo ACTIVE_DASHBOARD;
-    
     private boolean isDarkMode;
+    private final UserModel currentUser;    // Keep track of the current logged-in user
+    private JButton createDeckButton;     // ✅ New fields for Create button and deck list
+    
+    private JPanel deckListPanel;
+    private JButton createCardsButton; // grey button shown in image
+    private int createdDeckId = -1;
+    public int getCreatedDeckId() { 
+        return createdDeckId; }
 
-    // Keep track of the current logged-in user
-    private final UserModel currentUser;
 
+ 
+
+    
     /** Creates new form Dashtwo (preferred: with user context) */
     public Dashtwo(UserModel user) {
         initComponents();
@@ -167,7 +180,26 @@ public class Dashtwo extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
+   private void openNewDeckDialog() {
+    NewDeckDialog dialog = new NewDeckDialog(this, true, currentUser);
+    dialog.setLocationRelativeTo(this); // center on Dashtwo frame
+    dialog.setVisible(true);
 
+    if (dialog.isOkPressed()) {
+        String deckName = dialog.getDeckName();
+        int deckId = dialog.getCreatedDeckId(); // <-- make sure NewDeckDialog exposes this
+
+        if (deckName != null && !deckName.trim().isEmpty()) {
+            addDeckButton(deckName.trim());
+            JOptionPane.showMessageDialog(this, "Deck \"" + deckName.trim() + "\" created successfully!");
+
+            // ✅ Open flashcards page
+            CreateFlashcards cf = new CreateFlashcards(deckId, deckName.trim(), currentUser);
+            cf.setVisible(true);
+        }
+    }
+}
+    
     // Entry point if this frame is run directly
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
@@ -176,8 +208,6 @@ public class Dashtwo extends javax.swing.JFrame {
             controller.open();
         });
     }
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -349,11 +379,17 @@ public class Dashtwo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Create_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_ButtonActionPerformed
-    // Pass the current frame (Dashtwo) as parent
-    NewDeckDialog dialog = new NewDeckDialog(Dashtwo.this, true);
-    dialog.setLocationRelativeTo(Dashtwo.this); // Center on dashboard
-    dialog.setVisible(true); // Show the popup
+    NewDeckDialog dialog = new NewDeckDialog(Dashtwo.getActiveDashboard(), true, currentUser);
+    dialog.setLocationRelativeTo(Dashtwo.getActiveDashboard());
+    dialog.setVisible(true);
+    
+    if (dialog.isOkPressed()) {
+    int deckId = dialog.getCreatedDeckId();
+    String deckName = dialog.getDeckName();
 
+    CreateFlashcards cf = new CreateFlashcards(deckId, deckName, currentUser);
+    cf.setVisible(true);
+    }
     }//GEN-LAST:event_Create_ButtonActionPerformed
 
     private void QuickStart_labelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuickStart_labelActionPerformed
@@ -399,5 +435,10 @@ public class Dashtwo extends javax.swing.JFrame {
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
 
+    
+    private void addDeckButton(String trim) {
+    }
+
 }
+
 

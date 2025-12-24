@@ -34,7 +34,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" pref="355" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jButton1" alignment="0" pref="324" max="32767" attributes="0"/>
+                              <Component id="CreateNewDeck_Button" alignment="0" pref="324" max="32767" attributes="0"/>
                               <Component id="deck_name" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -54,7 +54,7 @@
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="deck_name" min="-2" pref="41" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="41" max="-2" attributes="0"/>
+              <Component id="CreateNewDeck_Button" min="-2" pref="41" max="-2" attributes="0"/>
               <EmptySpace pref="58" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -97,7 +97,7 @@
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="deck_nameFocusLost"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="CreateNewDeck_Button">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -115,6 +115,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateNewDeck_ButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
