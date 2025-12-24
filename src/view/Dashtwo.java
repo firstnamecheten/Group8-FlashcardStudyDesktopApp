@@ -4,6 +4,11 @@ import controller.LoginController;
 import model.UserModel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
+
 
 public class Dashtwo extends javax.swing.JFrame {
 
@@ -12,12 +17,20 @@ public class Dashtwo extends javax.swing.JFrame {
 
     // ✅ Track the currently active dashboard
     private static Dashtwo ACTIVE_DASHBOARD;
-    
     private boolean isDarkMode;
+    private final UserModel currentUser;    // Keep track of the current logged-in user
+    private JButton createDeckButton;     // ✅ New fields for Create button and deck list
+    
+    private JPanel deckListPanel;
+    private JButton createCardsButton; // grey button shown in image
+    private int createdDeckId = -1;
+    public int getCreatedDeckId() { 
+        return createdDeckId; }
 
-    // Keep track of the current logged-in user
-    private final UserModel currentUser;
 
+ 
+
+    
     /** Creates new form Dashtwo (preferred: with user context) */
     public Dashtwo(UserModel user) {
         initComponents();
@@ -106,6 +119,8 @@ public class Dashtwo extends javax.swing.JFrame {
             QuickStart_label.setBackground(new java.awt.Color(45, 45, 45));
             Create_Button.setForeground(new java.awt.Color(255, 255, 255));
             Create_Button.setBackground(new java.awt.Color(40, 40, 40));
+            accountButton.setForeground(new java.awt.Color(255, 255, 255));
+            accountButton.setBackground(new java.awt.Color(40, 40, 40));
 
             darkModeMenuItem.setText(" Light mode");
         } else {
@@ -114,10 +129,10 @@ public class Dashtwo extends javax.swing.JFrame {
             centerpanel.setBackground(new java.awt.Color(255, 255, 255));
 
             Home_Button.setForeground(new java.awt.Color(0, 0, 0));
-            Home_Button.setBackground(java.awt.Color.WHITE);
+            Home_Button.setBackground(new java.awt.Color(254, 254, 254));
             Home_Button.setOpaque(true);
             Library_Button.setForeground(new java.awt.Color(0, 0, 0));
-            Library_Button.setBackground(java.awt.Color.WHITE);
+            Library_Button.setBackground(new java.awt.Color(254, 254, 254));
             Library_Button.setOpaque(true);
             Home_Label.setForeground(new java.awt.Color(0, 0, 0));
             Home_Label.setBackground(new java.awt.Color(240, 240, 240));
@@ -126,6 +141,9 @@ public class Dashtwo extends javax.swing.JFrame {
             Create_Button.setForeground(new java.awt.Color(0, 0, 0));
             Create_Button.setBackground(new java.awt.Color(240, 240, 240));
             Create_Button.setOpaque(true);
+            accountButton.setForeground(new java.awt.Color(0, 0, 0));
+            accountButton.setBackground(new java.awt.Color(254, 254, 254));
+            accountButton.setOpaque(true);
 
             darkModeMenuItem.setText(" Dark mode");
         }
@@ -162,7 +180,26 @@ public class Dashtwo extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
+   private void openNewDeckDialog() {
+    NewDeckDialog dialog = new NewDeckDialog(this, true, currentUser);
+    dialog.setLocationRelativeTo(this); // center on Dashtwo frame
+    dialog.setVisible(true);
 
+    if (dialog.isOkPressed()) {
+        String deckName = dialog.getDeckName();
+        int deckId = dialog.getCreatedDeckId(); // <-- make sure NewDeckDialog exposes this
+
+        if (deckName != null && !deckName.trim().isEmpty()) {
+            addDeckButton(deckName.trim());
+            JOptionPane.showMessageDialog(this, "Deck \"" + deckName.trim() + "\" created successfully!");
+
+            // ✅ Open flashcards page
+            CreateFlashcards cf = new CreateFlashcards(deckId, deckName.trim(), currentUser);
+            cf.setVisible(true);
+        }
+    }
+}
+    
     // Entry point if this frame is run directly
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
@@ -171,10 +208,6 @@ public class Dashtwo extends javax.swing.JFrame {
             controller.open();
         });
     }
-
-
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -193,8 +226,8 @@ public class Dashtwo extends javax.swing.JFrame {
         topPanel1 = new javax.swing.JPanel();
         Home_Button = new javax.swing.JButton();
         Logo_label = new javax.swing.JLabel();
-        accountButton = new javax.swing.JButton();
         Library_Button = new javax.swing.JButton();
+        accountButton = new javax.swing.JButton();
         centerpanel = new javax.swing.JPanel();
         Create_Button = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -227,20 +260,23 @@ public class Dashtwo extends javax.swing.JFrame {
 
         topPanel1.setBackground(new java.awt.Color(255, 255, 255));
         topPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        topPanel1.setLayout(null);
 
+        Home_Button.setBackground(new java.awt.Color(254, 254, 254));
         Home_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Home_Button.setText("Home");
         Home_Button.setBorder(null);
         Home_Button.addActionListener(this::Home_ButtonActionPerformed);
-        topPanel1.add(Home_Button);
-        Home_Button.setBounds(190, 20, 60, 20);
 
-        Logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        topPanel1.add(Logo_label);
-        Logo_label.setBounds(100, 10, 60, 50);
+        Logo_label.setBackground(new java.awt.Color(254, 254, 254));
+        Logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/122.png"))); // NOI18N
 
-        accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (40).png"))); // NOI18N
+        Library_Button.setBackground(new java.awt.Color(254, 254, 254));
+        Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        Library_Button.setText("Library");
+        Library_Button.setBorder(null);
+
+        accountButton.setBackground(new java.awt.Color(254, 254, 254));
+        accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/13_1.png"))); // NOI18N
         accountButton.setBorder(null);
         accountButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -248,14 +284,36 @@ public class Dashtwo extends javax.swing.JFrame {
             }
         });
         accountButton.addActionListener(this::accountButtonActionPerformed);
-        topPanel1.add(accountButton);
-        accountButton.setBounds(1130, 10, 50, 50);
 
-        Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        Library_Button.setText("Library");
-        Library_Button.setBorder(null);
-        topPanel1.add(Library_Button);
-        Library_Button.setBounds(280, 10, 70, 40);
+        javax.swing.GroupLayout topPanel1Layout = new javax.swing.GroupLayout(topPanel1);
+        topPanel1.setLayout(topPanel1Layout);
+        topPanel1Layout.setHorizontalGroup(
+            topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topPanel1Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(Logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 774, Short.MAX_VALUE)
+                .addComponent(accountButton)
+                .addGap(144, 144, 144))
+        );
+        topPanel1Layout.setVerticalGroup(
+            topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topPanel1Layout.createSequentialGroup()
+                .addGroup(topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Logo_label)
+                    .addGroup(topPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(topPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(accountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         getContentPane().add(topPanel1);
         topPanel1.setBounds(0, 0, 1330, 70);
@@ -264,6 +322,7 @@ public class Dashtwo extends javax.swing.JFrame {
         centerpanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         centerpanel.setLayout(null);
 
+        Create_Button.setBackground(new java.awt.Color(240, 240, 240));
         Create_Button.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Create_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit 17.png"))); // NOI18N
         Create_Button.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -320,11 +379,17 @@ public class Dashtwo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Create_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_ButtonActionPerformed
-    // Pass the current frame (Dashtwo) as parent
-    NewDeckDialog dialog = new NewDeckDialog(Dashtwo.this, true);
-    dialog.setLocationRelativeTo(Dashtwo.this); // Center on dashboard
-    dialog.setVisible(true); // Show the popup
+    NewDeckDialog dialog = new NewDeckDialog(Dashtwo.getActiveDashboard(), true, currentUser);
+    dialog.setLocationRelativeTo(Dashtwo.getActiveDashboard());
+    dialog.setVisible(true);
+    
+    if (dialog.isOkPressed()) {
+    int deckId = dialog.getCreatedDeckId();
+    String deckName = dialog.getDeckName();
 
+    CreateFlashcards cf = new CreateFlashcards(deckId, deckName, currentUser);
+    cf.setVisible(true);
+    }
     }//GEN-LAST:event_Create_ButtonActionPerformed
 
     private void QuickStart_labelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuickStart_labelActionPerformed
@@ -370,5 +435,10 @@ public class Dashtwo extends javax.swing.JFrame {
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
 
+    
+    private void addDeckButton(String trim) {
+    }
+
 }
+
 

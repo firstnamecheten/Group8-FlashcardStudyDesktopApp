@@ -4,21 +4,65 @@
  */
 package view;
 
-/**
- *
- * @author bipin ranabhat
- */
-public class NewDeckDialog extends javax.swing.JDialog {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NewDeckDialog.class.getName());
+import dao.UserDao;
+import model.UserModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
-    /**
-     * Creates new form NewDeckDialog
-     */
-    public NewDeckDialog(java.awt.Frame parent, boolean modal) {
+
+public class NewDeckDialog extends javax.swing.JDialog {
+
+    private static final Logger logger = Logger.getLogger(NewDeckDialog.class.getName());
+    private UserModel currentUser;
+    private boolean okPressed;
+    private int createdDeckId = -1;   // will hold the new deck's ID
+    // ✅ Constructor with UserModel
+    public NewDeckDialog(java.awt.Frame parent, boolean modal, UserModel user) {
         super(parent, modal);
+        this.currentUser = user;      // ✅ store the user
         initComponents();
+        CreateNewDeck_Button.addActionListener(evt -> saveDeck());     // Wire button click
     }
+
+    // ✅ Save deck method
+    private void saveDeck() {
+    String deckName = deck_name.getText().trim();
+
+    if (deckName.isEmpty() || deckName.equals("Deck name")) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid deck name.");
+        return;
+    }
+
+    try {
+        UserDao dao = new UserDao();
+        int deckId = dao.addDeck(currentUser.getUserId(), deckName);
+
+        if (deckId != -1) {
+            // ✅ Show success popup
+            JOptionPane.showMessageDialog(this, "Deck '" + deckName + "' saved successfully!");
+
+           
+
+            // ✅ Open flashcards page
+            CreateFlashcards flashcardsPage = new CreateFlashcards(deckId, deckName, currentUser);
+            flashcardsPage.setVisible(true);
+            createdDeckId = deckId;
+            okPressed = true;
+            dispose(); // close dialog
+        } else {
+            JOptionPane.showMessageDialog(this, "Error saving deck. Please try again.");
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error saving deck: " + ex.getMessage());
+    }
+}
+
+        public int getCreatedDeckId() {
+        return createdDeckId;
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,8 +75,8 @@ public class NewDeckDialog extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        deck_name = new javax.swing.JTextField();
+        CreateNewDeck_Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -42,24 +86,25 @@ public class NewDeckDialog extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("<html><b>Create your own deck.</b><font color=\"#888888\">You get the best results from<br>the cards you create yourself.</html>");
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("  Deck name");
-        jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        deck_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        deck_name.setForeground(new java.awt.Color(153, 153, 153));
+        deck_name.setText("Deck name");
+        deck_name.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deck_name.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                deck_nameFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                deck_nameFocusLost(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Create new deck");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        CreateNewDeck_Button.setBackground(new java.awt.Color(0, 153, 255));
+        CreateNewDeck_Button.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CreateNewDeck_Button.setForeground(new java.awt.Color(255, 255, 255));
+        CreateNewDeck_Button.setText("Create new deck");
+        CreateNewDeck_Button.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        CreateNewDeck_Button.addActionListener(this::CreateNewDeck_ButtonActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,8 +120,8 @@ public class NewDeckDialog extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)))))
+                                .addComponent(CreateNewDeck_Button, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                                .addComponent(deck_name, javax.swing.GroupLayout.Alignment.LEADING)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,70 +132,81 @@ public class NewDeckDialog extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deck_name, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CreateNewDeck_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+    private void deck_nameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_deck_nameFocusGained
         // TODO add your handling code here:
-        if(jTextField1.getText().equals("  Deck name")){
-            jTextField1.setText("");
+        if(deck_name.getText().equals("Deck name")){
+            deck_name.setText("");
         }
-    }//GEN-LAST:event_jTextField1FocusGained
+    }//GEN-LAST:event_deck_nameFocusGained
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+    private void deck_nameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_deck_nameFocusLost
         // TODO add your handling code here:
-        if(jTextField1.getText().equals("")){
-            jTextField1.setText("  Deck name");
+        if(deck_name.getText().equals("")){
+            deck_name.setText("Deck name");
         }
-    }//GEN-LAST:event_jTextField1FocusLost
+    }//GEN-LAST:event_deck_nameFocusLost
+
+    private void CreateNewDeck_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateNewDeck_ButtonActionPerformed
+        // TODO add your handling code here:
+    
+
+    }//GEN-LAST:event_CreateNewDeck_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    /* Set the Nimbus look and feel */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                NewDeckDialog dialog = new NewDeckDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+    } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+        logger.log(java.util.logging.Level.SEVERE, null, ex);
     }
 
+    /* Create and display the dialog */
+    java.awt.EventQueue.invokeLater(() -> {
+        // ✅ Use a dummy user for testing
+        model.UserModel dummyUser = new model.UserModel(1, "testuser", "password");
+        NewDeckDialog dialog = new NewDeckDialog(new javax.swing.JFrame(), true, dummyUser);
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        dialog.setVisible(true);
+    });
+}
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton CreateNewDeck_Button;
+    private javax.swing.JTextField deck_name;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    public boolean isOkPressed() {
+        return okPressed;
+    }
+
+    public String getDeckName() {
+        return deck_name.getText();
+    }
+
+    
+    
 }

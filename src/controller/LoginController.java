@@ -7,6 +7,7 @@ import javax.swing.*;
 import model.UserModel;
 import view.Dashtwo;
 import view.Login;
+import javax.swing.JOptionPane;
 import view.Signup;
 
 public class LoginController {
@@ -38,78 +39,77 @@ public class LoginController {
 
     // ================= LOGIN LOGIC =================
     private UserModel tryLogin(String username, String password) {
-        long now = System.currentTimeMillis();
-        if (now < lockoutEndTime) {
-            long remainingSeconds = (lockoutEndTime - now) / 1000;
-            JOptionPane.showMessageDialog(
-                    loginView,
-                    "Too many attempts! Try again in " + remainingSeconds + " seconds."
-            );
-            return null;
-        }
-
-        UserModel user = userDao.login(username, password);
-
-        if (user != null) {
-            loginAttempts = 0;
-            return user; // ✅ return user, don't show popup here
-        }
-
-        loginAttempts++;
-        if (loginAttempts >= MAX_ATTEMPTS) {
-            lockoutEndTime = System.currentTimeMillis() + (5 * 60 * 1000);
-            setLoginEnabled(false);
-
-            JOptionPane.showMessageDialog(
-                    loginView,
-                    "Too many wrong attempts! Login disabled for 5 minutes."
-            );
-
-            new Timer(5 * 60 * 1000, e -> {
-                setLoginEnabled(true);
-                loginAttempts = 0;
-                lockoutEndTime = 0;
-                JOptionPane.showMessageDialog(loginView, "You can try logging in again now.");
-            }).start();
-
-        } else {
-            JOptionPane.showMessageDialog(
-                    loginView,
-                    "Wrong username or password! Attempt " + loginAttempts + " of " + MAX_ATTEMPTS
-            );
-        }
-
+    long now = System.currentTimeMillis();
+    if (now < lockoutEndTime) {
+        long remainingSeconds = (lockoutEndTime - now) / 1000;
+        JOptionPane.showMessageDialog(
+                loginView,
+                "Too many attempts! Try again in " + remainingSeconds + " seconds."
+        );
         return null;
     }
 
-    // ================= LOGIN BUTTON =================
-    class LoginButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String username = loginView.getUsernameField().getText().trim();
-            String password = loginView.getPasswordField().getText().trim();
+    UserModel user = userDao.login(username, password);
 
-            if (username.equalsIgnoreCase("Enter the username")) username = "";
-            if (password.equalsIgnoreCase("Enter the password")) password = "";
+    if (user != null) {
+        loginAttempts = 0;
+        return user; // ✅ only return, no popup here
+    }
 
-            if (username.isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(loginView, "All fields are required!");
-                return;
-            }
+    loginAttempts++;
+    if (loginAttempts >= MAX_ATTEMPTS) {
+        lockoutEndTime = System.currentTimeMillis() + (5 * 60 * 1000);
+        setLoginEnabled(false);
 
-            UserModel user = tryLogin(username, password);
+        JOptionPane.showMessageDialog(
+                loginView,
+                "Too many wrong attempts! Login disabled for 5 minutes."
+        );
 
-            if (user != null) {
-                // ✅ Success popup appears only here
-                JOptionPane.showMessageDialog(loginView, "Login successful!");
-                userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
+        new Timer(5 * 60 * 1000, e -> {
+            setLoginEnabled(true);
+            loginAttempts = 0;
+            lockoutEndTime = 0;
+            JOptionPane.showMessageDialog(loginView, "You can try logging in again now.");
+        }).start();
 
-                Dashtwo d = new Dashtwo(user); // ✅ pass user context
-                d.setVisible(true);
-                loginView.dispose();
-            }
+    } else {
+        JOptionPane.showMessageDialog(
+                loginView,
+                "Wrong username or password! Attempt " + loginAttempts + " of " + MAX_ATTEMPTS
+        );
+    }
+
+    return null;
+}
+
+class LoginButtonListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String username = loginView.getUsernameField().getText().trim();
+        String password = loginView.getPasswordField().getText().trim();
+
+        if (username.equalsIgnoreCase("Enter the username")) username = "";
+        if (password.equalsIgnoreCase("Enter the password")) password = "";
+
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(loginView, "All fields are required!");
+            return;
+        }
+
+        UserModel user = tryLogin(username, password);
+
+        if (user != null) {
+            // ✅ Success popup appears only once here
+            JOptionPane.showMessageDialog(loginView, "Login successful!");
+            userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
+
+            Dashtwo d = new Dashtwo(user);
+            d.setVisible(true);
+            loginView.dispose();
         }
     }
+}
 
     // ================= FORGOT PASSWORD BUTTON =================
     class ForgotPasswordButtonListener implements ActionListener {

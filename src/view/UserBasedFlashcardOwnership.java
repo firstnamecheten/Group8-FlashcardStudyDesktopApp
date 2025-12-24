@@ -1,6 +1,7 @@
 package view;
 
 import model.UserModel;
+import dao.UserDao;
 import view.Dashtwo;
 
 public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
@@ -68,7 +69,7 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
 
         centerpanel.setBackground(new java.awt.Color(255, 255, 255));
         centerpanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        centerpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        centerpanel.setLayout(null);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -81,7 +82,8 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        centerpanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+        centerpanel.add(jPanel5);
+        jPanel5.setBounds(120, 230, 0, 0);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -94,20 +96,25 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        centerpanel.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
+        centerpanel.add(jPanel8);
+        jPanel8.setBounds(310, 230, 0, 0);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (39).png"))); // NOI18N
-        centerpanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, -1));
+        centerpanel.add(jLabel1);
+        jLabel1.setBounds(20, 10, 110, 100);
 
         Username_Text_Field.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         Username_Text_Field.setBorder(null);
         Username_Text_Field.addActionListener(this::Username_Text_FieldActionPerformed);
-        centerpanel.add(Username_Text_Field, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 140, 40));
+        centerpanel.add(Username_Text_Field);
+        Username_Text_Field.setBounds(130, 40, 140, 40);
 
+        Pencil_label.setBackground(new java.awt.Color(254, 254, 254));
         Pencil_label.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Pencil_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Screenshot 2025-12-17 205936.png"))); // NOI18N
         Pencil_label.setText("Edit the profile");
-        centerpanel.add(Pencil_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, -1, -1));
+        centerpanel.add(Pencil_label);
+        Pencil_label.setBounds(905, 20, 160, 26);
 
         getContentPane().add(centerpanel);
         centerpanel.setBounds(99, 140, 1080, 120);
@@ -140,6 +147,7 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
         jPanel1.add(update_password_Text_Field);
         update_password_Text_Field.setBounds(30, 60, 200, 50);
 
+        Copy_Button.setBackground(new java.awt.Color(254, 254, 254));
         Copy_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Screenshot 2025-12-17 225511.png"))); // NOI18N
         Copy_Button.setBorder(null);
         Copy_Button.addActionListener(this::Copy_ButtonActionPerformed);
@@ -164,30 +172,56 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
 
         topPanel1.setBackground(new java.awt.Color(255, 255, 255));
         topPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        topPanel1.setLayout(null);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        topPanel1.add(jLabel3);
-        jLabel3.setBounds(100, 10, 55, 50);
+        jLabel3.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/122.png"))); // NOI18N
 
+        Home_Button.setBackground(new java.awt.Color(254, 254, 254));
         Home_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Home_Button.setText("Home");
         Home_Button.setBorder(null);
         Home_Button.addActionListener(this::Home_ButtonActionPerformed);
-        topPanel1.add(Home_Button);
-        Home_Button.setBounds(200, 20, 60, 20);
 
+        Library_Button.setBackground(new java.awt.Color(254, 254, 254));
         Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Library_Button.setText("Library");
         Library_Button.setBorder(null);
-        topPanel1.add(Library_Button);
-        Library_Button.setBounds(280, 16, 70, 30);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Untitled design (40).png"))); // NOI18N
+        jButton5.setBackground(new java.awt.Color(254, 254, 254));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/13.png"))); // NOI18N
         jButton5.setBorder(null);
         jButton5.addActionListener(this::jButton5ActionPerformed);
-        topPanel1.add(jButton5);
-        jButton5.setBounds(1130, 10, 50, 50);
+
+        javax.swing.GroupLayout topPanel1Layout = new javax.swing.GroupLayout(topPanel1);
+        topPanel1.setLayout(topPanel1Layout);
+        topPanel1Layout.setHorizontalGroup(
+            topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topPanel1Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(770, 770, 770)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        topPanel1Layout.setVerticalGroup(
+            topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topPanel1Layout.createSequentialGroup()
+                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(topPanel1Layout.createSequentialGroup()
+                .addGroup(topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(topPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(topPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         getContentPane().add(topPanel1);
         topPanel1.setBounds(0, 0, 1300, 70);
@@ -198,7 +232,7 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
         Save_Button.setText("Save");
         Save_Button.addActionListener(this::Save_ButtonActionPerformed);
         getContentPane().add(Save_Button);
-        Save_Button.setBounds(1110, 90, 70, 40);
+        Save_Button.setBounds(1110, 100, 70, 30);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setText("Account");
@@ -296,3 +330,4 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
     private javax.swing.JTextField update_password_Text_Field;
     // End of variables declaration//GEN-END:variables
 }
+
