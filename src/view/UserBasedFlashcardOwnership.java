@@ -1,10 +1,11 @@
 package view;
 
+import static com.mysql.cj.conf.PropertyKey.logger;
 import model.UserModel;
 import dao.UserDao;
 import view.Dashtwo;
 
-public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
+    public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger =
         java.util.logging.Logger.getLogger(UserBasedFlashcardOwnership.class.getName());
@@ -17,7 +18,7 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
     /** No-arg constructor (used by GUI builder or fallback) */
     public UserBasedFlashcardOwnership() {
         initComponents();
-        setSize(1285, 760);
+        pack();
         this.currentUser = null; // fallback
         this.dashboardParent = null;
     }
@@ -250,6 +251,8 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
         dashboardParent.toFront();
         dashboardParent.requestFocus();
     }
+   
+
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -329,5 +332,5 @@ public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
     private javax.swing.JPanel topPanel1;
     private javax.swing.JTextField update_password_Text_Field;
     // End of variables declaration//GEN-END:variables
-}
 
+}

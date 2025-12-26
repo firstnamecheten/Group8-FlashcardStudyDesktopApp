@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
+
 package view;
 
 import dao.UserDao;
@@ -17,12 +14,20 @@ public class NewDeckDialog extends javax.swing.JDialog {
     private UserModel currentUser;
     private boolean okPressed;
     private int createdDeckId = -1;   // will hold the new deck's ID
+    private Dashtwo dashboard;
+
+
     // ✅ Constructor with UserModel
     public NewDeckDialog(java.awt.Frame parent, boolean modal, UserModel user) {
-        super(parent, modal);
-        this.currentUser = user;      // ✅ store the user
-        initComponents();
-        CreateNewDeck_Button.addActionListener(evt -> saveDeck());     // Wire button click
+    super(parent, modal);
+    this.currentUser = user;
+    this.dashboard = (Dashtwo) parent;   // ✅ keep reference to dashboard
+    initComponents();
+    CreateNewDeck_Button.addActionListener(evt -> saveDeck());
+
+    pack();                 // ✅ fit to design size
+    setResizable(false);    // ✅ prevent resizing
+    setLocationRelativeTo(parent); // ✅ keep centered
     }
 
     // ✅ Save deck method
@@ -40,15 +45,16 @@ public class NewDeckDialog extends javax.swing.JDialog {
 
         if (deckId != -1) {
             // ✅ Show success popup
-            JOptionPane.showMessageDialog(this, "Deck '" + deckName + "' saved successfully!");
-
-           
-
-            // ✅ Open flashcards page
-            CreateFlashcards flashcardsPage = new CreateFlashcards(deckId, deckName, currentUser);
-            flashcardsPage.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Deck '" + deckName + "' saved successfully!");           
             createdDeckId = deckId;
             okPressed = true;
+            // ✅ Add deck button directly to dashboard
+            dashboard.addDeckButton(deckName, deckId);
+            dashboard.saveDeckToStorage(deckId, deckName);
+            
+            dispose();
+
+
             dispose(); // close dialog
         } else {
             JOptionPane.showMessageDialog(this, "Error saving deck. Please try again.");
@@ -79,12 +85,18 @@ public class NewDeckDialog extends javax.swing.JDialog {
         CreateNewDeck_Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 330));
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel1.setText("New Deck");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(152, 30, 89, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("<html><b>Create your own deck.</b><font color=\"#888888\">You get the best results from<br>the cards you create yourself.</html>");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(31, 78, 355, 53);
 
         deck_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         deck_name.setForeground(new java.awt.Color(153, 153, 153));
@@ -98,6 +110,8 @@ public class NewDeckDialog extends javax.swing.JDialog {
                 deck_nameFocusLost(evt);
             }
         });
+        getContentPane().add(deck_name);
+        deck_name.setBounds(31, 161, 324, 41);
 
         CreateNewDeck_Button.setBackground(new java.awt.Color(0, 153, 255));
         CreateNewDeck_Button.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -105,38 +119,8 @@ public class NewDeckDialog extends javax.swing.JDialog {
         CreateNewDeck_Button.setText("Create new deck");
         CreateNewDeck_Button.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         CreateNewDeck_Button.addActionListener(this::CreateNewDeck_ButtonActionPerformed);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(CreateNewDeck_Button, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-                                .addComponent(deck_name, javax.swing.GroupLayout.Alignment.LEADING)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(deck_name, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(CreateNewDeck_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
+        getContentPane().add(CreateNewDeck_Button);
+        CreateNewDeck_Button.setBounds(31, 220, 324, 41);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -4,6 +4,8 @@
  */
 package view;
 
+import model.UserModel;
+
 /**
  *
  * @author pranishabhatta
@@ -17,6 +19,10 @@ public class Studycards2 extends javax.swing.JFrame {
      */
     public Studycards2() {
         initComponents();
+        setSize(1285, 760);
+    }
+
+    public Studycards2(int deckId, String deckName, UserModel currentUser) {
     }
 
     /**

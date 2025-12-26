@@ -62,7 +62,7 @@ public class CreateFlashcards extends javax.swing.JFrame {
         Front_Text = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Back_Text = new javax.swing.JTextField();
-        NextButton = new javax.swing.JButton();
+        GoBackButton = new javax.swing.JButton();
         tickButton = new javax.swing.JButton();
         NewDeckName = new javax.swing.JTextField();
 
@@ -204,11 +204,11 @@ public class CreateFlashcards extends javax.swing.JFrame {
         getContentPane().add(centerpanel);
         centerpanel.setBounds(100, 150, 1080, 530);
 
-        NextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arr.png"))); // NOI18N
-        NextButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
-        NextButton.addActionListener(this::NextButtonActionPerformed);
-        getContentPane().add(NextButton);
-        NextButton.setBounds(100, 90, 30, 30);
+        GoBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arr.png"))); // NOI18N
+        GoBackButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
+        GoBackButton.addActionListener(this::GoBackButtonActionPerformed);
+        getContentPane().add(GoBackButton);
+        GoBackButton.setBounds(100, 90, 30, 30);
 
         tickButton.setBackground(new java.awt.Color(0, 153, 255));
         tickButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -222,7 +222,7 @@ public class CreateFlashcards extends javax.swing.JFrame {
         NewDeckName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         NewDeckName.setBorder(null);
         getContentPane().add(NewDeckName);
-        NewDeckName.setBounds(150, 90, 64, 30);
+        NewDeckName.setBounds(150, 90, 950, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -274,14 +274,14 @@ public class CreateFlashcards extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Back_TextFocusLost
 
-    private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
+    private void GoBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoBackButtonActionPerformed
         // TODO add your handling code here:
         // Same behavior for arrow/tick button: go back to Dashtwo
         this.dispose();
         Dashtwo dashboard = new Dashtwo(currentUser);
         dashboard.setVisible(true);
 
-    }//GEN-LAST:event_NextButtonActionPerformed
+    }//GEN-LAST:event_GoBackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,11 +311,11 @@ public class CreateFlashcards extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Back_Text;
     private javax.swing.JTextField Front_Text;
+    private javax.swing.JButton GoBackButton;
     private javax.swing.JButton Home_Button;
     private javax.swing.JButton Library_Button;
     private javax.swing.JLabel Logo_label;
     private javax.swing.JTextField NewDeckName;
-    private javax.swing.JButton NextButton;
     private javax.swing.JPanel centerpanel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
