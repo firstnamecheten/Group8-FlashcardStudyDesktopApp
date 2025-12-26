@@ -4,29 +4,21 @@
  */
 package view;
 
-import controller.LoginController;
-import controller.UserController;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-
 /**
  *
  * @author LENOVO
  */
-public class Login extends javax.swing.JFrame {
+public class AdminLogin extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminLogin.class.getName());
 
     /**
-     * Creates new form login
+     * Creates new form AdminLogin
      */
-    public Login() {
+    public AdminLogin() {
         initComponents();
         setSize(1285,760);
-        
-
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,18 +29,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Username = new javax.swing.JLabel();
-        Password = new javax.swing.JLabel();
-        username = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        LoginButton = new javax.swing.JButton();
-        CreateAccountButton = new javax.swing.JButton();
-        Login = new javax.swing.JLabel();
-        password_field = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        ForgotPasswordButton = new javax.swing.JButton();
-        show_password = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -68,118 +48,22 @@ public class Login extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        Username = new javax.swing.JLabel();
+        Password = new javax.swing.JLabel();
+        username = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        LoginButton = new javax.swing.JButton();
+        CreateAccountButton = new javax.swing.JButton();
+        Login = new javax.swing.JLabel();
+        password_field = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        ForgotPasswordButton = new javax.swing.JButton();
+        show_password = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(1288, 751));
+        setPreferredSize(new java.awt.Dimension(1285, 760));
         getContentPane().setLayout(null);
-
-        Username.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        Username.setForeground(new java.awt.Color(255, 255, 255));
-        Username.setText("Username");
-        getContentPane().add(Username);
-        Username.setBounds(20, 190, 90, 16);
-
-        Password.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        Password.setForeground(new java.awt.Color(255, 255, 255));
-        Password.setText("Password");
-        getContentPane().add(Password);
-        Password.setBounds(20, 310, 90, 16);
-
-        username.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        username.setForeground(new java.awt.Color(102, 102, 102));
-        username.setText(" Enter the username");
-        username.setBorder(null);
-        username.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                usernameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                usernameFocusLost(evt);
-            }
-        });
-        getContentPane().add(username);
-        username.setBounds(20, 220, 300, 40);
-
-        jLabel3.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Or");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(160, 580, 23, 22);
-
-        LoginButton.setBackground(new java.awt.Color(23, 150, 255));
-        LoginButton.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        LoginButton.setForeground(new java.awt.Color(255, 255, 255));
-        LoginButton.setText("Login");
-        LoginButton.setBorder(null);
-        LoginButton.addActionListener(this::LoginButtonActionPerformed);
-        getContentPane().add(LoginButton);
-        LoginButton.setBounds(130, 510, 80, 40);
-
-        CreateAccountButton.setBackground(new java.awt.Color(23, 150, 255));
-        CreateAccountButton.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        CreateAccountButton.setForeground(new java.awt.Color(255, 255, 255));
-        CreateAccountButton.setText("Create a new account");
-        CreateAccountButton.setBorder(null);
-        CreateAccountButton.addActionListener(this::CreateAccountButtonActionPerformed);
-        getContentPane().add(CreateAccountButton);
-        CreateAccountButton.setBounds(70, 630, 200, 40);
-
-        Login.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
-        Login.setForeground(new java.awt.Color(255, 255, 255));
-        Login.setText("LOGIN");
-        getContentPane().add(Login);
-        Login.setBounds(160, 40, 190, 50);
-
-        password_field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
-        password_field.setForeground(new java.awt.Color(102, 102, 102));
-        password_field.setBorder(null);
-        getContentPane().add(password_field);
-        password_field.setBounds(20, 340, 300, 40);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signupp.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(-10, 0, 170, 178);
-
-        jPanel1.setBackground(new java.awt.Color(30, 98, 165));
-
-        ForgotPasswordButton.setBackground(new java.awt.Color(30, 98, 165));
-        ForgotPasswordButton.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
-        ForgotPasswordButton.setForeground(new java.awt.Color(255, 255, 255));
-        ForgotPasswordButton.setText("Forgot password?");
-        ForgotPasswordButton.setBorder(null);
-        ForgotPasswordButton.addActionListener(this::ForgotPasswordButtonActionPerformed);
-
-        show_password.setBackground(new java.awt.Color(30, 98, 165));
-        show_password.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
-        show_password.setForeground(new java.awt.Color(255, 255, 255));
-        show_password.setText("Show password");
-        show_password.setBorder(null);
-        show_password.addActionListener(this::show_passwordActionPerformed);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(show_password, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(ForgotPasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(417, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ForgotPasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(show_password, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(350, 350, 350))
-        );
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, -30, 350, 790);
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 65)); // NOI18N
         jLabel1.setText("Flashcard Study ");
@@ -292,32 +176,122 @@ public class Login extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 760, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(350, 0, 940, 750);
+        jPanel2.setBounds(350, 0, 940, 760);
+
+        Username.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        Username.setForeground(new java.awt.Color(255, 255, 255));
+        Username.setText("Username");
+        getContentPane().add(Username);
+        Username.setBounds(20, 190, 90, 16);
+
+        Password.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        Password.setForeground(new java.awt.Color(255, 255, 255));
+        Password.setText("Password");
+        getContentPane().add(Password);
+        Password.setBounds(20, 310, 90, 16);
+
+        username.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
+        username.setForeground(new java.awt.Color(102, 102, 102));
+        username.setText(" Enter the username");
+        username.setBorder(null);
+        username.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernameFocusLost(evt);
+            }
+        });
+        getContentPane().add(username);
+        username.setBounds(20, 220, 300, 40);
+
+        jLabel3.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Or");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(160, 580, 23, 22);
+
+        LoginButton.setBackground(new java.awt.Color(23, 150, 255));
+        LoginButton.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        LoginButton.setForeground(new java.awt.Color(255, 255, 255));
+        LoginButton.setText("Login");
+        LoginButton.setBorder(null);
+        LoginButton.addActionListener(this::LoginButtonActionPerformed);
+        getContentPane().add(LoginButton);
+        LoginButton.setBounds(130, 510, 80, 40);
+
+        CreateAccountButton.setBackground(new java.awt.Color(23, 150, 255));
+        CreateAccountButton.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        CreateAccountButton.setForeground(new java.awt.Color(255, 255, 255));
+        CreateAccountButton.setText("Create a new account");
+        CreateAccountButton.setBorder(null);
+        CreateAccountButton.addActionListener(this::CreateAccountButtonActionPerformed);
+        getContentPane().add(CreateAccountButton);
+        CreateAccountButton.setBounds(70, 630, 200, 40);
+
+        Login.setFont(new java.awt.Font("Cambria", 1, 48)); // NOI18N
+        Login.setForeground(new java.awt.Color(255, 255, 255));
+        Login.setText("LOGIN");
+        getContentPane().add(Login);
+        Login.setBounds(160, 40, 190, 50);
+
+        password_field.setFont(new java.awt.Font("Cambria", 1, 16)); // NOI18N
+        password_field.setForeground(new java.awt.Color(102, 102, 102));
+        password_field.setBorder(null);
+        getContentPane().add(password_field);
+        password_field.setBounds(20, 340, 300, 40);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signupp.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(-10, 0, 170, 178);
+
+        jPanel1.setBackground(new java.awt.Color(30, 98, 165));
+
+        ForgotPasswordButton.setBackground(new java.awt.Color(30, 98, 165));
+        ForgotPasswordButton.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
+        ForgotPasswordButton.setForeground(new java.awt.Color(255, 255, 255));
+        ForgotPasswordButton.setText("Forgot password?");
+        ForgotPasswordButton.setBorder(null);
+        ForgotPasswordButton.addActionListener(this::ForgotPasswordButtonActionPerformed);
+
+        show_password.setBackground(new java.awt.Color(30, 98, 165));
+        show_password.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
+        show_password.setForeground(new java.awt.Color(255, 255, 255));
+        show_password.setText("Show password");
+        show_password.setBorder(null);
+        show_password.addActionListener(this::show_passwordActionPerformed);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(show_password, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(ForgotPasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(417, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ForgotPasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(show_password, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(350, 350, 350))
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, -30, 350, 790);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LoginButtonActionPerformed
-
-    private void CreateAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccountButtonActionPerformed
-        // TODO add your handling code here:
-        Signup signupView = new Signup();                      // Create signup window
-        UserController SignupController = new UserController(signupView);  
-        signupView.setVisible(true);                           // Show signup page
-        this.dispose();                         
-    }//GEN-LAST:event_CreateAccountButtonActionPerformed
-
-    private void ForgotPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForgotPasswordButtonActionPerformed
-        // TODO add your handling code here:
-        LoginController controller = new LoginController(this);
-        
-    }//GEN-LAST:event_ForgotPasswordButtonActionPerformed
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
         // TODO add your handling code here:
@@ -333,14 +307,29 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_usernameFocusLost
 
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginButtonActionPerformed
+
+    private void CreateAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccountButtonActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_CreateAccountButtonActionPerformed
+
+    private void ForgotPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForgotPasswordButtonActionPerformed
+        // TODO add your handling code here:
+        AdminLoginController controller = new AdminLoginController(this);
+
+    }//GEN-LAST:event_ForgotPasswordButtonActionPerformed
+
     private void show_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_passwordActionPerformed
         // TODO add your handling code here:
         if (show_password.isSelected()) {
-        password_field.setEchoChar((char)0); // show text
-    } else {
-        password_field.setEchoChar('*');     // hide text
-      
-    }
+            password_field.setEchoChar((char)0); // show text
+        } else {
+            password_field.setEchoChar('*');     // hide text
+
+        }
     }//GEN-LAST:event_show_passwordActionPerformed
 
     /**
@@ -365,7 +354,7 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new AdminLogin().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -401,33 +390,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JCheckBox show_password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
-
-    public void LoginButtonListener(ActionListener listener){     //Same button name cannot be so we wrote LoginButtonListener written!
-        LoginButton.addActionListener(listener);
-    }
-    public void CreateAccountButtonListener(ActionListener listener){
-        CreateAccountButton.addActionListener(listener);
-    }
-    public void ForgotPasswordButtonListener(ActionListener listener){
-        ForgotPasswordButton.addActionListener(listener);
-    }
-    public javax.swing.JPasswordField getPasswordField(){           // textfield bata user ko input linu paryo teslai store garnu paryo haina!
-        return password_field;                                        // jun return garirako yesko name ko sanga milnu paryo variable sanga milnu paryo tya mathi (private javax.swing.JTextField password;) yo sanga milnu paryo
-    }
-    public javax.swing.JTextField getUsernameField(){
-        return username;
-    }
-
-    public JButton getLoginButton() {
-         return LoginButton;
-    }
-
-    public JButton getForgotPasswordButton() {
-        return ForgotPasswordButton;
-    }
-
-    public JButton getCreateAccountButton() {
-        return CreateAccountButton;
-    }
-
 }

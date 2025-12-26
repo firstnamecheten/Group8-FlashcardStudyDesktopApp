@@ -209,7 +209,7 @@ public class Dashtwo extends javax.swing.JFrame {
     }
         // === Create button clicks ===
 
-
+    
     private void openNewDeckDialog() {
         NewDeckDialog dialog = new NewDeckDialog(this, true, currentUser);
         dialog.setLocationRelativeTo(this); // center on Dashtwo frame
@@ -217,7 +217,13 @@ public class Dashtwo extends javax.swing.JFrame {
     
         }
     
-
+    
+    private void openStudycards2() {
+        
+    }
+    
+    
+    
     // === Deck area setup using scrollPane1 ===
     private void initDeckContainer() {
         deckContainer = new JPanel();
@@ -228,8 +234,7 @@ public class Dashtwo extends javax.swing.JFrame {
         scrollPane1.setViewportView(deckContainer);
         scrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        loadDecksFromStorage();
-
+        
     }
 
 
@@ -379,7 +384,7 @@ public class Dashtwo extends javax.swing.JFrame {
         scrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
         getContentPane().add(scrollPane1);
-        scrollPane1.setBounds(120, 150, 1060, 530);
+        scrollPane1.setBounds(100, 150, 1080, 530);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
