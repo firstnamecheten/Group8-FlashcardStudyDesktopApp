@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 /**
  *
  * @author LENOVO
@@ -17,7 +20,15 @@ public class AdminDashboard extends javax.swing.JFrame {
      */
     public AdminDashboard() {
         initComponents();
-        setSize(1285,760);
+        setTitle("Admin Dashboard");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel lbl = new JLabel("Welcome Admin! You are in the dashboard.");
+        add(lbl);
+    }
+
+
     }
 
     /**
@@ -35,8 +46,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         Library_Button = new javax.swing.JButton();
         scrollbar2 = new java.awt.Scrollbar();
         Home_Label = new javax.swing.JLabel();
-        CreateButton = new javax.swing.JButton();
-        DeckOrganizationButton = new javax.swing.JButton();
         scrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -94,25 +103,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         topPanel1.setBounds(0, 0, 1330, 70);
 
         Home_Label.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        Home_Label.setText("Home");
+        Home_Label.setText("Admin Dashboard");
         getContentPane().add(Home_Label);
-        Home_Label.setBounds(100, 90, 140, 40);
-
-        CreateButton.setBackground(new java.awt.Color(0, 153, 255));
-        CreateButton.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        CreateButton.setForeground(new java.awt.Color(255, 255, 255));
-        CreateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/create.png"))); // NOI18N
-        CreateButton.setText("  Create ");
-        CreateButton.setBorder(null);
-        CreateButton.addActionListener(this::CreateButtonActionPerformed);
-        getContentPane().add(CreateButton);
-        CreateButton.setBounds(1060, 110, 120, 30);
-
-        DeckOrganizationButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Screenshot 2025-12-17 205936.png"))); // NOI18N
-        DeckOrganizationButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
-        DeckOrganizationButton.addActionListener(this::DeckOrganizationButtonActionPerformed);
-        getContentPane().add(DeckOrganizationButton);
-        DeckOrganizationButton.setBounds(1020, 110, 30, 30);
+        Home_Label.setBounds(540, 90, 220, 40);
 
         scrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
@@ -157,18 +150,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
-    private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
-        // TODO add your handling code here:
-        // ✅ Just call the helper method
-        openNewDeckDialog();
-
-    }//GEN-LAST:event_CreateButtonActionPerformed
-
-    private void DeckOrganizationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeckOrganizationButtonActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_DeckOrganizationButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -195,8 +176,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CreateButton;
-    private javax.swing.JButton DeckOrganizationButton;
     private javax.swing.JButton Home_Button;
     private javax.swing.JLabel Home_Label;
     private javax.swing.JButton Library_Button;

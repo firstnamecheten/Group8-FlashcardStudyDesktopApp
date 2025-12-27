@@ -1,23 +1,52 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-/**
- *
- * @author LENOVO
- */
-public class AdminLogin extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminLogin.class.getName());
+import javax.swing.*;
 
-    /**
-     * Creates new form AdminLogin
-     */
+public class AdminLogin extends JFrame {
+    private JTextField txtUsername;
+    private JPasswordField txtPassword;
+    private JButton btnLogin;
+
     public AdminLogin() {
-        initComponents();
-        setSize(1285,760);
+        setTitle("Admin Login");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);
+
+        JLabel lblUser = new JLabel("Username:");
+        lblUser.setBounds(30, 30, 80, 25);
+        add(lblUser);
+
+        txtUsername = new JTextField();
+        txtUsername.setBounds(120, 30, 120, 25);
+        add(txtUsername);
+
+        JLabel lblPass = new JLabel("Password:");
+        lblPass.setBounds(30, 70, 80, 25);
+        add(lblPass);
+
+        txtPassword = new JPasswordField();
+        txtPassword.setBounds(120, 70, 120, 25);
+        add(txtPassword);
+
+        btnLogin = new JButton("Login");
+        btnLogin.setBounds(100, 110, 80, 25);
+        add(btnLogin);
+
+        // Action performed → connect to controller
+        btnLogin.addActionListener(e -> {
+            String user = txtUsername.getText();
+            String pass = new String(txtPassword.getPassword());
+
+            AdminLoginController controller = new AdminLoginController();
+            if(controller.checkLogin(user, pass)) {
+                JOptionPane.showMessageDialog(this, "Login Successful!");
+                new AdminDashboard().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid credentials!");
+            }
+        });
     }
 
     /**
@@ -58,7 +87,6 @@ public class AdminLogin extends javax.swing.JFrame {
         password_field = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        ForgotPasswordButton = new javax.swing.JButton();
         show_password = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -252,13 +280,6 @@ public class AdminLogin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(30, 98, 165));
 
-        ForgotPasswordButton.setBackground(new java.awt.Color(30, 98, 165));
-        ForgotPasswordButton.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
-        ForgotPasswordButton.setForeground(new java.awt.Color(255, 255, 255));
-        ForgotPasswordButton.setText("Forgot password?");
-        ForgotPasswordButton.setBorder(null);
-        ForgotPasswordButton.addActionListener(this::ForgotPasswordButtonActionPerformed);
-
         show_password.setBackground(new java.awt.Color(30, 98, 165));
         show_password.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         show_password.setForeground(new java.awt.Color(255, 255, 255));
@@ -273,18 +294,14 @@ public class AdminLogin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(show_password, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(ForgotPasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(417, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ForgotPasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(show_password, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(350, 350, 350))
+                .addContainerGap(419, Short.MAX_VALUE)
+                .addComponent(show_password, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(353, 353, 353))
         );
 
         getContentPane().add(jPanel1);
@@ -315,12 +332,6 @@ public class AdminLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
        
     }//GEN-LAST:event_CreateAccountButtonActionPerformed
-
-    private void ForgotPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForgotPasswordButtonActionPerformed
-        // TODO add your handling code here:
-        AdminLoginController controller = new AdminLoginController(this);
-
-    }//GEN-LAST:event_ForgotPasswordButtonActionPerformed
 
     private void show_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_passwordActionPerformed
         // TODO add your handling code here:
@@ -359,7 +370,6 @@ public class AdminLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreateAccountButton;
-    private javax.swing.JButton ForgotPasswordButton;
     private javax.swing.JLabel Login;
     private javax.swing.JButton LoginButton;
     private javax.swing.JLabel Password;

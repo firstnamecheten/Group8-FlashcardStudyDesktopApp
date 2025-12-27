@@ -177,4 +177,32 @@ class LoginButtonListener implements ActionListener {
 
         JOptionPane.showMessageDialog(loginView, "Password updated successfully!");
     }
+    
+    class AdminLoginButtonListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String username = loginView.getUsernameField().getText().trim();
+        String password = loginView.getPasswordField().getText().trim();
+
+        if (username.equalsIgnoreCase("Enter the username")) username = "";
+        if (password.equalsIgnoreCase("Enter the password")) password = "";
+
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(loginView, "All fields are required!");
+            return;
+        }
+
+        UserModel user = tryLogin(username, password);
+
+        if (user != null) {
+            // ✅ Success popup appears only once here
+            JOptionPane.showMessageDialog(loginView, "Login successful!");
+            userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
+
+            Dashtwo d = new Dashtwo(user);
+            d.setVisible(true);
+            loginView.dispose();
+        }
+    }
+}
 }

@@ -9,5 +9,8 @@ package controller;
  * @author LENOVO
  */
 public class AdminLoginController {
-    
+    // Simple hardcoded check (later you can connect to DB)
+    public boolean checkLogin(String username, String password) {
+        return username.equals("admin") && password.equals("admin123");
+    }
 }
