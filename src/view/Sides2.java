@@ -255,9 +255,8 @@ public class Sides2 extends JFrame {
         
         // Close this window (return to deck screen)
     private void goBackToDeck() {
-        Studycards2 deck = new Studycards2(); // ✔ Tick
-        deck.setVisible(true);                 // ✔ Tick
-        this.dispose();
+        studyPage.setVisible(true);
+        sides.setVisible(false);
     
     }//GEN-LAST:event_jButton4ActionPerformed
 

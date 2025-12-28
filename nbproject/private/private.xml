@@ -15,8 +15,6 @@
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/nbproject/genfiles.properties</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Dashtwo.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/database/Database.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/database/MySqlConnection.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/UserBasedFlashcardOwnership.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Language.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Filterby.java</file>
@@ -59,6 +57,9 @@
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/images/edit%2017.png</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/CreateFlashcards.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Sides.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/AdminDashboard.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/AdminLogin.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/controller/AdminLoginController.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/images/signupp.png</file>
         </group>
     </open-files>

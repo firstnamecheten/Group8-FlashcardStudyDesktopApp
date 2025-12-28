@@ -56,4 +56,7 @@ public class UserModel {
     public void setconfirmpassword(String confirmpassword) {
         this.confirmpassword = confirmpassword;
     }
+
+    public void setVisible(boolean b) {
+    }
 }

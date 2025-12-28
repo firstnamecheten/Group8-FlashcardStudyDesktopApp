@@ -308,10 +308,7 @@ public class Signup extends javax.swing.JFrame {
 
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
         // TODO add your handling code here:
-        Login loginView = new Login();
-        controller.LoginController lc = new controller.LoginController(loginView);
-        lc.open();
-        this.dispose();
+        
 
 
     }//GEN-LAST:event_Login_ButtonActionPerformed
@@ -356,9 +353,10 @@ public class Signup extends javax.swing.JFrame {
      */
  public static void main(String args[]) {
     java.awt.EventQueue.invokeLater(() -> {
-        Signup view = new Signup();               // Create only ONE Signup view
-        UserController controller = new UserController(view); // Attach controller
-        view.setVisible(true);                    // Show the same view
+        Login loginView = new Login();                  // Create Login once (then any time you want to open this page u can just use it's "REFERNCE" so new pages wont be created #noted) Note: we are creating new login here becuase after signup page the 1st login original page opens. after that we can just use login reference by?
+        Signup signupView = new Signup();               // Create only ONE Signup view. Note we are creating objects login, signup and usercontroller file here becuase this main method is where the code starts running.
+        UserController controller = new UserController(signupView, loginView);      // Attach controller
+        controller.open();                    // "Show signup first" (means open signup first)
     });
 }
 

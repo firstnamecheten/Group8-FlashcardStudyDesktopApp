@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 import model.UserModel;
 
 /**
@@ -13,8 +15,9 @@ import model.UserModel;
 public class Studycards2 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Studycards2.class.getName());
+    private Dashtwo originalDashtwo;
     private UserModel currentUser;
-
+   
     /**
      * Creates new form Studycards2
      */
@@ -30,6 +33,13 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
         setSize(1285, 760);  // ✅ give it a size
         setLocationRelativeTo(null); // ✅ center on screen
     }
+
+    public Studycards2(Dashtwo aThis, UserModel user) {
+        this.dashtwoView = dashtwoView;   // 🔑 keep reference
+        this.currentUser = user;
+        initComponents();
+    }
+
 
 
     /**
@@ -69,12 +79,10 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(null);
 
-        jTextField6.setText("First programmer ?");
         jTextField6.setBorder(null);
         jPanel6.add(jTextField6);
         jTextField6.setBounds(6, 17, 184, 16);
 
-        jTextField7.setText("Ada Lovelace");
         jTextField7.setBorder(null);
         jPanel6.add(jTextField7);
         jTextField7.setBounds(6, 39, 143, 16);
@@ -172,7 +180,6 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
         jPanel4.setLayout(null);
 
         jTextField5.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jTextField5.setText(" 2");
         jTextField5.setBorder(null);
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,24 +234,24 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
-        // Close this flashcards window
-        this.dispose();
+        this.setVisible(false);              // hide StudyCards2
+        originalDashtwo.setVisible(true);    // show original Dashtwo
 
-        // Open the Dashtwo dashboard again
-        Dashtwo dashboard = new Dashtwo(currentUser); // pass currentUser if needed
-        dashboard.setVisible(true);
+
+        
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
         // TODO add your handling code here:
-        // Same behavior for arrow/tick button: go back to Dashtwo
-        this.dispose();
-        Dashtwo dashboard = new Dashtwo(currentUser);
-        dashboard.setVisible(true);
+        this.setVisible(false);
+        originalDashtwo.setVisible(true);
+
+          
     }//GEN-LAST:event_NextButtonActionPerformed
 
     private void tickButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tickButtonActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_tickButtonActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -253,6 +260,7 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
 
     private void AddCardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCardsButtonActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_AddCardsButtonActionPerformed
 
     /**
@@ -302,4 +310,7 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
     private javax.swing.JButton tickButton;
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
+
+    void loadDeck(int deckId, String deckName) {
+    }
 }

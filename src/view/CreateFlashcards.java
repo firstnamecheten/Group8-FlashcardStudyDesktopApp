@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 import model.UserModel;
 
 /**
@@ -14,8 +16,12 @@ public class CreateFlashcards extends javax.swing.JFrame {
 
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CreateFlashcards.class.getName());
+    
+    private JPanel mainPanel;
+    private CardLayout cardLayout;
     private final int deckId;
     private UserModel currentUser;
+    private String deckName;
     /**
      * Creates new form CreateFlashcards
      */
@@ -229,12 +235,11 @@ public class CreateFlashcards extends javax.swing.JFrame {
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
-        // Close this flashcards window
-        this.dispose();
-
-        // Open the Dashtwo dashboard again
-        Dashtwo dashboard = new Dashtwo(currentUser); // pass currentUser if needed
-        dashboard.setVisible(true);
+       
+        Studycards2 studyPage = new Studycards2(deckId, deckName, currentUser);
+        studyPage.setVisible(true);
+        cardLayout.show(mainPanel, "Studycards2");  // after signup success
+        cardLayout.show(mainPanel, "CreateFlashcards");
 
     }//GEN-LAST:event_Home_ButtonActionPerformed
 

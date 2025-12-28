@@ -1,6 +1,7 @@
 package dao;
 
 import database.MySqlConnection;
+import java.sql.Timestamp;
 import java.sql.Statement;
 import model.UserModel;
 import java.sql.Connection;
@@ -143,7 +144,7 @@ public class UserDao {
     }
     return -1; // only if something failed
 }
-    // ✅ Later: Save a flashcard
+    // Save a flashcard
     public void addFlashcard(int deckId, String question, String answer) {
         Connection conn = mysql.openConnection();
         String sql = "INSERT INTO flashcards (deck_id, question, answer) VALUES (?, ?, ?)";
@@ -159,8 +160,30 @@ public class UserDao {
         }
     }
 
+   // INSERT LOGOUT HISTORY
+public void insertLogoutHistory(int loginId, int userId, String sessionId, Timestamp logoutTime) {
+    Connection conn = mysql.openConnection();
+    String sql = "INSERT INTO logout_history (login_id, user_id, session_id, logout_time) VALUES (?, ?, ?, ?)";
+    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        // Foreign keys must exist in login_history and signup_history
+        pstmt.setInt(1, loginId);          
+        pstmt.setInt(2, userId);           
+        pstmt.setString(3, sessionId);     
+ 
+        // Correct way to insert timestamp
+        if (logoutTime != null) {
+            pstmt.setTimestamp(4, logoutTime);
+        } else {
+            pstmt.setNull(4, java.sql.Types.TIMESTAMP); // safe if you want NULL
+        }
 
-
+        pstmt.executeUpdate();
+    } catch (SQLException ex) {
+        ex.printStackTrace(); // shows exact MySQL error in console
+    } finally {
+        mysql.closeConnection(conn);
+    }
+}
 }
 
 

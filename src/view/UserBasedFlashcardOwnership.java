@@ -3,7 +3,11 @@ package view;
 import static com.mysql.cj.conf.PropertyKey.logger;
 import model.UserModel;
 import dao.UserDao;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import view.Dashtwo;
+
+   
 
     public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
 
@@ -12,7 +16,11 @@ import view.Dashtwo;
 
     // ✅ Add this field to store the logged-in user
     private final UserModel currentUser;
-    private final Dashtwo dashboardParent;
+    private final Dashtwo dashtwoView;
+    private UserModel user;
+    private JTextField username_text_field;
+    private JTextField userId_text_field;
+    
 
 
     /** No-arg constructor (used by GUI builder or fallback) */
@@ -20,15 +28,15 @@ import view.Dashtwo;
         initComponents();
         pack();
         this.currentUser = null; // fallback
-        this.dashboardParent = null;
+        this.dashtwoView = null;
     }
 
     /** Preferred constructor with user context */
-    public UserBasedFlashcardOwnership(UserModel currentUser, Dashtwo dashboardParent) {
+    public UserBasedFlashcardOwnership(UserModel currentUser, Dashtwo dashtwoView) {
     initComponents();
     setSize(1285, 760);
     this.currentUser = currentUser;
-    this.dashboardParent = dashboardParent;
+    this.dashtwoView = dashtwoView;
 
     Username_Text_Field.setText(currentUser.getUsername());
     UserID_Text_Field.setText(String.valueOf(currentUser.getUserId()));
@@ -245,14 +253,7 @@ import view.Dashtwo;
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false); // ✅ hide Account page
-        if (dashboardParent != null) {
-        dashboardParent.setVisible(true); // ✅ re-show original dashboard
-        dashboardParent.toFront();
-        dashboardParent.requestFocus();
-    }
-   
-
+     
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -298,16 +299,7 @@ import view.Dashtwo;
     }//GEN-LAST:event_update_password_Text_FieldFocusLost
 
     public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        
         java.awt.EventQueue.invokeLater(() -> new UserBasedFlashcardOwnership().setVisible(true));
     }
 
@@ -332,5 +324,10 @@ import view.Dashtwo;
     private javax.swing.JPanel topPanel1;
     private javax.swing.JTextField update_password_Text_Field;
     // End of variables declaration//GEN-END:variables
+
+    public void setCurrentUser(UserModel currentUser) {
+    Username_Text_Field.setText(currentUser.getUsername());
+    UserID_Text_Field.setText(String.valueOf(currentUser.getUserId()));
+}
 
 }
