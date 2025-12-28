@@ -14,14 +14,14 @@ public class NewDeckDialog extends javax.swing.JDialog {
     private UserModel currentUser;
     private boolean okPressed;
     private int createdDeckId = -1;   // will hold the new deck's ID
-    private Dashtwo dashboard;
+    private Dashboard dashboard;
 
 
     // ✅ Constructor with UserModel
     public NewDeckDialog(java.awt.Frame parent, boolean modal, UserModel user) {
     super(parent, modal);
     this.currentUser = user;
-    this.dashboard = (Dashtwo) parent;   // ✅ keep reference to dashboard
+    this.dashboard = (Dashboard) parent;   // ✅ keep reference to dashboard
     initComponents();
     CreateNewDeck_Button.addActionListener(evt -> saveDeck());
 

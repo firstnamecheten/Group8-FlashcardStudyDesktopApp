@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import model.UserModel;
-import view.Dashtwo;
+import view.Dashboard;
 import view.Login;
 import javax.swing.JOptionPane;
 import view.Signup;
@@ -104,12 +104,12 @@ class LoginButtonListener implements ActionListener {
             JOptionPane.showMessageDialog(loginView, "Login successful!");
             userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
 
-            Dashtwo d = new Dashtwo(user);
+            Dashboard d = new Dashboard(user);
             d.setVisible(true);
             loginView.dispose();
         }
     }
-}
+    }
 
     // ================= FORGOT PASSWORD BUTTON =================
     class ForgotPasswordButtonListener implements ActionListener {
@@ -199,10 +199,10 @@ class LoginButtonListener implements ActionListener {
             JOptionPane.showMessageDialog(loginView, "Login successful!");
             userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
 
-            Dashtwo d = new Dashtwo(user);
+            Dashboard d = new Dashboard(user);
             d.setVisible(true);
             loginView.dispose();
         }
     }
-}
+    }
 }

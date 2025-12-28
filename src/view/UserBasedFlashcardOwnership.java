@@ -3,7 +3,7 @@ package view;
 import static com.mysql.cj.conf.PropertyKey.logger;
 import model.UserModel;
 import dao.UserDao;
-import view.Dashtwo;
+import view.Dashboard;
 
     public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
 
@@ -12,7 +12,7 @@ import view.Dashtwo;
 
     // ✅ Add this field to store the logged-in user
     private final UserModel currentUser;
-    private final Dashtwo dashboardParent;
+    private final Dashboard dashboardParent;
 
 
     /** No-arg constructor (used by GUI builder or fallback) */
@@ -24,7 +24,7 @@ import view.Dashtwo;
     }
 
     /** Preferred constructor with user context */
-    public UserBasedFlashcardOwnership(UserModel currentUser, Dashtwo dashboardParent) {
+    public UserBasedFlashcardOwnership(UserModel currentUser, Dashboard dashboardParent) {
     initComponents();
     setSize(1285, 760);
     this.currentUser = currentUser;

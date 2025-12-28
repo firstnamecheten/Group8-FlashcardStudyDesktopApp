@@ -1,5 +1,5 @@
 package view;
-
+import controller.DashboardController; 
 import controller.LoginController;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -8,134 +8,65 @@ import model.UserModel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
 
-public class Dashtwo extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger =
-            java.util.logging.Logger.getLogger(Dashtwo.class.getName());
-
-    // Track the currently active dashboard
-    private static Dashtwo ACTIVE_DASHBOARD;
-    private boolean isDarkMode;
+public class Dashboard extends javax.swing.JFrame {
+    
+    private DashboardController controller;
+    private boolean isDarkMode = false;
     private final UserModel currentUser;
-    // Keep track of the current logged-in user
-    private JButton createDeckButton;
-
-    private JButton createCardsButton; // grey button shown in image
-    private int createdDeckId = -1;
-    public int getCreatedDeckId() { return createdDeckId; }
-
-    private JButton createButton;
-    private java.util.List<JButton> deckButtons = new ArrayList<>();
-
-    // Track if user has any decks
-    private boolean hasDecks = false;
-
-    // Panel that holds deck buttons vertically
     private JPanel deckContainer;
 
-    // Controls whether we auto-open CreateFlashcards after creating a deck
-    private boolean openFlashcardsOnCreate = false; // default: stay on Dashtwo
-
     // === Constructors ===
-    /** Creates new form Dashtwo (preferred: with user context) */
-    public Dashtwo(UserModel user) {
+    public Dashboard(UserModel user) {
         initComponents();
-
-        // Style the Create button before layout
-        CreateButton.setPreferredSize(new Dimension(160, 40));
-        CreateButton.setFont(new Font("Dialog", Font.BOLD, 15));
-        CreateButton.setFocusPainted(false);
-
-        initDeckContainer();
-        // IMPORTANT: keep Create visible always
-        CreateButton.setVisible(true);
-
-        setSize(1285, 760);
         this.currentUser = user;
-        ACTIVE_DASHBOARD = this; // track this dashboard
-        wireMenuActions();
+        // === MVC Wiring: Create and connect controller ===
+    this.controller = new DashboardController(this, user);
+    
+    // Style Create button
+    CreateButton.setPreferredSize(new Dimension(160, 40));
+    CreateButton.setFont(new Font("Dialog", Font.BOLD, 15));
+    CreateButton.setFocusPainted(false);
+    CreateButton.setVisible(true);
+    
+    initDeckContainer();
+    setSize(1285, 760);
+    
+    // Wire UI events to controller
+    wireButtonActions();
+    wireMenuActions();      
+ }
 
-        // Load saved decks so they persist
-        loadDecksFromStorage();
+public Dashboard() {
+    this(null);// fallback to no user
+    }
+private void wireButtonActions() {
+        CreateButton.addActionListener(e -> controller.handleCreateDeck());
+    
+    // If you add more buttons later (e.g., Library, Home), wire them here too
     }
 
-    /** No-arg constructor (needed for GUI builder or fallback) */
-    public Dashtwo() {
-        initComponents();
-
-        CreateButton.setPreferredSize(new Dimension(160, 40));
-        CreateButton.setFont(new Font("Dialog", Font.BOLD, 15));
-        CreateButton.setFocusPainted(false);
-
-        initDeckContainer();
-        // IMPORTANT: keep Create visible always
-        CreateButton.setVisible(true);
-
-        setSize(1285, 760);
-        this.currentUser = null; // fallback
-        ACTIVE_DASHBOARD = this; // track this dashboard
-        wireMenuActions();
-
-        // Load saved decks so they persist
-        loadDecksFromStorage();
-    }
-
-    // Getter for the active dashboard
-    public static Dashtwo getActiveDashboard() { return ACTIVE_DASHBOARD; }
-
-    /** Centralized wiring of menu actions to avoid duplication */
-    private void wireMenuActions() {
+public void wireMenuActions() {
         isDarkMode = false;
 
-        if (darkModeMenuItem != null) darkModeMenuItem.addActionListener(e -> toggleDarkMode());
-        if (fontSizeMenuItem != null) fontSizeMenuItem.addActionListener(e -> showFontSizeOptions());
-        if (studyHistoryMenuItem != null) studyHistoryMenuItem.addActionListener(e -> openStudyHistory());
-        if (logoutMenuItem != null) logoutMenuItem.addActionListener(e -> logout());
-        if (accountMenuItem != null) accountMenuItem.addActionListener(e -> openUserBasedFlashcardOwnership());
+    if (darkModeMenuItem != null) 
+        darkModeMenuItem.addActionListener(e -> controller.toggleDarkMode());
+    
+    if (fontSizeMenuItem != null) 
+        fontSizeMenuItem.addActionListener(e -> showFontSizeOptions()); // Keep this in View (pure UI)
+    
+    if (studyHistoryMenuItem != null) 
+        studyHistoryMenuItem.addActionListener(e -> controller.openStudyHistory());
+    
+    if (logoutMenuItem != null) 
+        logoutMenuItem.addActionListener(e -> controller.logout());
+    
+    if (accountMenuItem != null) 
+        accountMenuItem.addActionListener(e -> controller.openAccountPage());
     }
 
-    // === Navigation/actions ===
-    private void openUserBasedFlashcardOwnership() {
-        if (accountPopupMenu != null) {
-            accountPopupMenu.setVisible(false);
-        }
-        UserBasedFlashcardOwnership page = new UserBasedFlashcardOwnership(currentUser, this);
-        page.setVisible(true);
-        this.setVisible(false); // hide dashboard while account page is open
-    }
-
-    private void logout() {
-        int confirm = JOptionPane.showConfirmDialog(
-                this,
-                "Are you sure you want to log out?",
-                "Logout",
-                JOptionPane.YES_NO_OPTION
-        );
-
-        if (confirm == JOptionPane.YES_OPTION) {
-            this.dispose();
-            SwingUtilities.invokeLater(() -> {
-                Login loginView = new Login();
-                LoginController controller = new LoginController(loginView);
-                controller.open();
-            });
-        }
-    }
-
-    // === UI behavior ===
-    private void toggleDarkMode() {
+public void toggleDarkMode() {
         isDarkMode = !isDarkMode;
         if (isDarkMode) {
             getContentPane().setBackground(new java.awt.Color(30, 30, 30));
@@ -198,33 +129,8 @@ public class Dashtwo extends javax.swing.JFrame {
             default -> { /* no change */ }
         }
     }
-
-    private void openStudyHistory() {
-        JOptionPane.showMessageDialog(
-                this,
-                "Study History feature coming soon will be done by Bipin!",
-                "Study History",
-                JOptionPane.INFORMATION_MESSAGE
-        );
-    }
-        // === Create button clicks ===
-
-    
-    private void openNewDeckDialog() {
-        NewDeckDialog dialog = new NewDeckDialog(this, true, currentUser);
-        dialog.setLocationRelativeTo(this); // center on Dashtwo frame
-        dialog.setVisible(true);
-    
-        }
     
     
-    private void openStudycards2() {
-        
-    }
-    
-    
-    
-    // === Deck area setup using scrollPane1 ===
     private void initDeckContainer() {
         deckContainer = new JPanel();
         deckContainer.setLayout(new BoxLayout(deckContainer, BoxLayout.Y_AXIS));
@@ -302,20 +208,27 @@ public class Dashtwo extends javax.swing.JFrame {
 
         topPanel1.setBackground(new java.awt.Color(255, 255, 255));
         topPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        topPanel1.setLayout(null);
 
         Home_Button.setBackground(new java.awt.Color(254, 254, 254));
         Home_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Home_Button.setText("Home");
         Home_Button.setBorder(null);
         Home_Button.addActionListener(this::Home_ButtonActionPerformed);
+        topPanel1.add(Home_Button);
+        Home_Button.setBounds(190, 21, 60, 20);
 
         Logo_label.setBackground(new java.awt.Color(254, 254, 254));
         Logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/122.png"))); // NOI18N
+        topPanel1.add(Logo_label);
+        Logo_label.setBounds(100, 1, 80, 65);
 
         Library_Button.setBackground(new java.awt.Color(254, 254, 254));
         Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Library_Button.setText("Library");
         Library_Button.setBorder(null);
+        topPanel1.add(Library_Button);
+        Library_Button.setBounds(280, 11, 70, 40);
 
         accountButton.setBackground(new java.awt.Color(254, 254, 254));
         accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/13_1.png"))); // NOI18N
@@ -326,36 +239,10 @@ public class Dashtwo extends javax.swing.JFrame {
             }
         });
         accountButton.addActionListener(this::accountButtonActionPerformed);
-
-        javax.swing.GroupLayout topPanel1Layout = new javax.swing.GroupLayout(topPanel1);
-        topPanel1.setLayout(topPanel1Layout);
-        topPanel1Layout.setHorizontalGroup(
-            topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanel1Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(Logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 774, Short.MAX_VALUE)
-                .addComponent(accountButton)
-                .addGap(144, 144, 144))
-        );
-        topPanel1Layout.setVerticalGroup(
-            topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanel1Layout.createSequentialGroup()
-                .addGroup(topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Logo_label)
-                    .addGroup(topPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(topPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(accountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        topPanel1.add(accountButton);
+        accountButton.setBounds(1124, 1, 61, 65);
+        topPanel1.add(scrollbar2);
+        scrollbar2.setBounds(0, 0, 0, 0);
 
         getContentPane().add(topPanel1);
         topPanel1.setBounds(0, 0, 1330, 70);
@@ -408,10 +295,6 @@ public class Dashtwo extends javax.swing.JFrame {
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
-        // TODO add your handling code here:
-     // ✅ Just call the helper method
-    openNewDeckDialog();
-
 
     }//GEN-LAST:event_CreateButtonActionPerformed
 
@@ -443,59 +326,25 @@ public class Dashtwo extends javax.swing.JFrame {
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
 
-    
-    void addDeckButton(String deckName, int deckId) {
-    JButton deckButton = new JButton(deckName);
-    deckButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-    deckButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
-    deckButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
-    deckButton.setFocusPainted(false);
+public void clearDeckDisplay() {
+        deckContainer.removeAll();
+        deckContainer.revalidate();
+        deckContainer.repaint();
+    }    
+public void addDeckButton(String deckName, int deckId) {
+        JButton deckButton = new JButton(deckName);
+        deckButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        deckButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
+        deckButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        deckButton.setFocusPainted(false);
 
-    deckButton.addActionListener(e -> {
-    Studycards2 studyPage = new Studycards2(deckId, deckName, currentUser);
-    studyPage.setVisible(true);
-    });
+        deckButton.addActionListener(e -> controller.openDeck(deckId, deckName));
 
-    deckContainer.add(deckButton);
-    deckContainer.add(Box.createVerticalStrut(10));
-    deckButtons.add(deckButton);
-
-    deckContainer.revalidate();
-    deckContainer.repaint();
-
-    }
-    
-    // Example: store decks in a simple text file decks.txt
-void saveDeckToStorage(int deckId, String deckName) {
-    try (FileWriter fw = new FileWriter("decks.txt", true);
-             BufferedWriter bw = new BufferedWriter(fw);
-             PrintWriter out = new PrintWriter(bw)) {
-            // Save compact, clean CSV
-            out.println(deckId + "," + deckName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-private void loadDecksFromStorage() {
-    File file = new File("decks.txt");
-        if (!file.exists()) return;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",", 2);
-                if (parts.length == 2) {
-                    int deckId = Integer.parseInt(parts[0].trim());
-                    String deckName = parts[1].trim();
-                    addDeckButton(deckName, deckId);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+        deckContainer.add(deckButton);
+        deckContainer.add(Box.createVerticalStrut(10));
+        deckContainer.revalidate();
+        deckContainer.repaint();
+    }   
 }
 
 
