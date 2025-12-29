@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import model.UserModel;
-import view.Dashtwo;
+import view.Dashboard;
 import view.Login;
 import view.Signup;
 import view.AdminDashboard;   // ✅ import AdminDashboard
@@ -14,7 +14,7 @@ public class LoginController {
 
     private final Login loginView;
     private final UserDao userDao = new UserDao();
-//    private final Dashtwo dashtwoView;
+//    private final Dashboard dashtwoView;
 //    private final Signup signupView;
 //    private final AdminDashboard adminDashboardView; // ✅ add admin dashboard
 
@@ -22,10 +22,11 @@ public class LoginController {
     private final int MAX_ATTEMPTS = 5;
     private long lockoutEndTime = 0;
     private boolean forgotInProgress = false;
+    private final Dashboard view;
 
-    public LoginController(Login loginView) {
+    public LoginController(Login loginView, Dashboard view) {
         this.loginView = loginView;
-//        this.dashtwoView = dashtwoView;
+        this.view = view;
 //        this.signupView = signupView;
 //        this.adminDashboardView = adminDashboardView;
 
@@ -34,8 +35,12 @@ public class LoginController {
         loginView.CreateAccountButtonListener(new CreateAccountButtonListener());
     }
 
-    public void open() { loginView.setVisible(true); }
-    public void close() { loginView.dispose(); }
+    public void open() { 
+        this.loginView.setVisible(true); 
+    }
+    public void close() { 
+        this.loginView.dispose(); 
+    }
 
     private void setLoginEnabled(boolean enabled) {
         loginView.getUsernameField().setEnabled(enabled);
@@ -119,9 +124,9 @@ public class LoginController {
             if (user != null) {
                 JOptionPane.showMessageDialog(loginView, "Login successful!");
                 userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
-              Dashtwo dash = new Dashtwo();
+              Dashboard view = new Dashboard();
               close();
-              DashtwoController dashCon = new DashtwoController(dash);
+              DashboardController dashCon = new DashboardController(view);
               dashCon.open();
             }
         }

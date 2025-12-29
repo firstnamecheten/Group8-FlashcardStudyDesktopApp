@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.UserModel;
+import view.Dashboard;
 import view.Signup;
 import view.Login;
 
@@ -28,20 +29,22 @@ public class UserController {
     
 
     public void open() {
-        signupView.setVisible(true);
+        this.signupView.setVisible(true);
     }
 
     public void close() {
-        signupView.dispose();
+        this.signupView.dispose();
     }
 
     // 🔹 When user clicks "Login" button on Signup page
     private class LoginListener implements ActionListener {
+
+        private Dashboard view;
         @Override
         public void actionPerformed(ActionEvent e) {
-            Login log = new Login();
+            Login loginView = new Login();
             close();
-            LoginController controller = new LoginController(log);      // Attach controller
+            LoginController controller = new LoginController(loginView, view);      // Attach controller
             controller.open();  
             
             
@@ -51,6 +54,8 @@ public class UserController {
 
     // 🔹 When user clicks "Signup" button
     private class SignUpListener implements ActionListener {
+
+        private boolean check;
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
@@ -78,15 +83,16 @@ public class UserController {
                 // Create model
                 UserModel usermodel = new UserModel(username, password, confirmPassword);    // look from here 
                 // Check if user already exists
-                if (userDao.check(usermodel)) {
+                if(check) {
                     JOptionPane.showMessageDialog(signupView, "User already exists!");
                     return;
-                }
+                }else{
 
                 // Save user
                 userDao.signup(usermodel);
                 JOptionPane.showMessageDialog(signupView, "Signup successful!");        // ✓ Success message
-
+                }
+                
             } catch (Exception ex) {
                 ex.printStackTrace(); // optional for debugging
                 JOptionPane.showMessageDialog(signupView, "Signup failed!");

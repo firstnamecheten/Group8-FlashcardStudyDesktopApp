@@ -283,16 +283,16 @@ public class Filterby extends javax.swing.JFrame {
         // Close this flashcards window
         this.dispose();
 
-        // Open the Dashtwo dashboard again
-        Dashtwo dashboard = new Dashtwo(currentUser); // pass currentUser if needed
+        // Open the Dashboard dashboard again
+        Dashboard dashboard = new Dashboard(currentUser); // pass currentUser if needed
         dashboard.setVisible(true);
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
         // TODO add your handling code here:
-        // Same behavior for arrow/tick button: go back to Dashtwo
+        // Same behavior for arrow/tick button: go back to Dashboard
         this.dispose();
-        Dashtwo dashboard = new Dashtwo(currentUser);
+        Dashboard dashboard = new Dashboard(currentUser);
         dashboard.setVisible(true);
     }//GEN-LAST:event_NextButtonActionPerformed
 

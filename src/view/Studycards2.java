@@ -15,7 +15,7 @@ import model.UserModel;
 public class Studycards2 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Studycards2.class.getName());
-    private Dashtwo originalDashtwo;
+    private Dashboard originalDashtwo;
     private UserModel currentUser;
    
     /**
@@ -34,7 +34,7 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
         setLocationRelativeTo(null); // ✅ center on screen
     }
 
-    public Studycards2(Dashtwo aThis, UserModel user) {
+    public Studycards2(Dashboard aThis, UserModel user) {
         this.dashtwoView = dashtwoView;   // 🔑 keep reference
         this.currentUser = user;
         initComponents();
@@ -235,7 +235,7 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);              // hide StudyCards2
-        originalDashtwo.setVisible(true);    // show original Dashtwo
+        originalDashtwo.setVisible(true);    // show original Dashboard
 
 
         

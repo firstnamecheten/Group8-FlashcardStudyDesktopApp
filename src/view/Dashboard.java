@@ -23,14 +23,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import view.Login;
 
-public class Dashtwo extends javax.swing.JFrame {
+public class Dashboard extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dashtwo.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dashboard.class.getName());
 //
 //    private JPanel mainPanel;
 //    private CardLayout cardLayout;
 //    // Track the currently active dashboard
-//    private static Dashtwo ACTIVE_DASHBOARD;
+//    private static Dashboard ACTIVE_DASHBOARD;
 //    private boolean isDarkMode;
 //    private final UserModel currentUser = null;
 //        // Keep track of the current logged-in user
@@ -40,7 +40,7 @@ public class Dashtwo extends javax.swing.JFrame {
 //        private int createdDeckId = -1;
 //        private final Login loginView = null;
 //
-//        private Dashtwo dashtwoView;
+//        private Dashboard dashtwoView;
 //        public int getCreatedDeckId() { return createdDeckId; }
 //
 //        private JButton createButton;
@@ -53,12 +53,12 @@ public class Dashtwo extends javax.swing.JFrame {
 //        private JPanel deckContainer;
 //
 //        // Controls whether we auto-open CreateFlashcards after creating a deck
-//        private boolean openFlashcardsOnCreate = false; // default: stay on Dashtwo
+//        private boolean openFlashcardsOnCreate = false; // default: stay on Dashboard
 //        private Studycards2 studyPage;   // 🔑 keep one reference
 
     // === Constructors ===
     /** Creates new form Dashtwo (preferred: with user context) */
-    public Dashtwo() {
+    public Dashboard() {
 //       initComponents();
 //        this.currentUser = currentUser;
 //        
@@ -104,7 +104,7 @@ public class Dashtwo extends javax.swing.JFrame {
     }
 
     // Getter for the active dashboard
-//    public static Dashtwo getActiveDashboard() { return ACTIVE_DASHBOARD; }
+//    public static Dashboard getActiveDashboard() { return ACTIVE_DASHBOARD; }
 //
 //    /** Centralized wiring of menu actions to avoid duplication */
 //    private void wireMenuActions() {
@@ -216,7 +216,7 @@ public class Dashtwo extends javax.swing.JFrame {
 //    
 //    private void openNewDeckDialog() {
 //        NewDeckDialog dialog = new NewDeckDialog(this, true, currentUser);
-//        dialog.setLocationRelativeTo(this); // center on Dashtwo frame
+//        dialog.setLocationRelativeTo(this); // center on Dashboard frame
 //        dialog.setVisible(true);
 //    
 //        }
@@ -248,7 +248,7 @@ public class Dashtwo extends javax.swing.JFrame {
 //    
 //    // Entry point if this frame is run directly
 //    public static void main(String[] args) {
-//         java.awt.EventQueue.invokeLater(() -> new Dashtwo().setVisible(true));
+//         java.awt.EventQueue.invokeLater(() -> new Dashboard().setVisible(true));
 //        }
 //    
 
@@ -454,10 +454,10 @@ public class Dashtwo extends javax.swing.JFrame {
 //    deckButton.setFocusPainted(false);
 //
 //    deckButton.addActionListener(e -> {
-//    this.setVisible(false);       // hide Dashtwo
+//    this.setVisible(false);       // hide Dashboard
 //    studyPage.setVisible(true);   // show StudyCards2
 //    studyPage.loadDeck(deckId, deckName); // optional: tell StudyCards2 which deck
-//    cardLayout.show(mainPanel, "Dashtwo");  // after signup success
+//    cardLayout.show(mainPanel, "Dashboard");  // after signup success
 //    cardLayout.show(mainPanel, "Studycards2"); // if user clicks "Create Account"
 //    });
 //    

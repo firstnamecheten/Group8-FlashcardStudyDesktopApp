@@ -5,7 +5,7 @@ import model.UserModel;
 import dao.UserDao;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import view.Dashtwo;
+import view.Dashboard;
 
    
 
@@ -16,7 +16,7 @@ import view.Dashtwo;
 
     // ✅ Add this field to store the logged-in user
     private final UserModel currentUser;
-    private final Dashtwo dashtwoView;
+    private final Dashboard dashtwoView;
     private UserModel user;
     private JTextField username_text_field;
     private JTextField userId_text_field;
@@ -32,7 +32,7 @@ import view.Dashtwo;
     }
 
     /** Preferred constructor with user context */
-    public UserBasedFlashcardOwnership(UserModel currentUser, Dashtwo dashtwoView) {
+    public UserBasedFlashcardOwnership(UserModel currentUser, Dashboard dashtwoView) {
     initComponents();
     setSize(1285, 760);
     this.currentUser = currentUser;
