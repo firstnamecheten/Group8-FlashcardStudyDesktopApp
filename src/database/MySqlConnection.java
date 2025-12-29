@@ -22,7 +22,7 @@ public class MySqlConnection implements Database{
 
             String username = "root";
 
-            String password = "rootpassword";
+            String password = "";
 
             String database = "database_connection";
 
