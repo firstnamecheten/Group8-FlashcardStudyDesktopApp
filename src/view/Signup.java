@@ -5,6 +5,7 @@
 package view;
 
 
+import controller.LoginController;
 import controller.UserController;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -308,10 +309,7 @@ public class Signup extends javax.swing.JFrame {
 
     private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
         // TODO add your handling code here:
-        Login loginView = new Login();
-        controller.LoginController lc = new controller.LoginController(loginView);
-        lc.open();
-        this.dispose();
+        
 
 
     }//GEN-LAST:event_Login_ButtonActionPerformed
@@ -354,11 +352,11 @@ public class Signup extends javax.swing.JFrame {
     /**
      * @param args
      */
- public static void main(String args[]) {
-    java.awt.EventQueue.invokeLater(() -> {
-        Signup view = new Signup();               // Create only ONE Signup view
-        UserController controller = new UserController(view); // Attach controller
-        view.setVisible(true);                    // Show the same view
+    public static void main(String args[]) {
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new Signup().setVisible(true);
+        }
     });
 }
 

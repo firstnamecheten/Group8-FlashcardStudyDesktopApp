@@ -56,4 +56,5 @@ public class UserModel {
     public void setconfirmpassword(String confirmpassword) {
         this.confirmpassword = confirmpassword;
     }
+
 }

@@ -217,7 +217,21 @@ public class Sides2 extends JFrame {
     private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
         // TODO add your handling code here:
 
+
     }//GEN-LAST:event_accountButtonActionPerformed
+
+        
+        // Close this window (return to deck screen)
+    private void goBackToDeck() {
+        studyPage.setVisible(true);
+        sides.setVisible(false);
+    
+    }                                        
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+         goBackToDeck();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
      public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new Sides2().setVisible(true));
     }

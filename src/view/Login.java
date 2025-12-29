@@ -16,7 +16,8 @@ import javax.swing.JButton;
 public class Login extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
-
+       
+    
     /**
      * Creates new form login
      */
@@ -24,8 +25,11 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setSize(1285,760);
         
+        
 
     }
+
+   
     
 
     /**
@@ -303,20 +307,18 @@ public class Login extends javax.swing.JFrame {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
+    
+  
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void CreateAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateAccountButtonActionPerformed
-        // TODO add your handling code here:
-        Signup signupView = new Signup();                      // Create signup window
-        UserController SignupController = new UserController(signupView);  
-        signupView.setVisible(true);                           // Show signup page
-        this.dispose();                         
+        // TODO add your handling code here: 
+    
     }//GEN-LAST:event_CreateAccountButtonActionPerformed
 
     private void ForgotPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForgotPasswordButtonActionPerformed
         // TODO add your handling code here:
-        LoginController controller = new LoginController(this);
-        
+       
     }//GEN-LAST:event_ForgotPasswordButtonActionPerformed
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
@@ -340,34 +342,19 @@ public class Login extends javax.swing.JFrame {
     } else {
         password_field.setEchoChar('*');     // hide text
       
-    }
+        }
     }//GEN-LAST:event_show_passwordActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new Login().setVisible(true);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
-    }
-
+    });
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreateAccountButton;
     private javax.swing.JButton ForgotPasswordButton;
