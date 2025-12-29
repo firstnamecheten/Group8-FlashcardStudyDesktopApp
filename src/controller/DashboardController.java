@@ -7,7 +7,6 @@ import model.deck;
 import model.UserModel;
 import view.Dashboard;
 import view.NewDeckDialog;
-import view.Studycards2;
 import view.UserBasedFlashcardOwnership;
 
 import javax.swing.*;

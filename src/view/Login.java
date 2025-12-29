@@ -292,11 +292,11 @@ public class Login extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(350, 0, 940, 750);
+        jPanel2.setBounds(350, -110, 940, 860);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
