@@ -25,6 +25,8 @@ public class UserController {
 
     }
 
+    
+
     public void open() {
         signupView.setVisible(true);
     }
@@ -76,7 +78,7 @@ public class UserController {
                 // Create model
                 UserModel usermodel = new UserModel(username, password, confirmPassword);    // look from here 
                 // Check if user already exists
-                if (userDao.checkUser(usermodel)) {
+                if (userDao.check(usermodel)) {
                     JOptionPane.showMessageDialog(signupView, "User already exists!");
                     return;
                 }
@@ -85,10 +87,6 @@ public class UserController {
                 userDao.signup(usermodel);
                 JOptionPane.showMessageDialog(signupView, "Signup successful!");        // ✓ Success message
 
-                // 🔹 After signup, immediately switch to Login page
-                loginView.setVisible(true);          // show original Login
-                signupView.setVisible(false);        // hide original Signup
-                
             } catch (Exception ex) {
                 ex.printStackTrace(); // optional for debugging
                 JOptionPane.showMessageDialog(signupView, "Signup failed!");
@@ -97,4 +95,6 @@ public class UserController {
     }
 }
          
+
+      
 

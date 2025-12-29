@@ -32,7 +32,7 @@ public class UserDao {
     }
 
     // CHECK DUPLICATE USER
-    public boolean checkUser(UserModel user) {
+    public boolean check(UserModel user) {
         Connection conn = mysql.openConnection();
         String sql = "SELECT * FROM signup_history WHERE username = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {

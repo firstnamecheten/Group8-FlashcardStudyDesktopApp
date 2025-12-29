@@ -31,7 +31,7 @@ public class LoginController {
 
         loginView.LoginButtonListener(new LoginButtonListener());
         loginView.ForgotPasswordButtonListener(new ForgotPasswordButtonListener());
-//        loginView.CreateAccountButtonListener(new CreateAccountButtonListener());
+        loginView.CreateAccountButtonListener(new CreateAccountButtonListener());
     }
 
     public void open() { loginView.setVisible(true); }
@@ -107,9 +107,10 @@ public class LoginController {
             // ✅ Check for Admin login first
             if (username.equals("Admin") && password.equals("1234")) {
                 JOptionPane.showMessageDialog(loginView, "Admin login successful!");
-//                adminDashboardView.setVisible(true);
-                loginView.setVisible(false);
-                return;
+                AdminDashboard admindashboardView = new AdminDashboard();
+                close();
+ //               AdminDashboardController adminDashboardView = new AdminDashboardController(adminDashboardView);
+ //               adminDashboardView.open();
             }
 
             // ✅ Otherwise, normal user login
@@ -142,12 +143,16 @@ public class LoginController {
     }
 
     // ================= CREATE ACCOUNT =================
-//    public class CreateAccountButtonListener implements ActionListener {
-//        public void actionPerformed(ActionEvent e) {
-//            signupView.setVisible(true);
-//            loginView.setVisible(false);
-//        }
-//    }
+    class CreateAccountButtonListener implements ActionListener {
+       
+      public void actionPerformed(ActionEvent e) {
+            Signup signupView = new Signup();
+            close();
+            UserController uc = new UserController(signupView, loginView);      // Attach controller
+            uc.open(); 
+           
+        }
+   }
 
     // ================= FORGOT PASSWORD LOGIC =================
     private void handleForgotPassword() {

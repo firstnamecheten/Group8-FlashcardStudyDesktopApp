@@ -17,8 +17,8 @@ public class Group8_FlashcardStudyDesktopApp {
     private static Login loginView;
     
     public static void main(String[] args){
-        Signup signupView = new Signup();
-        UserController uc = new UserController(signupView, loginView);   // aba open gara signup page bhaneko
+        Signup userView = new Signup();
+        UserController uc = new UserController(userView, loginView);   // aba open gara signup page bhaneko
         uc.open();
     }
 }
