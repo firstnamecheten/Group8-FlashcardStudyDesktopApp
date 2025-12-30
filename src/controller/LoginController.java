@@ -1,6 +1,7 @@
 package controller;
 
 import dao.UserDao;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -14,7 +15,7 @@ public class LoginController {
 
     private final Login loginView;
     private final UserDao userDao = new UserDao();
-//    private final Dashtwo dashtwoView;
+  
 //    private final Signup signupView;
 //    private final AdminDashboard adminDashboardView; // ✅ add admin dashboard
 
@@ -25,7 +26,7 @@ public class LoginController {
 
     public LoginController(Login loginView) {
         this.loginView = loginView;
-//        this.dashtwoView = dashtwoView;
+        
 //        this.signupView = signupView;
 //        this.adminDashboardView = adminDashboardView;
 
@@ -34,8 +35,12 @@ public class LoginController {
         loginView.CreateAccountButtonListener(new CreateAccountButtonListener());
     }
 
-    public void open() { loginView.setVisible(true); }
-    public void close() { loginView.dispose(); }
+    public void open() { 
+        loginView.setVisible(true); 
+    }
+    public void close() { 
+        loginView.dispose(); 
+    }
 
     private void setLoginEnabled(boolean enabled) {
         loginView.getUsernameField().setEnabled(enabled);
@@ -90,44 +95,9 @@ public class LoginController {
     }
 
     // ================= LOGIN BUTTON =================
-    class LoginButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String username = loginView.getUsernameField().getText().trim();
-            String password = loginView.getPasswordField().getText().trim();
-
-            if (username.equalsIgnoreCase("Enter the username")) username = "";
-            if (password.equalsIgnoreCase("Enter the password")) password = "";
-
-            if (username.isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(loginView, "All fields are required!");
-                return;
-            }
-
-            // ✅ Check for Admin login first
-            if (username.equals("Admin") && password.equals("1234")) {
-                JOptionPane.showMessageDialog(loginView, "Admin login successful!");
-                AdminDashboard admindashboardView = new AdminDashboard();
-                close();
- //               AdminDashboardController adminDashboardView = new AdminDashboardController(adminDashboardView);
- //               adminDashboardView.open();
-            }
-
-            // ✅ Otherwise, normal user login
-            UserModel user = tryLogin(username, password);
-
-<<<<<<< HEAD
-    } else {
-        JOptionPane.showMessageDialog(
-                loginView,
-                "Wrong username or password! Attempt " + loginAttempts + " of " + MAX_ATTEMPTS
-        );
-    }
-
-    return null;
-}
-
 class LoginButtonListener implements ActionListener {
+
+        private Component adminDashboardView;
     @Override
     public void actionPerformed(ActionEvent e) {
         String username = loginView.getUsernameField().getText().trim();
@@ -139,33 +109,30 @@ class LoginButtonListener implements ActionListener {
         if (username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(loginView, "All fields are required!");
             return;
-        }
-
-        UserModel user = tryLogin(username, password);
-
-        if (user != null) {
-            // ✅ Success popup appears only once here
-            JOptionPane.showMessageDialog(loginView, "Login successful!");
-            userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
-
-            Dashboard d = new Dashboard(user);
-            d.setVisible(true);
-            loginView.dispose();
-        }
+            }
+        
+        if (username.equals("Admin") && password.equals('1234')){
+            JOptionPane.showMessageDialog(adminDashboardView, "Admin Login successful!");
+            Login loginView = new Login();
+            close();
+            AdminDashboardController adcontroller = new AdminDashboardController(adminDashboardView);      // Attach controller
+            controller.open();  
     }
-    }
-=======
+        
+          // ✅ Otherwise, normal user login
+            UserModel user = tryLogin(username, password);
+            
             if (user != null) {
                 JOptionPane.showMessageDialog(loginView, "Login successful!");
                 userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
-              Dashtwo dash = new Dashtwo();
+              Dashboard view = new Dashboard();
               close();
-              DashtwoController dashCon = new DashtwoController(dash);
+              DashboardController dashCon = new DashboardController(view);
               dashCon.open();
             }
         }
     }
->>>>>>> c778b68b4ab2c8d6a992dc294c61880f7b149a5c
+
 
     // ================= FORGOT PASSWORD BUTTON =================
     class ForgotPasswordButtonListener implements ActionListener {
@@ -188,7 +155,7 @@ class LoginButtonListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
             Signup signupView = new Signup();
             close();
-            UserController uc = new UserController(signupView, loginView);      // Attach controller
+            UserController uc = new UserController(signupView);      // Attach controller
             uc.open(); 
            
         }
@@ -233,36 +200,7 @@ class LoginButtonListener implements ActionListener {
         userDao.updatePassword(user);
 
         JOptionPane.showMessageDialog(loginView, "Password updated successfully!");
-    }
-<<<<<<< HEAD
     
-    class AdminLoginButtonListener implements ActionListener {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String username = loginView.getUsernameField().getText().trim();
-        String password = loginView.getPasswordField().getText().trim();
-
-        if (username.equalsIgnoreCase("Enter the username")) username = "";
-        if (password.equalsIgnoreCase("Enter the password")) password = "";
-
-        if (username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(loginView, "All fields are required!");
-            return;
-        }
-
-        UserModel user = tryLogin(username, password);
-
-        if (user != null) {
-            // ✅ Success popup appears only once here
-            JOptionPane.showMessageDialog(loginView, "Login successful!");
-            userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
-
-            Dashboard d = new Dashboard(user);
-            d.setVisible(true);
-            loginView.dispose();
-        }
     }
-    }
-=======
->>>>>>> c778b68b4ab2c8d6a992dc294c61880f7b149a5c
 }
+

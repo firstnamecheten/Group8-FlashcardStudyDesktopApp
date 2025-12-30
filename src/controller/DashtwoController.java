@@ -4,22 +4,22 @@
  */
 package controller;
 
-import view.Dashtwo;
+import view.Dashboard;
 
 /**
  *
  * @author LENOVO
  */
 public class DashtwoController {
-    private final Dashtwo dash;
-    public DashtwoController(Dashtwo dash){
-        this.dash = dash;
+    private final Dashboard view;
+    public DashtwoController(Dashboard view){
+        this.view = view;
     }
     
     public void open(){
-        this.dash.setVisible(true);
+        this.view.setVisible(true);
     }
     public void close (){
-        this.dash.dispose();
+        this.view.dispose();
     }
 }

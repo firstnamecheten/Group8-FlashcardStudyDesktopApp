@@ -5,46 +5,45 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.UserModel;
+import view.Dashboard;
 import view.Signup;
 import view.Login;
 
 public class UserController {
 
     private final UserDao userDao = new UserDao();
-    private final Signup signupView;
-    private final Login loginView;
+
+    private final Signup userView;
     
     //Constructor
-    public UserController(Signup signupView, Login loginView) {
-        this.signupView = signupView;
-        this.loginView = loginView;
+    public UserController(Signup userView) {
+        this.userView = userView;
+ 
         
         // Register listeners for buttons in Signup view
-        signupView.AddUserListener(new SignUpListener());   // handles signup button
-        signupView.LoginButtonListener(new LoginListener()); // handles "Go to Login" button
+        userView.AddUserListener(new SignUpListener());   // handles signup button
+        userView.LoginButtonListener(new LoginListener()); // handles "Go to Login" button
 
     }
 
     
 
     public void open() {
-        signupView.setVisible(true);
+        userView.setVisible(true);
     }
 
     public void close() {
-        signupView.dispose();
+        userView.dispose();
     }
 
     // 🔹 When user clicks "Login" button on Signup page
     private class LoginListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Login log = new Login();
+            Login loginView = new Login();
             close();
-            LoginController controller = new LoginController(log);      // Attach controller
+            LoginController controller = new LoginController(loginView);      // Attach controller
             controller.open();  
-            
-            
             
         }
     }
@@ -54,9 +53,9 @@ public class UserController {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                String username = signupView.getUsernameField().getText().trim();
-                String password = signupView.getPasswordField().getText().trim();
-                String confirmPassword = signupView.getConfirmPasswordField().getText().trim();
+                String username = userView.getUsernameField().getText().trim();
+                String password = userView.getPasswordField().getText().trim();
+                String confirmPassword = userView.getConfirmPasswordField().getText().trim();
 
                 // Treat placeholders as empty
                 if (username.startsWith(" Enter")) username = " ";
@@ -65,13 +64,13 @@ public class UserController {
 
                 // Required fields check
                 if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                    JOptionPane.showMessageDialog(signupView, "All fields are required!");
+                    JOptionPane.showMessageDialog(userView, "All fields are required!");
                     return;
                 }
 
                 // Password match check
                 if (!password.equals(confirmPassword)) {
-                    JOptionPane.showMessageDialog(signupView, "Passwords do not match!");
+                    JOptionPane.showMessageDialog(userView, "Passwords do not match!");
                     return;
                 }
 
@@ -79,17 +78,22 @@ public class UserController {
                 UserModel usermodel = new UserModel(username, password, confirmPassword);    // look from here 
                 // Check if user already exists
                 if (userDao.check(usermodel)) {
-                    JOptionPane.showMessageDialog(signupView, "User already exists!");
+                    JOptionPane.showMessageDialog(userView, "User already exists!");
                     return;
                 }
 
                 // Save user
                 userDao.signup(usermodel);
-                JOptionPane.showMessageDialog(signupView, "Signup successful!");        // ✓ Success message
+                JOptionPane.showMessageDialog(userView, "Signup successful!");        // ✓ Success message
+                Login loginView = new Login();
+                close();
+                LoginController controller = new LoginController(loginView);      // Attach controller
+                controller.open();  
+                
 
             } catch (Exception ex) {
                 ex.printStackTrace(); // optional for debugging
-                JOptionPane.showMessageDialog(signupView, "Signup failed!");
+                JOptionPane.showMessageDialog(userView, "Signup failed!");
             }
         }
     }

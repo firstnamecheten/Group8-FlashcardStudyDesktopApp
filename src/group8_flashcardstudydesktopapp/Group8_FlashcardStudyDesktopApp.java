@@ -5,7 +5,9 @@
 package group8_flashcardstudydesktopapp;
 
 import controller.UserController;
-import view.Login;
+import database.Database;
+import database.MySqlConnection;
+
 import view.Signup;
 
 /**
@@ -14,11 +16,11 @@ import view.Signup;
  */
 public class Group8_FlashcardStudyDesktopApp {
 
-    private static Login loginView;
     
     public static void main(String[] args){
+    
         Signup userView = new Signup();
-        UserController uc = new UserController(userView, loginView);   // aba open gara signup page bhaneko
+        UserController uc = new UserController(userView);   // aba open gara signup page bhaneko
         uc.open();
     }
 }

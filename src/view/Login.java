@@ -4,7 +4,6 @@
  */
 package view;
 
-import controller.LoginController;
 import controller.UserController;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;

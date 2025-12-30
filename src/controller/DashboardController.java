@@ -3,33 +3,52 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+
 import model.deck;
 import model.UserModel;
 import view.Dashboard;
 import view.NewDeckDialog;
-import view.UserBasedFlashcardOwnership;
+// import view.UserBasedFlashcardOwnership;
 
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.awt.EventQueue;  // or use javax.swing.SwingUtilities
-import controller.LoginController;  // for logout
 import view.Login;  // for restarting login
+
+
 public class DashboardController {
     private Dashboard view;
     private UserModel currentUser;
     private List<deck> decks;
     private int nextDeckId = 1;
-
-    public DashboardController(Dashboard view, UserModel currentUser) {
+    
+    
+    
+    public DashboardController(Dashboard view) {
         this.view = view;
         this.currentUser = currentUser;
         this.decks = new ArrayList<>();
         loadDecksFromFile();
         refreshDeckDisplay();
+        
+        
+        
+         // Register listeners for buttons in Signup view
+       
+        
+    }
+    
+    public void open() {
+        view.setVisible(true);
+    }
+
+    public void close() {
+        view.dispose();
     }
 
     // Called when user clicks "Create"
@@ -126,4 +145,5 @@ public class DashboardController {
             JOptionPane.showMessageDialog(view, "Error loading decks.");
         }
     }
+
 }

@@ -29,18 +29,14 @@ import view.Login;
 
 public class Dashboard extends javax.swing.JFrame {
     
-    private DashboardController controller;
     private boolean isDarkMode = false;
-    private final UserModel currentUser;
     private JPanel deckContainer;
 
     // === Constructors ===
-    public Dashboard(UserModel user) {
+    public Dashboard() {
         initComponents();
-        this.currentUser = user;
         // === MVC Wiring: Create and connect controller ===
-    this.controller = new DashboardController(this, user);
-    
+
     // Style Create button
     CreateButton.setPreferredSize(new Dimension(160, 40));
     CreateButton.setFont(new Font("Dialog", Font.BOLD, 15));
@@ -55,9 +51,6 @@ public class Dashboard extends javax.swing.JFrame {
     wireMenuActions();      
  }
 
-public Dashboard() {
-    this(null);// fallback to no user
-    }
 private void wireButtonActions() {
         CreateButton.addActionListener(e -> controller.handleCreateDeck());
     
@@ -594,6 +587,7 @@ public void addDeckButton(String deckName, int deckId) {
         deckContainer.revalidate();
         deckContainer.repaint();
     }   
+
 
 }
     
