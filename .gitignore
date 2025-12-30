@@ -3,3 +3,12 @@ dist/
 nbproject/private/
 build/
 *.class
+src/database
+# Ignore large binary assets
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.zip
+*.pdf
