@@ -1,6 +1,5 @@
-src/databasebuild/
-dist/
+
 nbproject/private/
 build/
-*.class
+
 src/database
