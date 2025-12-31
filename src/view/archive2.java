@@ -2,55 +2,19 @@ package view;
 
 
 
-public class Dashboard extends javax.swing.JFrame {
+public class archive2 extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger =
-            java.util.logging.Logger.getLogger(Dashboard.class.getName());
+            java.util.logging.Logger.getLogger(archive2.class.getName());
 
     // Track the currently active dashboard
  
     /** constructor (needed for GUI builder or fallback) */
-    public Dashboard() {
+    public archive2() {
         initComponents();
 
     }
 
-    private void showFontSizeOptions() {
-
-    }
-
-    private void openStudyHistory() {
-     
-    }
-        // === Create button clicks ===
-
-    
-    private void openNewDeckDialog() {
-       
-    
-        }
-    
-    
-    private void openStudycards2() {
-        
-    }
-    
-    
-    
-    // === Deck area setup using scrollPane1 ===
-    private void initDeckContainer() {
-  
-        
-    }
-
-
-
-
-    
-    // Entry point if this frame is run directly
-    public static void main(String[] args) {
- 
-    }
 
 
     /**
@@ -76,8 +40,9 @@ public class Dashboard extends javax.swing.JFrame {
         scrollbar2 = new java.awt.Scrollbar();
         Home_Label = new javax.swing.JLabel();
         CreateButton = new javax.swing.JButton();
-        DeckOrganizationButton = new javax.swing.JButton();
-        scrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        archivebtn = new javax.swing.JButton();
+        editbtn = new javax.swing.JButton();
 
         accountPopupMenu.setBackground(new java.awt.Color(102, 102, 102));
         accountPopupMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(200, 200, 200), new java.awt.Color(150, 150, 150), new java.awt.Color(80, 80, 82), new java.awt.Color(100, 100, 100)));
@@ -117,7 +82,7 @@ public class Dashboard extends javax.swing.JFrame {
         Logo_label.setBackground(new java.awt.Color(254, 254, 254));
         Logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/122.png"))); // NOI18N
         topPanel1.add(Logo_label);
-        Logo_label.setBounds(100, 1, 80, 65);
+        Logo_label.setBounds(100, 1, 80, 0);
 
         Library_Button.setBackground(new java.awt.Color(254, 254, 254));
         Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
@@ -136,7 +101,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
         accountButton.addActionListener(this::accountButtonActionPerformed);
         topPanel1.add(accountButton);
-        accountButton.setBounds(1124, 1, 61, 65);
+        accountButton.setBounds(1124, 1, 0, 65);
         topPanel1.add(scrollbar2);
         scrollbar2.setBounds(0, 0, 0, 0);
 
@@ -158,16 +123,17 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().add(CreateButton);
         CreateButton.setBounds(1060, 110, 120, 30);
 
-        DeckOrganizationButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Screenshot 2025-12-17 205936.png"))); // NOI18N
-        DeckOrganizationButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
-        DeckOrganizationButton.addActionListener(this::DeckOrganizationButtonActionPerformed);
-        getContentPane().add(DeckOrganizationButton);
-        DeckOrganizationButton.setBounds(1020, 110, 30, 30);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(290, 190, 630, 430);
 
-        scrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
-        getContentPane().add(scrollPane1);
-        scrollPane1.setBounds(100, 150, 1080, 530);
+        archivebtn.setText("jButton1");
+        getContentPane().add(archivebtn);
+        archivebtn.setBounds(800, 110, 78, 23);
+
+        editbtn.setText("jButton2");
+        getContentPane().add(editbtn);
+        editbtn.setBounds(930, 110, 78, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,18 +161,9 @@ public class Dashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CreateButtonActionPerformed
 
-    private void DeckOrganizationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeckOrganizationButtonActionPerformed
-        // TODO add your handling code here:
-      
-
-
-
-    }//GEN-LAST:event_DeckOrganizationButtonActionPerformed
-
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreateButton;
-    private javax.swing.JButton DeckOrganizationButton;
     private javax.swing.JButton Home_Button;
     private javax.swing.JLabel Home_Label;
     private javax.swing.JButton Library_Button;
@@ -214,14 +171,39 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton accountButton;
     private javax.swing.JMenuItem accountMenuItem;
     private javax.swing.JPopupMenu accountPopupMenu;
+    private javax.swing.JButton archivebtn;
     private javax.swing.JMenuItem darkModeMenuItem;
+    private javax.swing.JButton editbtn;
     private javax.swing.JMenuItem fontSizeMenuItem;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem logoutMenuItem;
-    private javax.swing.JScrollPane scrollPane1;
     private java.awt.Scrollbar scrollbar2;
     private javax.swing.JMenuItem studyHistoryMenuItem;
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
+ public javax.swing.JButton getArchivebtn() {
+        return archivebtn;
+    }
+    
+    public javax.swing.JButton getEditbtn() {
+        return editbtn;
+    }
+    
+    public javax.swing.JButton getCreateButton() {
+        return CreateButton;
+    }
+    
+    public javax.swing.JButton getHomeButton() {
+        return Home_Button;
+    }
+    
+    public javax.swing.JButton getLibraryButton() {
+        return Library_Button;
+    }
+    
+    public javax.swing.JScrollPane getJScrollPane1() {
+        return jScrollPane1;
+    }
 
 
 }

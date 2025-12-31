@@ -1,54 +1,46 @@
-package controller;
+/*package controller;
 
 import dao.UserDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.UserModel;
-import view.Dashboard;
 import view.Signup;
 import view.Login;
 
 public class UserController {
 
     private final UserDao userDao = new UserDao();
-
     private final Signup userView;
-    
-    //Constructor
+
     public UserController(Signup userView) {
         this.userView = userView;
- 
-        
-        // Register listeners for buttons in Signup view
-        userView.AddUserListener(new SignUpListener());   // handles signup button
-        userView.LoginButtonListener(new LoginListener()); // handles "Go to Login" button
 
+        // Register listeners
+        userView.AddUserListener(new SignUpListener());
+        userView.LoginButtonListener(new LoginListener());
     }
 
-    
-
     public void open() {
-        userView.setVisible(true);
+        this.userView.setVisible(true);
     }
 
     public void close() {
-        userView.dispose();
+        this.userView.dispose();
     }
 
-    // 🔹 When user clicks "Login" button on Signup page
+    // When user clicks "Login" button on Signup page
     private class LoginListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             Login loginView = new Login();
-            close();
-            LoginController controller = new LoginController(loginView);      // Attach controller
-            controller.open();  
-            
+            LoginController loginController = new LoginController(loginView);
+            loginController.open();
+            userView.dispose();
         }
     }
 
-    // 🔹 When user clicks "Signup" button
+    // When user clicks "Signup" button
     private class SignUpListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -58,9 +50,9 @@ public class UserController {
                 String confirmPassword = userView.getConfirmPasswordField().getText().trim();
 
                 // Treat placeholders as empty
-                if (username.startsWith(" Enter")) username = " ";
-                if (password.startsWith("Enter")) password = " ";
-                if (confirmPassword.startsWith("Re-type")) confirmPassword = " ";
+                if (username.startsWith("Enter")) username = "";
+                if (password.startsWith("Enter")) password = "";
+                if (confirmPassword.startsWith("Re-type")) confirmPassword = "";
 
                 // Required fields check
                 if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
@@ -75,7 +67,8 @@ public class UserController {
                 }
 
                 // Create model
-                UserModel usermodel = new UserModel(username, password, confirmPassword);    // look from here 
+                UserModel usermodel = new UserModel(username, password, confirmPassword);
+
                 // Check if user already exists
                 if (userDao.check(usermodel)) {
                     JOptionPane.showMessageDialog(userView, "User already exists!");
@@ -83,22 +76,31 @@ public class UserController {
                 }
 
                 // Save user
-                userDao.signup(usermodel);
-                JOptionPane.showMessageDialog(userView, "Signup successful!");        // ✓ Success message
+                UserModel newUser = userDao.signUp(usermodel);
+                if (newUser == null) {
+                    JOptionPane.showMessageDialog(userView, "Signup failed!");
+                    return;
+                }
+
+                // ✅ Success message
+                JOptionPane.showMessageDialog(userView, "Signup successful!");
+
+                // ✅ Close signup and return to Login
                 Login loginView = new Login();
-                close();
-                LoginController controller = new LoginController(loginView);      // Attach controller
-                controller.open();  
+                LoginController loginController = new LoginController(loginView);
+                loginController.open();
+
+                // hide signup
+                userView.dispose(); // closes the signup frame
                 
 
             } catch (Exception ex) {
-                ex.printStackTrace(); // optional for debugging
-                JOptionPane.showMessageDialog(userView, "Signup failed!");
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(userView, "Something went wrong!");
             }
         }
     }
 }
+*/
          
-
-      
 
