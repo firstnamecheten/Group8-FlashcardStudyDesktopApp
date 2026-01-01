@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+<<<<<<< HEAD:src/dao/LoginDao.java
 package dao;
 
 import database.MySqlConnection;
@@ -15,10 +16,15 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.LoginModel;
+=======
+package view;
+
+>>>>>>> 5f99df94f1dc494d6b254882e76c62a6bf8dbc49:src/view/Flashcard.java
 /**
  *
- * @author LENOVO
+ * @author bipin ranabhat
  */
+<<<<<<< HEAD:src/dao/LoginDao.java
 public class LoginDao {
     private final MySqlConnection mysql = new MySqlConnection();
     private String username;
@@ -39,6 +45,9 @@ public class LoginDao {
         }
     }
     
+=======
+public class Flashcard {
+>>>>>>> 5f99df94f1dc494d6b254882e76c62a6bf8dbc49:src/view/Flashcard.java
     
     // LOGIN
     public LoginModel login(String username, String password) {

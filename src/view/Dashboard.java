@@ -1,40 +1,18 @@
 package view;
-import controller.DashboardController; 
-import controller.LoginController;
-import dashboard.Sides2;
-import java.awt.CardLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import model.UserModel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import javax.swing.*;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
-import view.Login;
-
 
 
 
 public class Dashboard extends javax.swing.JFrame {
-    
-    private boolean isDarkMode = false;
-    private JPanel deckContainer;
 
-    // === Constructors ===
+    private static final java.util.logging.Logger logger =
+            java.util.logging.Logger.getLogger(Dashboard.class.getName());
+
+    // Track the currently active dashboard
+ 
+    /** constructor (needed for GUI builder or fallback) */
     public Dashboard() {
         initComponents();
+<<<<<<< HEAD
         setSize(1285, 760);
     
         // === MVC Wiring: Create and connect controller ===
@@ -117,19 +95,14 @@ public void toggleDarkMode() {
         }
         repaint();
         revalidate();
+=======
+
+>>>>>>> 5f99df94f1dc494d6b254882e76c62a6bf8dbc49
     }
 
     private void showFontSizeOptions() {
-        String[] options = {"Small", "Medium", "Large"};
-        int choice = JOptionPane.showOptionDialog(
-                this,
-                "Choose font size",
-                "Font Size",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null, options, options[1]
-        );
 
+<<<<<<< HEAD
         java.awt.Font current = Home_Label.getFont();
         switch (choice) {
             case 0 -> Home_Label.setFont(current.deriveFont(14f));
@@ -140,15 +113,31 @@ public void toggleDarkMode() {
     
     
     /* 
-    private void initDeckContainer() {
-        deckContainer = new JPanel();
-        deckContainer.setLayout(new BoxLayout(deckContainer, BoxLayout.Y_AXIS));
+=======
+    }
 
-        // Attach deck container to NetBeans scrollPane1
-        // Note: scrollPane1 is a Swing JScrollPane in this class
-        scrollPane1.setViewportView(deckContainer);
-        scrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    private void openStudyHistory() {
+     
+    }
+        // === Create button clicks ===
+
+    
+    private void openNewDeckDialog() {
+       
+    
+        }
+    
+    
+    private void openStudycards2() {
+        
+    }
+    
+    
+    
+    // === Deck area setup using scrollPane1 ===
+>>>>>>> 5f99df94f1dc494d6b254882e76c62a6bf8dbc49
+    private void initDeckContainer() {
+  
         
     }
 
@@ -158,6 +147,7 @@ public void toggleDarkMode() {
     
     // Entry point if this frame is run directly
     public static void main(String[] args) {
+<<<<<<< HEAD
         SwingUtilities.invokeLater(() -> {
             Login loginView = new Login();
             LoginController controller = new LoginController(loginView);
@@ -390,6 +380,11 @@ public void toggleDarkMode() {
 //        }
 //    
 
+=======
+ 
+    }
+
+>>>>>>> 5f99df94f1dc494d6b254882e76c62a6bf8dbc49
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -509,18 +504,15 @@ public void toggleDarkMode() {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-//
+
     private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
         // TODO add your handling code here:
-//      openUserBasedFlashcardOwnership(); // ✅ open the page
+      
     }//GEN-LAST:event_accountButtonActionPerformed
 
     private void accountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMouseClicked
-//        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) { // Left click only
-//            int x = accountButton.getWidth() - accountPopupMenu.getPreferredSize().width;
-//            int y = accountButton.getHeight();
-//            accountPopupMenu.show(accountButton, x, y);
-//        }
+        
+        
     }//GEN-LAST:event_accountButtonMouseClicked
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
@@ -529,10 +521,9 @@ public void toggleDarkMode() {
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
-
         // TODO add your handling code here:
      // ✅ Just call the helper method
-//    openNewDeckDialog();
+ 
 
 
     }//GEN-LAST:event_CreateButtonActionPerformed
@@ -564,6 +555,7 @@ public void toggleDarkMode() {
     private javax.swing.JMenuItem studyHistoryMenuItem;
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
+<<<<<<< HEAD
 /*
 public void clearDeckDisplay() {
         deckContainer.removeAll();
@@ -647,6 +639,12 @@ public void addDeckButton(String deckName, int deckId) {
 //    
 //} 
 //
+=======
+
+
+}
+
+>>>>>>> 5f99df94f1dc494d6b254882e76c62a6bf8dbc49
 
 }
 

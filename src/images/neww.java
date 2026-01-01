@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package pkgnew;
+package img;
 
 /**
  *
- * @author LENOVO
+ * @author bipin ranabhat
  */
-public class New {
+public class neww {
     
 }
