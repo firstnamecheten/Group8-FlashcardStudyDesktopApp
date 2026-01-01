@@ -270,7 +270,7 @@ public class Signup extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(350, -110, 940, 860);
+        jPanel2.setBounds(350, 0, 940, 860);
 
         jPanel1.setBackground(new java.awt.Color(30, 98, 165));
 

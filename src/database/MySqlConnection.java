@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.*;
 
 public class MySqlConnection implements Database{
 
@@ -22,7 +21,11 @@ public class MySqlConnection implements Database{
 
             String username = "root";
 
+<<<<<<< HEAD
             String password = "root password";
+=======
+            String password = "rootpassword";
+>>>>>>> main
 
             String database = "database_connection";
 

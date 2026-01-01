@@ -3,9 +3,17 @@ package view;
 import static com.mysql.cj.conf.PropertyKey.logger;
 import model.UserModel;
 import dao.UserDao;
+<<<<<<< HEAD
+import view.Dashboard;
+=======
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+<<<<<<< HEAD
 import view.Dashboard;
+=======
+import view.Dashtwo;
+>>>>>>> c778b68b4ab2c8d6a992dc294c61880f7b149a5c
+>>>>>>> main
 
    
 
@@ -16,11 +24,19 @@ import view.Dashboard;
 
     // ✅ Add this field to store the logged-in user
     private final UserModel currentUser;
+<<<<<<< HEAD
     private final Dashboard dashtwoView;
+=======
+<<<<<<< HEAD
+    private final Dashboard dashboardParent;
+=======
+    private final Dashtwo dashtwoView;
+>>>>>>> main
     private UserModel user;
     private JTextField username_text_field;
     private JTextField userId_text_field;
     
+>>>>>>> c778b68b4ab2c8d6a992dc294c61880f7b149a5c
 
 
     /** No-arg constructor (used by GUI builder or fallback) */
@@ -32,7 +48,15 @@ import view.Dashboard;
     }
 
     /** Preferred constructor with user context */
+<<<<<<< HEAD
     public UserBasedFlashcardOwnership(UserModel currentUser, Dashboard dashtwoView) {
+=======
+<<<<<<< HEAD
+    public UserBasedFlashcardOwnership(UserModel currentUser, Dashboard dashboardParent) {
+=======
+    public UserBasedFlashcardOwnership(UserModel currentUser, Dashtwo dashtwoView) {
+>>>>>>> c778b68b4ab2c8d6a992dc294c61880f7b149a5c
+>>>>>>> main
     initComponents();
     setSize(1285, 760);
     this.currentUser = currentUser;

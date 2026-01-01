@@ -3,6 +3,7 @@ package view;
 import database.MySqlConnection;
 import java.sql.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -384,7 +385,6 @@ public class AdminDashboard extends JFrame {
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -398,5 +398,22 @@ public class AdminDashboard extends JFrame {
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
 
+    public void LoadSignupButtonListener(ActionListener listener){
+        LoadSignupButton.addActionListener(listener);
+    }    
     
+    public void LoadLoginButtonListener(ActionListener listener){
+        LoadLoginButton.addActionListener(listener);
+    }    
+    
+    public void LoadLogoutButtonListener(ActionListener listener){
+        LoadLogoutButton.addActionListener(listener);
+    }    
+    
+    public void LoadFlashcardButtonListener(ActionListener listener){
+        LoadFlashcardButton.addActionListener(listener);
+    }    
+    public void LoadDeckButtonListener(ActionListener listener){
+        LoadDeckButton.addActionListener(listener);
+    }    
 }

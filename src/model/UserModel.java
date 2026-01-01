@@ -15,8 +15,13 @@ public class UserModel {
     }
 
     // Constructor for LOGIN / DB (with user_id + password)
-    public UserModel(int user_id, String username, String password) {
+     public UserModel(int user_id, String username, String password) {
         this.user_id = user_id;
+        this.username = username;
+        this.password = password;
+    }
+    public UserModel(String username, String password) {
+       
         this.username = username;
         this.password = password;
     }

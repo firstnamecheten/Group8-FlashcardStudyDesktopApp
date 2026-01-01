@@ -235,11 +235,9 @@ public class CreateFlashcards extends javax.swing.JFrame {
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
-       
-        Studycards2 studyPage = new Studycards2(deckId, deckName, currentUser);
-        studyPage.setVisible(true);
-        cardLayout.show(mainPanel, "Studycards2");  // after signup success
-        cardLayout.show(mainPanel, "CreateFlashcards");
+
+        // Close this flashcards window
+        
 
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
@@ -282,10 +280,14 @@ public class CreateFlashcards extends javax.swing.JFrame {
     private void GoBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoBackButtonActionPerformed
         // TODO add your handling code here:
         // Same behavior for arrow/tick button: go back to Dashboard
+<<<<<<< HEAD
         this.dispose();
         Dashboard dashboard = new Dashboard(currentUser);
         dashboard.setVisible(true);
 
+=======
+    
+>>>>>>> main
     }//GEN-LAST:event_GoBackButtonActionPerformed
 
     /**

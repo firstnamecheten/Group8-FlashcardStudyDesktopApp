@@ -1,5 +1,5 @@
 package view;
-
+import controller.DashboardController; 
 import controller.LoginController;
 import dashboard.Sides2;
 import java.awt.CardLayout;
@@ -10,6 +10,7 @@ import model.UserModel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.*;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -23,9 +24,154 @@ import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import view.Login;
 
+<<<<<<< HEAD
 public class Dashboard extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dashboard.class.getName());
+=======
+
+
+
+public class Dashboard extends javax.swing.JFrame {
+    
+    private boolean isDarkMode = false;
+    private JPanel deckContainer;
+
+    // === Constructors ===
+    public Dashboard() {
+        initComponents();
+        setSize(1285, 760);
+    
+        // === MVC Wiring: Create and connect controller ===
+/*
+    // Style Create button
+    CreateButton.setPreferredSize(new Dimension(160, 40));
+    CreateButton.setFont(new Font("Dialog", Font.BOLD, 15));
+    CreateButton.setFocusPainted(false);
+    CreateButton.setVisible(true);
+
+   */
+    
+     
+    }
+
+/* private void wireButtonActions() {
+        CreateButton.addActionListener(e -> controller.handleCreateDeck());
+    
+    // If you add more buttons later (e.g., Library, Home), wire them here too
+    }
+
+public void wireMenuActions() {
+        isDarkMode = false;
+
+    if (darkModeMenuItem != null) 
+        darkModeMenuItem.addActionListener(e -> controller.toggleDarkMode());
+    
+    if (fontSizeMenuItem != null) 
+        fontSizeMenuItem.addActionListener(e -> showFontSizeOptions()); // Keep this in View (pure UI)
+    
+    if (studyHistoryMenuItem != null) 
+        studyHistoryMenuItem.addActionListener(e -> controller.openStudyHistory());
+    
+    if (logoutMenuItem != null) 
+        logoutMenuItem.addActionListener(e -> controller.logout());
+    
+    if (accountMenuItem != null) 
+        accountMenuItem.addActionListener(e -> controller.openAccountPage());
+    }
+
+public void toggleDarkMode() {
+        isDarkMode = !isDarkMode;
+        if (isDarkMode) {
+            getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+            topPanel1.setBackground(new java.awt.Color(40, 40, 40));
+            scrollPane1.setBackground(new java.awt.Color(45, 45, 45));
+
+            Home_Button.setForeground(new java.awt.Color(200, 200, 200));
+            Home_Button.setBackground(new java.awt.Color(45, 45, 45)); // dark background
+            Home_Button.setOpaque(true);
+            Library_Button.setForeground(new java.awt.Color(200, 200, 200));
+            Library_Button.setBackground(new java.awt.Color(45, 45, 45));
+            Library_Button.setOpaque(true);
+
+            Home_Label.setForeground(new java.awt.Color(255, 255, 255));
+            Home_Label.setBackground(new java.awt.Color(45, 45, 45));
+            Logo_label.setBackground(new java.awt.Color(45, 45, 45));
+            accountButton.setForeground(new java.awt.Color(255, 255, 255));
+            accountButton.setBackground(new java.awt.Color(40, 40, 40));
+
+            darkModeMenuItem.setText(" Light mode");
+        } else {
+            getContentPane().setBackground(new java.awt.Color(240, 240, 240));
+            topPanel1.setBackground(new java.awt.Color(255, 255, 255));
+            scrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+            Home_Button.setForeground(new java.awt.Color(0, 0, 0));
+            Home_Button.setBackground(new java.awt.Color(254, 254, 254));
+            Home_Button.setOpaque(true);
+            Library_Button.setForeground(new java.awt.Color(0, 0, 0));
+            Library_Button.setBackground(new java.awt.Color(254, 254, 254));
+            Library_Button.setOpaque(true);
+            Home_Label.setForeground(new java.awt.Color(0, 0, 0));
+            Home_Label.setBackground(new java.awt.Color(240, 240, 240));
+            accountButton.setForeground(new java.awt.Color(0, 0, 0));
+            accountButton.setBackground(new java.awt.Color(254, 254, 254));
+            accountButton.setOpaque(true);
+
+            darkModeMenuItem.setText(" Dark mode");
+        }
+        repaint();
+        revalidate();
+    }
+
+    private void showFontSizeOptions() {
+        String[] options = {"Small", "Medium", "Large"};
+        int choice = JOptionPane.showOptionDialog(
+                this,
+                "Choose font size",
+                "Font Size",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, options, options[1]
+        );
+
+        java.awt.Font current = Home_Label.getFont();
+        switch (choice) {
+            case 0 -> Home_Label.setFont(current.deriveFont(14f));
+            case 1 -> Home_Label.setFont(current.deriveFont(18f));
+            case 2 -> Home_Label.setFont(current.deriveFont(24f));
+            default -> { /* no change */ 
+
+    
+    
+    /* 
+    private void initDeckContainer() {
+        deckContainer = new JPanel();
+        deckContainer.setLayout(new BoxLayout(deckContainer, BoxLayout.Y_AXIS));
+
+        // Attach deck container to NetBeans scrollPane1
+        // Note: scrollPane1 is a Swing JScrollPane in this class
+        scrollPane1.setViewportView(deckContainer);
+        scrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
+    }
+
+
+
+
+    
+    // Entry point if this frame is run directly
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            Login loginView = new Login();
+            LoginController controller = new LoginController(loginView);
+            controller.open();
+        });
+    }           */
+
+    
+>>>>>>> main
 //
 //    private JPanel mainPanel;
 //    private CardLayout cardLayout;
@@ -58,7 +204,11 @@ public class Dashboard extends javax.swing.JFrame {
 
     // === Constructors ===
     /** Creates new form Dashtwo (preferred: with user context) */
+<<<<<<< HEAD
     public Dashboard() {
+=======
+
+>>>>>>> main
 //       initComponents();
 //        this.currentUser = currentUser;
 //        
@@ -80,8 +230,6 @@ public class Dashboard extends javax.swing.JFrame {
 //        
     
 
-        initComponents();
-        setSize(1285, 760);
 //
 //        CreateButton.setPreferredSize(new Dimension(160, 40));
 //        CreateButton.setFont(new Font("Dialog", Font.BOLD, 15));
@@ -101,7 +249,7 @@ public class Dashboard extends javax.swing.JFrame {
 //        this.loginView = null;
 //        
       
-    }
+    
 
     // Getter for the active dashboard
 //    public static Dashboard getActiveDashboard() { return ACTIVE_DASHBOARD; }
@@ -304,20 +452,27 @@ public class Dashboard extends javax.swing.JFrame {
 
         topPanel1.setBackground(new java.awt.Color(255, 255, 255));
         topPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        topPanel1.setLayout(null);
 
         Home_Button.setBackground(new java.awt.Color(254, 254, 254));
         Home_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Home_Button.setText("Home");
         Home_Button.setBorder(null);
         Home_Button.addActionListener(this::Home_ButtonActionPerformed);
+        topPanel1.add(Home_Button);
+        Home_Button.setBounds(190, 21, 60, 20);
 
         Logo_label.setBackground(new java.awt.Color(254, 254, 254));
         Logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/122.png"))); // NOI18N
+        topPanel1.add(Logo_label);
+        Logo_label.setBounds(100, 1, 80, 65);
 
         Library_Button.setBackground(new java.awt.Color(254, 254, 254));
         Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Library_Button.setText("Library");
         Library_Button.setBorder(null);
+        topPanel1.add(Library_Button);
+        Library_Button.setBounds(280, 11, 70, 40);
 
         accountButton.setBackground(new java.awt.Color(254, 254, 254));
         accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/13_1.png"))); // NOI18N
@@ -328,36 +483,10 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         accountButton.addActionListener(this::accountButtonActionPerformed);
-
-        javax.swing.GroupLayout topPanel1Layout = new javax.swing.GroupLayout(topPanel1);
-        topPanel1.setLayout(topPanel1Layout);
-        topPanel1Layout.setHorizontalGroup(
-            topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanel1Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(Logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 774, Short.MAX_VALUE)
-                .addComponent(accountButton)
-                .addGap(144, 144, 144))
-        );
-        topPanel1Layout.setVerticalGroup(
-            topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanel1Layout.createSequentialGroup()
-                .addGroup(topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Logo_label)
-                    .addGroup(topPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(topPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(accountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        topPanel1.add(accountButton);
+        accountButton.setBounds(1124, 1, 61, 65);
+        topPanel1.add(scrollbar2);
+        scrollbar2.setBounds(0, 0, 0, 0);
 
         getContentPane().add(topPanel1);
         topPanel1.setBounds(0, 0, 1330, 70);
@@ -410,6 +539,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
+
         // TODO add your handling code here:
      // ✅ Just call the helper method
 //    openNewDeckDialog();
@@ -444,8 +574,29 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JMenuItem studyHistoryMenuItem;
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
-}
-    
+/*
+public void clearDeckDisplay() {
+        deckContainer.removeAll();
+        deckContainer.revalidate();
+        deckContainer.repaint();
+    }    
+public void addDeckButton(String deckName, int deckId) {
+        JButton deckButton = new JButton(deckName);
+        deckButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        deckButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
+        deckButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        deckButton.setFocusPainted(false);
+
+        deckButton.addActionListener(e -> controller.openDeck(deckId, deckName));
+
+        deckContainer.add(deckButton);
+        deckContainer.add(Box.createVerticalStrut(10));
+        deckContainer.revalidate();
+        deckContainer.repaint();
+    }   
+*/
+
+
 //    void addDeckButton(String deckName, int deckId) {
 //    JButton deckButton = new JButton(deckName);
 //    deckButton.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -504,8 +655,8 @@ public class Dashboard extends javax.swing.JFrame {
 //    }
 //
 //    
-//}
+//} 
 //
 
-
+}
 
