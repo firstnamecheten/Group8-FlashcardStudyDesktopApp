@@ -35,23 +35,22 @@ public class Dashboard extends javax.swing.JFrame {
     // === Constructors ===
     public Dashboard() {
         initComponents();
+        setSize(1285, 760);
+    
         // === MVC Wiring: Create and connect controller ===
-
+/*
     // Style Create button
     CreateButton.setPreferredSize(new Dimension(160, 40));
     CreateButton.setFont(new Font("Dialog", Font.BOLD, 15));
     CreateButton.setFocusPainted(false);
     CreateButton.setVisible(true);
-    
-    initDeckContainer();
-    setSize(1285, 760);
-    
-    // Wire UI events to controller
-    wireButtonActions();
-    wireMenuActions();      
- }
 
-private void wireButtonActions() {
+   */
+    
+     
+    }
+
+/* private void wireButtonActions() {
         CreateButton.addActionListener(e -> controller.handleCreateDeck());
     
     // If you add more buttons later (e.g., Library, Home), wire them here too
@@ -136,11 +135,11 @@ public void toggleDarkMode() {
             case 0 -> Home_Label.setFont(current.deriveFont(14f));
             case 1 -> Home_Label.setFont(current.deriveFont(18f));
             case 2 -> Home_Label.setFont(current.deriveFont(24f));
-            default -> { /* no change */ }
-        }
-    }
+            default -> { /* no change */ 
+
     
     
+    /* 
     private void initDeckContainer() {
         deckContainer = new JPanel();
         deckContainer.setLayout(new BoxLayout(deckContainer, BoxLayout.Y_AXIS));
@@ -164,9 +163,9 @@ public void toggleDarkMode() {
             LoginController controller = new LoginController(loginView);
             controller.open();
         });
-    }
+    }           */
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dashtwo.class.getName());
+    
 //
 //    private JPanel mainPanel;
 //    private CardLayout cardLayout;
@@ -199,7 +198,7 @@ public void toggleDarkMode() {
 
     // === Constructors ===
     /** Creates new form Dashtwo (preferred: with user context) */
-    public Dashtwo() {
+
 //       initComponents();
 //        this.currentUser = currentUser;
 //        
@@ -221,8 +220,6 @@ public void toggleDarkMode() {
 //        
     
 
-        initComponents();
-        setSize(1285, 760);
 //
 //        CreateButton.setPreferredSize(new Dimension(160, 40));
 //        CreateButton.setFont(new Font("Dialog", Font.BOLD, 15));
@@ -242,7 +239,7 @@ public void toggleDarkMode() {
 //        this.loginView = null;
 //        
       
-    }
+    
 
     // Getter for the active dashboard
 //    public static Dashtwo getActiveDashboard() { return ACTIVE_DASHBOARD; }
@@ -567,7 +564,7 @@ public void toggleDarkMode() {
     private javax.swing.JMenuItem studyHistoryMenuItem;
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
-
+/*
 public void clearDeckDisplay() {
         deckContainer.removeAll();
         deckContainer.revalidate();
@@ -587,10 +584,9 @@ public void addDeckButton(String deckName, int deckId) {
         deckContainer.revalidate();
         deckContainer.repaint();
     }   
+*/
 
 
-}
-    
 //    void addDeckButton(String deckName, int deckId) {
 //    JButton deckButton = new JButton(deckName);
 //    deckButton.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -649,8 +645,8 @@ public void addDeckButton(String deckName, int deckId) {
 //    }
 //
 //    
-//}
+//} 
 //
 
-
+}
 

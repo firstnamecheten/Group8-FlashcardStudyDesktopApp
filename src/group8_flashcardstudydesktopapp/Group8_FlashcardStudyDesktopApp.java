@@ -5,8 +5,8 @@
 package group8_flashcardstudydesktopapp;
 
 import controller.UserController;
-import database.Database;
-import database.MySqlConnection;
+//import database.Database;
+//import database.MySqlConnection;
 
 import view.Signup;
 

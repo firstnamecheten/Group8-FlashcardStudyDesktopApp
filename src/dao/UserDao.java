@@ -46,7 +46,7 @@ public class UserDao {
         }
         return false;
     }
-
+/*
     // LOGIN
     public UserModel login(String username, String password) {
         Connection conn = mysql.openConnection();
@@ -68,9 +68,9 @@ public class UserDao {
             mysql.closeConnection(conn);
         }
         return null;
-    }
+    }                   */
 
-    // INSERT LOGIN HISTORY
+/*    // INSERT LOGIN HISTORY
     public void insertLoginHistory(int userId, String username, String password) {
         Connection conn = mysql.openConnection();
         String sql = "INSERT INTO login_history (user_id, username, password) VALUES (?, ?, ?)";
@@ -84,8 +84,8 @@ public class UserDao {
         } finally {
             mysql.closeConnection(conn);
         }
-    }
-
+    }                   */
+ 
     // GET USER BY USERNAME
     public UserModel getUserByUsername(String username) {
         Connection conn = mysql.openConnection();
@@ -121,9 +121,9 @@ public class UserDao {
         } finally {
             mysql.closeConnection(conn);
         }
-    }
+    }                    
     
-    // Save a new deck
+/*    // Save a new deck
     public int addDeck(int userId, String deckName) {
     Connection conn = mysql.openConnection();
     String sql = "INSERT INTO decks (user_id, deck_name) VALUES (?, ?)";
@@ -158,9 +158,9 @@ public class UserDao {
         } finally {
             mysql.closeConnection(conn);
         }
-    }
+    }                            */
 
-   // INSERT LOGOUT HISTORY
+/*   // INSERT LOGOUT HISTORY
 public void insertLogoutHistory(int loginId, int userId, String sessionId, Timestamp logoutTime) {
     Connection conn = mysql.openConnection();
     String sql = "INSERT INTO logout_history (login_id, user_id, session_id, logout_time) VALUES (?, ?, ?, ?)";
@@ -183,7 +183,9 @@ public void insertLogoutHistory(int loginId, int userId, String sessionId, Times
     } finally {
         mysql.closeConnection(conn);
     }
-}
+}   */
+
+   
 }
 
 
