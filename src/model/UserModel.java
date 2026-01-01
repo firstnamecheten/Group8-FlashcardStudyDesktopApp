@@ -20,6 +20,7 @@ public class UserModel {
         this.username = username;
         this.password = password;
     }
+<<<<<<< HEAD
     public UserModel(String username, String password) {
        
         this.username = username;
@@ -27,6 +28,12 @@ public class UserModel {
     }
     
     
+=======
+
+    public UserModel() {
+        
+    }
+>>>>>>> 5f99df94f1dc494d6b254882e76c62a6bf8dbc49
 
     // GETTERS & SETTERS
     public int getUserId() {
@@ -61,5 +68,4 @@ public class UserModel {
     public void setconfirmpassword(String confirmpassword) {
         this.confirmpassword = confirmpassword;
     }
-
 }

@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+<<<<<<< HEAD
 package group8_flashcardstudydesktopapp;
 
 import controller.UserController;
@@ -24,3 +25,5 @@ public class Group8_FlashcardStudyDesktopApp {
         uc.open();
     }
 }
+=======
+>>>>>>> 5f99df94f1dc494d6b254882e76c62a6bf8dbc49
