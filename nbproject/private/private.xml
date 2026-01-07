@@ -3,7 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/view/Dashtwo.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/view/Deck.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/view/DeckCards.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/view/Login.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/controller/AccountController.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/controller/DeckController.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/view/StudyCards.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/model/UserModel.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/model/DashboardModel.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/dao/UserDao.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/dao/DeckDao.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/group8_flashcardstudydesktopapp/Group8_FlashcardStudyDesktopApp.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/controller/DashboardController.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/view/Account.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/view/Account.form</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/view/Dashboard.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/view/CreateDialog.java</file>
+            <file>file:/C:/Users/bipin%20ranabhat/OneDrive/Documents/folderproject/Group8-FlashcardStudyDesktopApp/src/view/StudyHistory.java</file>
         </group>
     </open-files>
 </project-private>
