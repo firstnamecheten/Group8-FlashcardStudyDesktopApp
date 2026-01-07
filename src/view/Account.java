@@ -1,40 +1,18 @@
 package view;
 
-import static com.mysql.cj.conf.PropertyKey.logger;
-import model.UserModel;
-import dao.UserDao;
-import view.Dashboard;
+   
 
-    public class UserBasedFlashcardOwnership extends javax.swing.JFrame {
+ public class Account extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger =
-        java.util.logging.Logger.getLogger(UserBasedFlashcardOwnership.class.getName());
-
-    // ✅ Add this field to store the logged-in user
-    private final UserModel currentUser;
-    private final Dashboard dashboardParent;
-
-
-    /** No-arg constructor (used by GUI builder or fallback) */
-    public UserBasedFlashcardOwnership() {
-        initComponents();
-        pack();
-        this.currentUser = null; // fallback
-        this.dashboardParent = null;
-    }
+   
 
     /** Preferred constructor with user context */
-    public UserBasedFlashcardOwnership(UserModel currentUser, Dashboard dashboardParent) {
-    initComponents();
-    setSize(1285, 760);
-    this.currentUser = currentUser;
-    this.dashboardParent = dashboardParent;
-
-    Username_Text_Field.setText(currentUser.getUsername());
-    UserID_Text_Field.setText(String.valueOf(currentUser.getUserId()));
-}
 
 
+
+    public Account ()  {
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,9 +36,9 @@ import view.Dashboard;
         ID_Label = new javax.swing.JLabel();
         topPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        Home_Button = new javax.swing.JButton();
-        Library_Button = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        Library_Button1 = new javax.swing.JButton();
+        Library_Button2 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         Save_Button = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -177,21 +155,23 @@ import view.Dashboard;
         jLabel3.setBackground(new java.awt.Color(254, 254, 254));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/122.png"))); // NOI18N
 
-        Home_Button.setBackground(new java.awt.Color(254, 254, 254));
-        Home_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        Home_Button.setText("Home");
-        Home_Button.setBorder(null);
-        Home_Button.addActionListener(this::Home_ButtonActionPerformed);
+        Library_Button1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        Library_Button1.setText("Home");
+        Library_Button1.setBorder(null);
+        Library_Button1.addActionListener(this::Library_Button1ActionPerformed);
 
-        Library_Button.setBackground(new java.awt.Color(254, 254, 254));
-        Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        Library_Button.setText("Library");
-        Library_Button.setBorder(null);
+        Library_Button2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        Library_Button2.setText("library");
+        Library_Button2.setBorder(null);
+        Library_Button2.addActionListener(this::Library_Button2ActionPerformed);
 
-        jButton5.setBackground(new java.awt.Color(254, 254, 254));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/13.png"))); // NOI18N
-        jButton5.setBorder(null);
-        jButton5.addActionListener(this::jButton5ActionPerformed);
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\bipin ranabhat\\OneDrive\\Documents\\img\\acc.png")); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(this::jButton2ActionPerformed);
 
         javax.swing.GroupLayout topPanel1Layout = new javax.swing.GroupLayout(topPanel1);
         topPanel1.setLayout(topPanel1Layout);
@@ -200,28 +180,29 @@ import view.Dashboard;
             .addGroup(topPanel1Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(770, 770, 770)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(Library_Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Library_Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 726, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109))
         );
         topPanel1Layout.setVerticalGroup(
             topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanel1Layout.createSequentialGroup()
-                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(topPanel1Layout.createSequentialGroup()
                 .addGroup(topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(topPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(topPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Library_Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Library_Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(topPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(topPanel1);
@@ -242,22 +223,6 @@ import view.Dashboard;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false); // ✅ hide Account page
-        if (dashboardParent != null) {
-        dashboardParent.setVisible(true); // ✅ re-show original dashboard
-        dashboardParent.toFront();
-        dashboardParent.requestFocus();
-    }
-   
-
-    }//GEN-LAST:event_Home_ButtonActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void Save_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save_ButtonActionPerformed
         // TODO add your handling code here:
@@ -285,43 +250,45 @@ import view.Dashboard;
 
     private void update_password_Text_FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_update_password_Text_FieldFocusGained
         // TODO add your handling code here:
-        if(update_password_Text_Field.getText().equals("Update password")){
-            update_password_Text_Field.setText("");
-        }
+      
     }//GEN-LAST:event_update_password_Text_FieldFocusGained
 
     private void update_password_Text_FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_update_password_Text_FieldFocusLost
-        // TODO add your handling code here:
-        if(update_password_Text_Field.getText().equals("")){
-            update_password_Text_Field.setText("Update password");
-        }
+        
     }//GEN-LAST:event_update_password_Text_FieldFocusLost
 
+    private void Library_Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Library_Button1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Library_Button1ActionPerformed
+
+    private void Library_Button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Library_Button2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Library_Button2ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        java.awt.EventQueue.invokeLater(() -> new UserBasedFlashcardOwnership().setVisible(true));
+        
+        java.awt.EventQueue.invokeLater(() -> new Account().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Copy_Button;
-    private javax.swing.JButton Home_Button;
     private javax.swing.JLabel ID_Label;
-    private javax.swing.JButton Library_Button;
+    private javax.swing.JButton Library_Button1;
+    private javax.swing.JButton Library_Button2;
     private javax.swing.JButton Pencil_label;
     private javax.swing.JButton Save_Button;
     private javax.swing.JTextField UserID_Text_Field;
     private javax.swing.JTextField Username_Text_Field;
     private javax.swing.JPanel centerpanel;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -332,5 +299,7 @@ import view.Dashboard;
     private javax.swing.JPanel topPanel1;
     private javax.swing.JTextField update_password_Text_Field;
     // End of variables declaration//GEN-END:variables
+
+   
 
 }
