@@ -71,20 +71,29 @@ public class UserDao {
     }
 
     // INSERT LOGIN HISTORY
-    public void insertLoginHistory(int userId, String username, String password) {
-        Connection conn = mysql.openConnection();
-        String sql = "INSERT INTO login_history (user_id, username, password) VALUES (?, ?, ?)";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, userId);
-            pstmt.setString(2, username);
-            pstmt.setString(3, password);
-            pstmt.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            mysql.closeConnection(conn);
+    // INSERT LOGIN HISTORY and return login_id
+    public int insertLoginHistory(int userId, String username, String password) {
+    Connection conn = mysql.openConnection();
+    String sql = "INSERT INTO login_history (user_id, username, password) VALUES (?, ?, ?)";
+    try (PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        pstmt.setInt(1, userId);
+        pstmt.setString(2, username);
+        pstmt.setString(3, password);
+        pstmt.executeUpdate();
+
+        // ✅ Get the generated login_id
+        try (ResultSet rs = pstmt.getGeneratedKeys()) {
+            if (rs.next()) {
+                return rs.getInt(1); // return login_id
+            }
         }
+    } catch (SQLException ex) {
+        Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        mysql.closeConnection(conn);
     }
+    return -1; // return -1 if something failed
+}
 
     // GET USER BY USERNAME
     public UserModel getUserByUsername(String username) {
@@ -123,35 +132,22 @@ public class UserDao {
         }
     }
     
-    // Save a new deck
-    public int addDeck(int userId, String deckName) {
-    Connection conn = mysql.openConnection();
-    String sql = "INSERT INTO decks (user_id, deck_name) VALUES (?, ?)";
-    try (PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-        pstmt.setInt(1, userId);
-        pstmt.setString(2, deckName);
-        pstmt.executeUpdate();
 
-        try (ResultSet rs = pstmt.getGeneratedKeys()) {
-            if (rs.next()) {
-                return rs.getInt(1); // ✅ return the new deck_id
-            }
-        }
-    } catch (SQLException ex) {
-        Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-    } finally {
-        mysql.closeConnection(conn);
-    }
-    return -1; // only if something failed
-}
-    // Save a flashcard
-    public void addFlashcard(int deckId, String question, String answer) {
+   // INSERT LOGOUT HISTORY
+    public void insertLogoutHistory(int loginId, int userId, String sessionId, Timestamp logoutTime) {
         Connection conn = mysql.openConnection();
-        String sql = "INSERT INTO flashcards (deck_id, question, answer) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO logout_history (login_id, user_id, session_id, logout_time) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, deckId);
-            pstmt.setString(2, question);
-            pstmt.setString(3, answer);
+            pstmt.setInt(1, loginId);
+            pstmt.setInt(2, userId);
+            pstmt.setString(3, sessionId);
+
+            if (logoutTime != null) {
+                pstmt.setTimestamp(4, logoutTime);
+            } else {
+                pstmt.setNull(4, java.sql.Types.TIMESTAMP);
+            }
+
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -160,31 +156,20 @@ public class UserDao {
         }
     }
 
-   // INSERT LOGOUT HISTORY
-public void insertLogoutHistory(int loginId, int userId, String sessionId, Timestamp logoutTime) {
-    Connection conn = mysql.openConnection();
-    String sql = "INSERT INTO logout_history (login_id, user_id, session_id, logout_time) VALUES (?, ?, ?, ?)";
-    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-        // Foreign keys must exist in login_history and signup_history
-        pstmt.setInt(1, loginId);          
-        pstmt.setInt(2, userId);           
-        pstmt.setString(3, sessionId);     
- 
-        // Correct way to insert timestamp
-        if (logoutTime != null) {
-            pstmt.setTimestamp(4, logoutTime);
-        } else {
-            pstmt.setNull(4, java.sql.Types.TIMESTAMP); // safe if you want NULL
+    // FETCH LOGOUT HISTORY (for AdminDashboard)
+    public ResultSet getLogoutHistory() {
+        Connection conn = mysql.openConnection();
+        String sql = "SELECT logout_id, login_id, user_id, session_id, logout_time FROM logout_history";
+        try {
+            Statement stmt = conn.createStatement();
+            return stmt.executeQuery(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        pstmt.executeUpdate();
-    } catch (SQLException ex) {
-        ex.printStackTrace(); // shows exact MySQL error in console
-    } finally {
-        mysql.closeConnection(conn);
+        return null;
     }
 }
-}
+
 
 
 // this was made to check username and email. Check garcha jaba samma rows sakidaina taba samma. Yedi same cha bhane tya value store garirako huncha. Yo method call garcha. Jaba yo method call huncha kunchai method call huneh bhayo?--> check method!

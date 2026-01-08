@@ -4,6 +4,12 @@
  */
 package view;
 
+import controller.FlipAndSwipeNavigationController;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author LENOVO
@@ -11,12 +17,16 @@ package view;
 public class FlipAndSwipeNavigation extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FlipAndSwipeNavigation.class.getName());
+    private JTextArea BackTextArea;
+
+    
 
     /**
      * Creates new form FlipAndSwipeNavigation
      */
     public FlipAndSwipeNavigation() {
         initComponents();
+        setSize(1285,760);
     }
 
     /**
@@ -28,124 +38,64 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        topPanel1 = new javax.swing.JPanel();
-        Home_Button = new javax.swing.JButton();
-        Logo_label = new javax.swing.JLabel();
-        Library_Button = new javax.swing.JButton();
-        centerpanel = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        QuickStart_label = new javax.swing.JTextField();
-        Home_Label = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        CardNumber = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        FrontTextArea = new javax.swing.JTextArea();
+        CrossButton = new javax.swing.JButton();
+        RightButton = new javax.swing.JButton();
+        LeftButton = new javax.swing.JButton();
+        DeleteCardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        topPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        topPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        topPanel1.setLayout(null);
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(null);
 
-        Home_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        Home_Button.setText("Home");
-        Home_Button.setBorder(null);
-        Home_Button.addActionListener(this::Home_ButtonActionPerformed);
-        topPanel1.add(Home_Button);
-        Home_Button.setBounds(190, 20, 60, 20);
+        CardNumber.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        CardNumber.setForeground(new java.awt.Color(102, 102, 102));
+        CardNumber.setBorder(null);
+        jPanel1.add(CardNumber);
+        CardNumber.setBounds(610, 30, 110, 30);
 
-        Logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        topPanel1.add(Logo_label);
-        Logo_label.setBounds(100, 10, 60, 50);
+        FrontTextArea.setColumns(20);
+        FrontTextArea.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        FrontTextArea.setRows(5);
+        FrontTextArea.setBorder(null);
+        jScrollPane1.setViewportView(FrontTextArea);
 
-        Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        Library_Button.setText("Library");
-        Library_Button.setBorder(null);
-        topPanel1.add(Library_Button);
-        Library_Button.setBounds(280, 10, 70, 40);
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(280, 70, 720, 550);
 
-        centerpanel.setBackground(new java.awt.Color(255, 255, 255));
-        centerpanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        centerpanel.setLayout(null);
+        CrossButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x1.png"))); // NOI18N
+        CrossButton.setBorder(null);
+        CrossButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        CrossButton.setPreferredSize(new java.awt.Dimension(26, 32));
+        jPanel1.add(CrossButton);
+        CrossButton.setBounds(250, 30, 30, 30);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        RightButton.setBackground(new java.awt.Color(150, 150, 150));
+        RightButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/r.png"))); // NOI18N
+        RightButton.setBorder(null);
+        jPanel1.add(RightButton);
+        RightButton.setBounds(1020, 297, 30, 50);
 
-        centerpanel.add(jPanel5);
-        jPanel5.setBounds(120, 230, 0, 0);
+        LeftButton.setBackground(new java.awt.Color(150, 150, 150));
+        LeftButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rr.png"))); // NOI18N
+        LeftButton.setBorder(null);
+        jPanel1.add(LeftButton);
+        LeftButton.setBounds(230, 300, 30, 50);
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        DeleteCardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dd.png"))); // NOI18N
+        jPanel1.add(DeleteCardButton);
+        DeleteCardButton.setBounds(1000, 30, 30, 30);
 
-        centerpanel.add(jPanel8);
-        jPanel8.setBounds(310, 230, 0, 0);
-
-        QuickStart_label.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        QuickStart_label.setForeground(new java.awt.Color(153, 153, 153));
-        QuickStart_label.setText("QUICK START");
-        QuickStart_label.setBorder(null);
-        QuickStart_label.addActionListener(this::QuickStart_labelActionPerformed);
-        centerpanel.add(QuickStart_label);
-        QuickStart_label.setBounds(80, 30, 100, 30);
-
-        Home_Label.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        Home_Label.setText("Home");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1330, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(topPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(100, 100, 100)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Home_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(centerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(topPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(20, 20, 20)
-                    .addComponent(Home_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(20, 20, 20)
-                    .addComponent(centerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 1330, 680);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_Home_ButtonActionPerformed
-
-    private void QuickStart_labelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuickStart_labelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_QuickStart_labelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,14 +123,35 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Home_Button;
-    private javax.swing.JLabel Home_Label;
-    private javax.swing.JButton Library_Button;
-    private javax.swing.JLabel Logo_label;
-    private javax.swing.JTextField QuickStart_label;
-    private javax.swing.JPanel centerpanel;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel topPanel1;
+    private javax.swing.JTextField CardNumber;
+    private javax.swing.JButton CrossButton;
+    private javax.swing.JButton DeleteCardButton;
+    private javax.swing.JTextArea FrontTextArea;
+    private javax.swing.JButton LeftButton;
+    private javax.swing.JButton RightButton;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    public void LeftButtonListener(ActionListener listener){
+    LeftButton.addActionListener(listener);
+    }
+    public void RightButtonListener(ActionListener listener){
+    RightButton.addActionListener(listener);
+    }
+    public void CrosstButtonListener(ActionListener listener){
+    CrossButton.addActionListener(listener);
+    }
+    public void DeleteCardButtonListener(ActionListener listener){
+        DeleteCardButton.addActionListener(listener);
+    }
+    public JTextField getCardNumberField() {
+    return CardNumber; // make sure this text field exists in your form
+    }
+    public JTextArea getFrontTextField() {
+    return FrontTextArea; // make sure this text field exists in your form
+    }
+    public JTextArea getBackTextField() {
+    return BackTextArea; // make sure this text field exists in your form
+    }
 }

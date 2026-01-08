@@ -12,12 +12,11 @@ public class UserController {
 
     private final UserDao userDao = new UserDao();
     private final Signup signupView;
-    private final Login loginView;
     
     //Constructor
-    public UserController(Signup signupView, Login loginView) {
+    public UserController(Signup signupView) {
         this.signupView = signupView;
-        this.loginView = loginView;
+     
         
         // Register listeners for buttons in Signup view
         signupView.AddUserListener(new SignUpListener());   // handles signup button
@@ -39,16 +38,13 @@ public class UserController {
         public void actionPerformed(ActionEvent e) {
             Login log = new Login();
             close();
-            LoginController controller = new LoginController(log);      // Attach controller
+            LoginController controller = new LoginController(log, signupView);      // Attach controller
             controller.open();  
-            
-            
-            
         }
     }
 
     // 🔹 When user clicks "Signup" button
-    private class SignUpListener implements ActionListener {
+    class SignUpListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
@@ -85,9 +81,13 @@ public class UserController {
                 userDao.signup(usermodel);
                 JOptionPane.showMessageDialog(signupView, "Signup successful!");        // ✓ Success message
 
-                // 🔹 After signup, immediately switch to Login page
-                loginView.setVisible(true);          // show original Login
-                signupView.setVisible(false);        // hide original Signup
+                Login log = new Login();
+                close();
+                LoginController controller = new LoginController(log, signupView);      // Attach controller
+                controller.open();  
+                
+            
+               
                 
             } catch (Exception ex) {
                 ex.printStackTrace(); // optional for debugging

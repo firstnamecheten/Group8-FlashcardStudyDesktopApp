@@ -7,6 +7,9 @@ public class UserModel {
     private String password;
     private String confirmpassword;
 
+    // ✅ Add loginId field
+    private int loginId;
+
     // Constructor for SIGNUP (no user_id yet)
     public UserModel(String username, String password, String confirmpassword) {
         this.username = username;
@@ -20,8 +23,6 @@ public class UserModel {
         this.username = username;
         this.password = password;
     }
-    
-    
 
     // GETTERS & SETTERS
     public int getUserId() {
@@ -44,7 +45,6 @@ public class UserModel {
         return password;
     }
 
-    // Make sure this actually sets password
     public void setPassword(String password) {
         this.password = password;
     }
@@ -57,6 +57,12 @@ public class UserModel {
         this.confirmpassword = confirmpassword;
     }
 
-    public void setVisible(boolean b) {
+    // ✅ loginId getter/setter
+    public int getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(int loginId) {
+        this.loginId = loginId;
     }
 }

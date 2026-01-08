@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/images/signupp.png</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Signup.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Login.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/group8_flashcardstudydesktopapp/Group8_FlashcardStudyDesktopApp.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/dao/UserDao.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/group8_flashcardstudydesktopapp/Group8_FlashcardStudyDesktopApp.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/controller/UserController.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/controller/LoginController.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/model/UserModel.java</file>
@@ -14,17 +14,6 @@
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/nbproject/project.properties</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/nbproject/genfiles.properties</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Dashtwo.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/UserBasedFlashcardOwnership.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Language.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Filterby.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Studycards.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/NewDeckDialog.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Studycards2.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Sides2.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/pkgnew/New.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Filterby2.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Language2.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/FlipAndSwipeNavigation.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/images/plus%20dark.png</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/images/Add%20a%20heading%20(1).png</file>
@@ -56,11 +45,23 @@
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/images/create.png</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/images/edit%2017.png</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/CreateFlashcards.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Sides.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Login.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/UserBasedFlashcardOwnership.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Studycards.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Dashtwo.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/Studycards2.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/NewDeckDialog.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/controller/DashtwoController.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/database/MySqlConnection.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/controller/UserBasedFlashcardOwnershipController.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/controller/Studycards2Controller.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/controller/CreateFlashcardsController.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/dao/FlashcardDao.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/database/Database.java</file>
             <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/AdminDashboard.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/view/AdminLogin.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/controller/AdminLoginController.java</file>
-            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/images/signupp.png</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/controller/FlipAndSwipeNavigationController.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/model/FlashcardModel.java</file>
+            <file>file:/C:/Users/LENOVO/OneDrive/Documents/NetBeansProjects/Group8_FlashcardStudyDesktopApp/src/dao/DeckDao.java</file>
         </group>
     </open-files>
 </project-private>

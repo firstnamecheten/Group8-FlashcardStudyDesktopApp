@@ -4,8 +4,12 @@
  */
 package view;
 
+import dao.FlashcardDao;
 import java.awt.CardLayout;
+import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import model.UserModel;
 
 /**
@@ -15,8 +19,10 @@ import model.UserModel;
 public class Studycards2 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Studycards2.class.getName());
-    private Dashtwo originalDashtwo;
+    private Dashtwo dash;
     private UserModel currentUser;
+    private int currentDeckId;
+    private String currentDeckName;
    
     /**
      * Creates new form Studycards2
@@ -34,10 +40,23 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
         setLocationRelativeTo(null); // ✅ center on screen
     }
 
-    public Studycards2(Dashtwo aThis, UserModel user) {
-        this.dashtwoView = dashtwoView;   // 🔑 keep reference
+    public Studycards2(Dashtwo dash, UserModel user) {
+        this.dash = dash;   // 🔑 keep reference
         this.currentUser = user;
         initComponents();
+    }
+
+    public void loadDeck(int deckId, String deckName) {
+        this.currentDeckId = deckId;
+        this.currentDeckName = deckName;
+
+        // Example: show deck name in a label
+        NewDeckName.setText("Deck: " + deckName);
+
+        // TODO: load cards from database or file using deckId
+        // e.g. CardDao dao = new CardDao();
+        // List<Card> cards = dao.getCardsForDeck(deckId);
+        // populateCards(cards);
     }
 
 
@@ -66,7 +85,7 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
         NewDeckName = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jTextField5 = new javax.swing.JTextField();
+        AddNumberOfCardsCreated = new javax.swing.JTextField();
         StudyCardsButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -167,7 +186,7 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
         NewDeckName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         NewDeckName.setBorder(null);
         getContentPane().add(NewDeckName);
-        NewDeckName.setBounds(150, 90, 64, 30);
+        NewDeckName.setBounds(150, 90, 940, 30);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
@@ -179,15 +198,15 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
         jPanel4.setLayout(null);
 
-        jTextField5.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jTextField5.setBorder(null);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        AddNumberOfCardsCreated.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        AddNumberOfCardsCreated.setBorder(null);
+        AddNumberOfCardsCreated.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                AddNumberOfCardsCreatedActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField5);
-        jTextField5.setBounds(600, 70, 40, 60);
+        jPanel4.add(AddNumberOfCardsCreated);
+        AddNumberOfCardsCreated.setBounds(600, 70, 350, 60);
 
         StudyCardsButton.setBackground(new java.awt.Color(0, 153, 255));
         StudyCardsButton.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -234,19 +253,13 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);              // hide StudyCards2
-        originalDashtwo.setVisible(true);    // show original Dashtwo
-
-
+        
         
     }//GEN-LAST:event_Home_ButtonActionPerformed
 
     private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        originalDashtwo.setVisible(true);
-
-          
+        
     }//GEN-LAST:event_NextButtonActionPerformed
 
     private void tickButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tickButtonActionPerformed
@@ -254,9 +267,9 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
         
     }//GEN-LAST:event_tickButtonActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void AddNumberOfCardsCreatedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNumberOfCardsCreatedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_AddNumberOfCardsCreatedActionPerformed
 
     private void AddCardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCardsButtonActionPerformed
         // TODO add your handling code here:
@@ -290,6 +303,7 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddCardsButton;
+    private javax.swing.JTextField AddNumberOfCardsCreated;
     private javax.swing.JButton Home_Button;
     private javax.swing.JButton Library_Button;
     private javax.swing.JLabel Logo_label;
@@ -304,13 +318,41 @@ public Studycards2(int deckId, String deckName, UserModel currentUser) {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JButton tickButton;
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
-
-    void loadDeck(int deckId, String deckName) {
+// Listener registration
+    public void addAddCardsButtonListener(ActionListener listener) {
+        AddCardsButton.addActionListener(listener);
     }
+    public void StudyCardsButtonListener(ActionListener listener) {
+        StudyCardsButton.addActionListener(listener);
+    }
+    
+    // Getter for deck title label
+    public JTextField getDeckNameField() {
+        return NewDeckName;
+    }
+    public void HomeButtonListener(ActionListener listener){
+    Home_Button.addActionListener(listener);
+    }
+    public void NextButtonListener(ActionListener listener){
+    NextButton.addActionListener(listener);
+    }
+
+    public JTextField getNumberOfCardsCreatedField() {
+    return AddNumberOfCardsCreated; // make sure this text field exists in your form
+    }
+
+    public void updateCardCount(int deckId, int userId) {
+    // Use DAO to get the count from DB
+    FlashcardDao dao = new FlashcardDao();
+    int count = dao.getFlashcardCount(deckId, userId);
+
+    // ✅ Update the label/text field in Studycards2
+    AddNumberOfCardsCreated.setText("Cards: " + count);
+}
+    
 }

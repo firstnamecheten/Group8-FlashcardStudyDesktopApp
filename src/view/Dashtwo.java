@@ -1,11 +1,12 @@
 package view;
 
 import controller.LoginController;
-import dashboard.Sides2;
+import controller.UserBasedFlashcardOwnershipController;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 import model.UserModel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -22,235 +23,60 @@ import java.util.List;
 import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import view.Login;
+import view.Dashtwo;
+
 
 public class Dashtwo extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dashtwo.class.getName());
-//
-//    private JPanel mainPanel;
-//    private CardLayout cardLayout;
-//    // Track the currently active dashboard
-//    private static Dashtwo ACTIVE_DASHBOARD;
-//    private boolean isDarkMode;
-//    private final UserModel currentUser = null;
-//        // Keep track of the current logged-in user
-//        private JButton createDeckButton;
-//
-//        private JButton createCardsButton; // grey button shown in image
-//        private int createdDeckId = -1;
-//        private final Login loginView = null;
-//
-//        private Dashtwo dashtwoView;
-//        public int getCreatedDeckId() { return createdDeckId; }
-//
-//        private JButton createButton;
-//        private java.util.List<JButton> deckButtons = new ArrayList<>();
-//
-//        // Track if user has any decks
-//        private boolean hasDecks = false;
-//
-//        // Panel that holds deck buttons vertically
-//        private JPanel deckContainer;
-//
-//        // Controls whether we auto-open CreateFlashcards after creating a deck
-//        private boolean openFlashcardsOnCreate = false; // default: stay on Dashtwo
-//        private Studycards2 studyPage;   // 🔑 keep one reference
+
+  private JPanel mainPanel;
+    private CardLayout cardLayout;
+    // Track the currently active dashboard
+    private static Dashtwo ACTIVE_DASHBOARD;
+   private boolean isDarkMode;
+ //   private final UserModel currentUser;
+       // Keep track of the current logged-in user
+        private JButton createDeckButton;
+
+        private JButton createCardsButton; // grey button shown in image
+        private int createdDeckId = -1;
+        private final Login loginView = null;
+
+        private Dashtwo dashtwoView;
+   
+    private UserModel currentUser;
+    
+        public int getCreatedDeckId() { 
+            return createdDeckId; }
+
+        private JButton createButton;
+        private java.util.List<JButton> deckButtons = new ArrayList<>();
+     
+        // Track if user has any decks
+        private boolean hasDecks = false;
+
+        // Panel that holds deck buttons vertically
+        private JPanel deckContainer;
+
+        // Controls whether we auto-open CreateFlashcards after creating a deck
+        private boolean openFlashcardsOnCreate = false; // default: stay on Dashtwo
+        private Studycards2 studyPage;   // 🔑 keep one reference
 
     // === Constructors ===
     /** Creates new form Dashtwo (preferred: with user context) */
     public Dashtwo() {
-//       initComponents();
-//        this.currentUser = currentUser;
-//        
-//        // Style the Create button before layout
-//        CreateButton.setPreferredSize(new Dimension(160, 40));
-//        CreateButton.setFont(new Font("Dialog", Font.BOLD, 15)); 
-//        CreateButton.setFocusPainted(false);
-//
-//        initDeckContainer();
-//        // IMPORTANT: keep Create visible always
-//        CreateButton.setVisible(true);
-//        
-//        setSize(1285, 760);
-//        ACTIVE_DASHBOARD = this; // track this dashboard
-//        wireMenuActions();
-//
-//        // Load saved decks so they persist
-//        loadDecksFromStorage();
-//        
-    
+       initComponents();
+       setSize(1285, 760);
 
-        initComponents();
-        setSize(1285, 760);
-//
-//        CreateButton.setPreferredSize(new Dimension(160, 40));
-//        CreateButton.setFont(new Font("Dialog", Font.BOLD, 15));
-//        CreateButton.setFocusPainted(false);
-//
-//        initDeckContainer();
-//        // IMPORTANT: keep Create visible always
-//        CreateButton.setVisible(true);
-//
-//        setSize(1285, 760);
-//        this.currentUser = null; // fallback
-//        ACTIVE_DASHBOARD = this; // track this dashboard
-//        wireMenuActions();
-//
-//        // Load saved decks so they persist
-//        loadDecksFromStorage();
-//        this.loginView = null;
-//        
-      
     }
-
-    // Getter for the active dashboard
-//    public static Dashtwo getActiveDashboard() { return ACTIVE_DASHBOARD; }
-//
-//    /** Centralized wiring of menu actions to avoid duplication */
-//    private void wireMenuActions() {
-//        isDarkMode = false;
-//
-//        if (darkModeMenuItem != null) darkModeMenuItem.addActionListener(e -> toggleDarkMode());
-//        if (fontSizeMenuItem != null) fontSizeMenuItem.addActionListener(e -> showFontSizeOptions());
-//        if (studyHistoryMenuItem != null) studyHistoryMenuItem.addActionListener(e -> openStudyHistory());
-//        if (logoutMenuItem != null) logoutMenuItem.addActionListener(e -> logout());
-//        if (accountMenuItem != null) accountMenuItem.addActionListener(e -> openUserBasedFlashcardOwnership());
-//    }
-
-//    // === Navigation/actions ===
-//    private void openUserBasedFlashcardOwnership() {
-//    
-//
-//                          // ✅ hide dashboard
-//}
-//
-//    private void logout() {
-//        int confirm = JOptionPane.showConfirmDialog(
-//                this,
-//                "Are you sure you want to log out?",
-//                "Logout",
-//                JOptionPane.YES_NO_OPTION
-//        );
-//
-//        if (confirm == JOptionPane.YES_OPTION) {
-//            loginView.setVisible(true);
-//            this.setVisible(false);
-//        }
-//    }
-//
-//    // === UI behavior ===
-//    private void toggleDarkMode() {
-//        isDarkMode = !isDarkMode;
-//        if (isDarkMode) {
-//            getContentPane().setBackground(new java.awt.Color(30, 30, 30));
-//            topPanel1.setBackground(new java.awt.Color(40, 40, 40));
-//            scrollPane1.setBackground(new java.awt.Color(45, 45, 45));
-//
-//            Home_Button.setForeground(new java.awt.Color(200, 200, 200));
-//            Home_Button.setBackground(new java.awt.Color(45, 45, 45)); // dark background
-//            Home_Button.setOpaque(true);
-//            Library_Button.setForeground(new java.awt.Color(200, 200, 200));
-//            Library_Button.setBackground(new java.awt.Color(45, 45, 45));
-//            Library_Button.setOpaque(true);
-//
-//            Home_Label.setForeground(new java.awt.Color(255, 255, 255));
-//            Home_Label.setBackground(new java.awt.Color(45, 45, 45));
-//            Logo_label.setBackground(new java.awt.Color(45, 45, 45));
-//            accountButton.setForeground(new java.awt.Color(255, 255, 255));
-//            accountButton.setBackground(new java.awt.Color(40, 40, 40));
-//
-//            darkModeMenuItem.setText(" Light mode");
-//        } else {
-//            getContentPane().setBackground(new java.awt.Color(240, 240, 240));
-//            topPanel1.setBackground(new java.awt.Color(255, 255, 255));
-//            scrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-//
-//            Home_Button.setForeground(new java.awt.Color(0, 0, 0));
-//            Home_Button.setBackground(new java.awt.Color(254, 254, 254));
-//            Home_Button.setOpaque(true);
-//            Library_Button.setForeground(new java.awt.Color(0, 0, 0));
-//            Library_Button.setBackground(new java.awt.Color(254, 254, 254));
-//            Library_Button.setOpaque(true);
-//            Home_Label.setForeground(new java.awt.Color(0, 0, 0));
-//            Home_Label.setBackground(new java.awt.Color(240, 240, 240));
-//            accountButton.setForeground(new java.awt.Color(0, 0, 0));
-//            accountButton.setBackground(new java.awt.Color(254, 254, 254));
-//            accountButton.setOpaque(true);
-//
-//            darkModeMenuItem.setText(" Dark mode");
-//        }
-//        repaint();
-//        revalidate();
-//    }
-//
-//    private void showFontSizeOptions() {
-//        String[] options = {"Small", "Medium", "Large"};
-//        int choice = JOptionPane.showOptionDialog(
-//                this,
-//                "Choose font size",
-//                "Font Size",
-//                JOptionPane.DEFAULT_OPTION,
-//                JOptionPane.QUESTION_MESSAGE,
-//                null, options, options[1]
-//        );
-//
-//        java.awt.Font current = Home_Label.getFont();
-//        switch (choice) {
-//            case 0 -> Home_Label.setFont(current.deriveFont(14f));
-//            case 1 -> Home_Label.setFont(current.deriveFont(18f));
-//            case 2 -> Home_Label.setFont(current.deriveFont(24f));
-//            default -> { /* no change */ }
-//        }
-//    }
-//
-//    private void openStudyHistory() {
-//        JOptionPane.showMessageDialog(
-//                this,
-//                "Study History feature coming soon will be done by Bipin!",
-//                "Study History",
-//                JOptionPane.INFORMATION_MESSAGE
-//        );
-//    }
-//        // === Create button clicks ===
-//
-//    
-//    private void openNewDeckDialog() {
-//        NewDeckDialog dialog = new NewDeckDialog(this, true, currentUser);
-//        dialog.setLocationRelativeTo(this); // center on Dashtwo frame
-//        dialog.setVisible(true);
-//    
-//        }
-//    
-//    
-//    private void openStudycards2() {
-//        studyPage.setVisible(true);
-//        dashtwoView.setVisible(false);
-//    }
-//    
-//    
-//    
-//    // === Deck area setup using scrollPane1 ===
-//    private void initDeckContainer() {
-//        deckContainer = new JPanel();
-//        deckContainer.setLayout(new BoxLayout(deckContainer, BoxLayout.Y_AXIS));
-//
-//        // Attach deck container to NetBeans scrollPane1
-//        // Note: scrollPane1 is a Swing JScrollPane in this class
-//        scrollPane1.setViewportView(deckContainer);
-//        scrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-//        scrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-//        
-//    }
-//
-//
-//
-//
-//    
-//    // Entry point if this frame is run directly
-//    public static void main(String[] args) {
-//         java.awt.EventQueue.invokeLater(() -> new Dashtwo().setVisible(true));
-//        }
-//    
+    
+    // Entry point if this frame is run directly
+    public static void main(String[] args) {
+         java.awt.EventQueue.invokeLater(() -> new Dashtwo().setVisible(true));
+         
+        }
+   
 
 
     /**
@@ -278,6 +104,9 @@ public class Dashtwo extends javax.swing.JFrame {
         CreateButton = new javax.swing.JButton();
         DeckOrganizationButton = new javax.swing.JButton();
         scrollPane1 = new javax.swing.JScrollPane();
+        DeleteDeckButton = new javax.swing.JButton();
+        ArchiveButton = new javax.swing.JButton();
+        FavoritesButton = new javax.swing.JButton();
 
         accountPopupMenu.setBackground(new java.awt.Color(102, 102, 102));
         accountPopupMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(200, 200, 200), new java.awt.Color(150, 150, 150), new java.awt.Color(80, 80, 82), new java.awt.Color(100, 100, 100)));
@@ -388,6 +217,21 @@ public class Dashtwo extends javax.swing.JFrame {
         getContentPane().add(scrollPane1);
         scrollPane1.setBounds(100, 150, 1080, 530);
 
+        DeleteDeckButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dd.png"))); // NOI18N
+        DeleteDeckButton.addActionListener(this::DeleteDeckButtonActionPerformed);
+        getContentPane().add(DeleteDeckButton);
+        DeleteDeckButton.setBounds(980, 110, 30, 30);
+
+        ArchiveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/archive.png"))); // NOI18N
+        ArchiveButton.addActionListener(this::ArchiveButtonActionPerformed);
+        getContentPane().add(ArchiveButton);
+        ArchiveButton.setBounds(940, 110, 30, 30);
+
+        FavoritesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star.png"))); // NOI18N
+        FavoritesButton.addActionListener(this::FavoritesButtonActionPerformed);
+        getContentPane().add(FavoritesButton);
+        FavoritesButton.setBounds(900, 110, 30, 30);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 //
@@ -397,11 +241,11 @@ public class Dashtwo extends javax.swing.JFrame {
     }//GEN-LAST:event_accountButtonActionPerformed
 
     private void accountButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountButtonMouseClicked
-//        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) { // Left click only
-//            int x = accountButton.getWidth() - accountPopupMenu.getPreferredSize().width;
-//            int y = accountButton.getHeight();
-//            accountPopupMenu.show(accountButton, x, y);
-//        }
+        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) { // Left click only
+            int x = accountButton.getWidth() - accountPopupMenu.getPreferredSize().width;
+            int y = accountButton.getHeight();
+            accountPopupMenu.show(accountButton, x, y);
+        }
     }//GEN-LAST:event_accountButtonMouseClicked
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
@@ -411,8 +255,8 @@ public class Dashtwo extends javax.swing.JFrame {
 
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
         // TODO add your handling code here:
-     // ✅ Just call the helper method
-//    openNewDeckDialog();
+        // ✅ Just call the helper method
+      
 
 
     }//GEN-LAST:event_CreateButtonActionPerformed
@@ -425,10 +269,25 @@ public class Dashtwo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_DeckOrganizationButtonActionPerformed
 
+    private void ArchiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArchiveButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ArchiveButtonActionPerformed
+
+    private void FavoritesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FavoritesButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FavoritesButtonActionPerformed
+
+    private void DeleteDeckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteDeckButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteDeckButtonActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ArchiveButton;
     private javax.swing.JButton CreateButton;
     private javax.swing.JButton DeckOrganizationButton;
+    private javax.swing.JButton DeleteDeckButton;
+    private javax.swing.JButton FavoritesButton;
     private javax.swing.JButton Home_Button;
     private javax.swing.JLabel Home_Label;
     private javax.swing.JButton Library_Button;
@@ -444,68 +303,46 @@ public class Dashtwo extends javax.swing.JFrame {
     private javax.swing.JMenuItem studyHistoryMenuItem;
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
+
+    public void AccountButtonListener(ActionListener listener){
+        accountButton.addActionListener(listener);
+    }
+    public void CreateButtonListener(ActionListener listener){
+        CreateButton.addActionListener(listener);
+    }
+    public void DeleteDeckButtonListener(ActionListener listener){
+        DeleteDeckButton.addActionListener(listener);
+    }
+    public void DeckOrganizationButtonListener(ActionListener listener){
+        DeckOrganizationButton.addActionListener(listener);
+    }
+    public void ArchiveButtonListener(ActionListener listener){
+        ArchiveButton.addActionListener(listener);
+    }
+    public void FavoritesButtonListener(ActionListener listener){
+        FavoritesButton.addActionListener(listener);
+    }
+
+    // Example getters you must add in Dashtwo.java
+    public JMenuItem getDarkModeMenuItem() { return darkModeMenuItem; }
+    public JMenuItem getFontSizeMenuItem() { return fontSizeMenuItem; }
+    public JMenuItem getStudyHistoryMenuItem() { return studyHistoryMenuItem; }
+    public JMenuItem getLogoutMenuItem() { return logoutMenuItem; }
+    public JMenuItem getAccountMenuItem() { return accountMenuItem; }
+
+    public JPanel getTopPanel() { return topPanel1; }
+    public JButton getAccountButton() { return accountButton; }
+    public JLabel getHomeLabel() { return Home_Label; }
+    public JScrollPane getScrollPane() { return scrollPane1; }
+
+    void addDeckButton(String deckName, int deckId) {
+        JButton deckButton = new JButton(deckName);
+    }
+    public void saveDeckToStorage(int deckId, String deckName) {
+    }
 }
-    
-//    void addDeckButton(String deckName, int deckId) {
-//    JButton deckButton = new JButton(deckName);
-//    deckButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-//    deckButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
-//    deckButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
-//    deckButton.setFocusPainted(false);
-//
-//    deckButton.addActionListener(e -> {
-//    this.setVisible(false);       // hide Dashtwo
-//    studyPage.setVisible(true);   // show StudyCards2
-//    studyPage.loadDeck(deckId, deckName); // optional: tell StudyCards2 which deck
-//    cardLayout.show(mainPanel, "Dashtwo");  // after signup success
-//    cardLayout.show(mainPanel, "Studycards2"); // if user clicks "Create Account"
-//    });
-//    
-//    
-//
-//    deckContainer.add(deckButton);
-//    deckContainer.add(Box.createVerticalStrut(10));
-//    deckButtons.add(deckButton);
-//
-//    deckContainer.revalidate();
-//    deckContainer.repaint();
-//
-//    }
-//    
-//    // Example: store decks in a simple text file decks.txt
-//void saveDeckToStorage(int deckId, String deckName) {
-//    try (FileWriter fw = new FileWriter("decks.txt", true);
-//             BufferedWriter bw = new BufferedWriter(fw);
-//             PrintWriter out = new PrintWriter(bw)) {
-//            // Save compact, clean CSV
-//            out.println(deckId + "," + deckName);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//private void loadDecksFromStorage() {
-//    File file = new File("decks.txt");
-//        if (!file.exists()) return;
-//
-//        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-//            String line;
-//            while ((line = br.readLine()) != null) {
-//                String[] parts = line.split(",", 2);
-//                if (parts.length == 2) {
-//                    int deckId = Integer.parseInt(parts[0].trim());
-//                    String deckName = parts[1].trim();
-//                    addDeckButton(deckName, deckId);
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    
-//}
-//
+
+
 
 
 

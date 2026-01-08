@@ -5,17 +5,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import model.UserModel;
+import view.AdminDashboard;
 import view.Dashtwo;
 import view.Login;
 import view.Signup;
-import view.AdminDashboard;   // ✅ import AdminDashboard
-
 public class LoginController {
 
-    private final Login loginView;
+    private final Login log;
+    private final Signup signupView;
     private final UserDao userDao = new UserDao();
-//    private final Dashtwo dashtwoView;
-//    private final Signup signupView;
+
 //    private final AdminDashboard adminDashboardView; // ✅ add admin dashboard
 
     private int loginAttempts = 0;
@@ -23,24 +22,24 @@ public class LoginController {
     private long lockoutEndTime = 0;
     private boolean forgotInProgress = false;
 
-    public LoginController(Login loginView) {
-        this.loginView = loginView;
+    public LoginController(Login log, Signup signupView) {
+          this.log = log;
 //        this.dashtwoView = dashtwoView;
-//        this.signupView = signupView;
+          this.signupView = signupView;
 //        this.adminDashboardView = adminDashboardView;
 
-        loginView.LoginButtonListener(new LoginButtonListener());
-        loginView.ForgotPasswordButtonListener(new ForgotPasswordButtonListener());
-//        loginView.CreateAccountButtonListener(new CreateAccountButtonListener());
+        log.LoginButtonListener(new LoginButtonListener());
+        log.ForgotPasswordButtonListener(new ForgotPasswordButtonListener());
+        log.CreateAccountButtonListener(new CreateAccountButtonListener());
     }
 
-    public void open() { loginView.setVisible(true); }
-    public void close() { loginView.dispose(); }
+    public void open() { log.setVisible(true); }
+    public void close() { log.dispose(); }
 
     private void setLoginEnabled(boolean enabled) {
-        loginView.getUsernameField().setEnabled(enabled);
-        loginView.getPasswordField().setEnabled(enabled);
-        loginView.getLoginButton().setEnabled(enabled);
+        log.getUsernameField().setEnabled(enabled);
+        log.getPasswordField().setEnabled(enabled);
+        log.getLoginButton().setEnabled(enabled);
     }
 
     // ================= LOGIN LOGIC =================
@@ -49,7 +48,7 @@ public class LoginController {
         if (now < lockoutEndTime) {
             long remainingSeconds = (lockoutEndTime - now) / 1000;
             JOptionPane.showMessageDialog(
-                    loginView,
+                    log,
                     "Too many attempts! Try again in " + remainingSeconds + " seconds."
             );
             return null;
@@ -68,7 +67,7 @@ public class LoginController {
             setLoginEnabled(false);
 
             JOptionPane.showMessageDialog(
-                    loginView,
+                    log,
                     "Too many wrong attempts! Login disabled for 5 minutes."
             );
 
@@ -76,12 +75,12 @@ public class LoginController {
                 setLoginEnabled(true);
                 loginAttempts = 0;
                 lockoutEndTime = 0;
-                JOptionPane.showMessageDialog(loginView, "You can try logging in again now.");
+                JOptionPane.showMessageDialog(log, "You can try logging in again now.");
             }).start();
 
         } else {
             JOptionPane.showMessageDialog(
-                    loginView,
+                    log,
                     "Wrong username or password! Attempt " + loginAttempts + " of " + MAX_ATTEMPTS
             );
         }
@@ -91,40 +90,60 @@ public class LoginController {
 
     // ================= LOGIN BUTTON =================
     class LoginButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String username = loginView.getUsernameField().getText().trim();
-            String password = loginView.getPasswordField().getText().trim();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String username = log.getUsernameField().getText().trim();
+        String password = log.getPasswordField().getText().trim();
 
-            if (username.equalsIgnoreCase("Enter the username")) username = "";
-            if (password.equalsIgnoreCase("Enter the password")) password = "";
+        if (username.equalsIgnoreCase("Enter the username")) username = "";
+        if (password.equalsIgnoreCase("Enter the password")) password = "";
 
-            if (username.isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(loginView, "All fields are required!");
-                return;
-            }
-
-            // ✅ Check for Admin login first
-            if (username.equals("Admin") && password.equals("1234")) {
-                JOptionPane.showMessageDialog(loginView, "Admin login successful!");
-//                adminDashboardView.setVisible(true);
-                loginView.setVisible(false);
-                return;
-            }
-
-            // ✅ Otherwise, normal user login
-            UserModel user = tryLogin(username, password);
-
-            if (user != null) {
-                JOptionPane.showMessageDialog(loginView, "Login successful!");
-                userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
-              Dashtwo dash = new Dashtwo();
-              close();
-              DashtwoController dashCon = new DashtwoController(dash);
-              dashCon.open();
-            }
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(log, "All fields are required!");
+            return;
         }
-    }
+
+        // ✅ Check for Admin login first
+        // ✅ Check for Admin login first
+    if (username.equals("Admin") && password.equals("1234")) {
+    JOptionPane.showMessageDialog(log, "Admin login successful!");
+
+    // ✅ Create the AdminDashboard view
+    AdminDashboard adminDashboardView = new AdminDashboard();
+
+    // ✅ Attach the controller to wire tables/buttons
+    AdminDashboardController adminController =
+            new AdminDashboardController(log, adminDashboardView);
+
+    // ✅ Show the dashboard
+    adminDashboardView.setVisible(true);
+
+    // Hide login window
+    log.setVisible(false);
+    return;
+}
+
+        // ✅ Otherwise, normal user login
+UserModel user = tryLogin(username, password);
+
+if (user != null) {
+    JOptionPane.showMessageDialog(log, "Login successful!");
+
+    // ✅ Capture loginId when inserting login history
+    int loginId = userDao.insertLoginHistory(user.getUserId(), user.getUsername(), password);
+
+    // ✅ Store loginId in UserModel so DashtwoController can use it later
+    user.setLoginId(loginId);
+
+    Dashtwo dash = new Dashtwo();
+    close();
+    DashtwoController dashCon = new DashtwoController(dash, log);
+    dashCon.setCurrentUser(user);   // pass currentUser with loginId set
+    dashCon.open();
+}
+}
+}
+
 
     // ================= FORGOT PASSWORD BUTTON =================
     class ForgotPasswordButtonListener implements ActionListener {
@@ -142,12 +161,14 @@ public class LoginController {
     }
 
     // ================= CREATE ACCOUNT =================
-//    public class CreateAccountButtonListener implements ActionListener {
-//        public void actionPerformed(ActionEvent e) {
-//            signupView.setVisible(true);
-//            loginView.setVisible(false);
-//        }
-//    }
+    public class CreateAccountButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            close();
+            signupView.setVisible(true); // reopen original signup page
+         
+        }
+    }
 
     // ================= FORGOT PASSWORD LOGIC =================
     private void handleForgotPassword() {
@@ -160,7 +181,7 @@ public class LoginController {
         };
 
         int option = JOptionPane.showConfirmDialog(
-                loginView,
+                log,
                 message,
                 "Forgot Password",
                 JOptionPane.OK_CANCEL_OPTION,
@@ -173,20 +194,20 @@ public class LoginController {
         String newPassword = new String(newPasswordField.getPassword()).trim();
 
         if (username.isEmpty() || newPassword.isEmpty()) {
-            JOptionPane.showMessageDialog(loginView, "All fields are required!");
+            JOptionPane.showMessageDialog(log, "All fields are required!");
             return;
         }
 
         UserModel user = userDao.getUserByUsername(username);
 
         if (user == null) {
-            JOptionPane.showMessageDialog(loginView, "Username not found!");
+            JOptionPane.showMessageDialog(log, "Username not found!");
             return;
         }
 
         user.setPassword(newPassword);
         userDao.updatePassword(user);
 
-        JOptionPane.showMessageDialog(loginView, "Password updated successfully!");
+        JOptionPane.showMessageDialog(log, "Password updated successfully!");
     }
 }

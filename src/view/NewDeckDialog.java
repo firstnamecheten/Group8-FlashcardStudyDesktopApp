@@ -1,12 +1,12 @@
 
 package view;
 
-import dao.UserDao;
+import dao.DeckDao;
 import model.UserModel;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import view.Dashtwo;
 
 public class NewDeckDialog extends javax.swing.JDialog {
 
@@ -14,14 +14,16 @@ public class NewDeckDialog extends javax.swing.JDialog {
     private UserModel currentUser;
     private boolean okPressed;
     private int createdDeckId = -1;   // will hold the new deck's ID
-    private Dashtwo dashboard;
+    private Dashtwo dash;
+    private boolean deckCreated;
+    private String createdDeckName;
 
 
     // ✅ Constructor with UserModel
     public NewDeckDialog(java.awt.Frame parent, boolean modal, UserModel user) {
     super(parent, modal);
     this.currentUser = user;
-    this.dashboard = (Dashtwo) parent;   // ✅ keep reference to dashboard
+    this.dash = (Dashtwo) parent;   // ✅ keep reference to dashboard
     initComponents();
     CreateNewDeck_Button.addActionListener(evt -> saveDeck());
 
@@ -40,20 +42,17 @@ public class NewDeckDialog extends javax.swing.JDialog {
     }
 
     try {
-        UserDao dao = new UserDao();
-        int deckId = dao.addDeck(currentUser.getUserId(), deckName);
+        DeckDao DeckDao = new DeckDao();
+        int deckId = DeckDao.addDeck(currentUser.getUserId(), deckName);
 
         if (deckId != -1) {
-            // ✅ Show success popup
-            JOptionPane.showMessageDialog(this, "Deck '" + deckName + "' saved successfully!");           
-            createdDeckId = deckId;
-            okPressed = true;
-            // ✅ Add deck button directly to dashboard
-            dashboard.addDeckButton(deckName, deckId);
-            dashboard.saveDeckToStorage(deckId, deckName);
-            
-            dispose();
+            JOptionPane.showMessageDialog(this, "Deck '" + deckName + "' saved successfully!");
 
+            // ✅ store results for controller
+            createdDeckId = deckId;
+            createdDeckName = deckName;
+            deckCreated = true;
+            okPressed = true;
 
             dispose(); // close dialog
         } else {
@@ -191,6 +190,13 @@ public class NewDeckDialog extends javax.swing.JDialog {
         return deck_name.getText();
     }
 
+    public boolean isDeckCreated() {
+        return deckCreated;    }
+
+    public String getCreatedDeckName() {
+        return createdDeckName;    }
+    
+    
     
     
 }

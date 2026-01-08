@@ -5,20 +5,18 @@
 package group8_flashcardstudydesktopapp;
 
 import controller.UserController;
-import view.Login;
+
 import view.Signup;
 
 /**
  *
  * @author LENOVO
  */
-public class Group8_FlashcardStudyDesktopApp {
-
-    private static Login loginView;
+public class Group8_FlashcardStudyDesktopApp {  
     
     public static void main(String[] args){
         Signup signupView = new Signup();
-        UserController uc = new UserController(signupView, loginView);   // aba open gara signup page bhaneko
+        UserController uc = new UserController(signupView);   // aba open gara signup page bhaneko
         uc.open();
     }
 }

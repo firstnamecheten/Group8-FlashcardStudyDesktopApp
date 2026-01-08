@@ -3,6 +3,7 @@ package view;
 import static com.mysql.cj.conf.PropertyKey.logger;
 import model.UserModel;
 import dao.UserDao;
+import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import view.Dashtwo;
@@ -15,8 +16,7 @@ import view.Dashtwo;
         java.util.logging.Logger.getLogger(UserBasedFlashcardOwnership.class.getName());
 
     // ✅ Add this field to store the logged-in user
-    private final UserModel currentUser;
-    private final Dashtwo dashtwoView;
+   
     private UserModel user;
     private JTextField username_text_field;
     private JTextField userId_text_field;
@@ -26,22 +26,11 @@ import view.Dashtwo;
     /** No-arg constructor (used by GUI builder or fallback) */
     public UserBasedFlashcardOwnership() {
         initComponents();
-        pack();
-        this.currentUser = null; // fallback
-        this.dashtwoView = null;
+        setSize(1285,760);
+        
     }
 
-    /** Preferred constructor with user context */
-    public UserBasedFlashcardOwnership(UserModel currentUser, Dashtwo dashtwoView) {
-    initComponents();
-    setSize(1285, 760);
-    this.currentUser = currentUser;
-    this.dashtwoView = dashtwoView;
-
-    Username_Text_Field.setText(currentUser.getUsername());
-    UserID_Text_Field.setText(String.valueOf(currentUser.getUserId()));
-}
-
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -330,4 +319,18 @@ import view.Dashtwo;
     UserID_Text_Field.setText(String.valueOf(currentUser.getUserId()));
 }
 
+    public void HomeButtonListener(ActionListener listener){
+    Home_Button.addActionListener(listener);
+    }
+
+    public javax.swing.JTextField getPasswordField(){
+        return update_password_Text_Field; 
+    }
+
+    public void showUserInfo(int userId, String username) {
+        UserID_Text_Field.setText(""+userId);
+        Username_Text_Field.setText(username);
+    }
+    
 }
+    
