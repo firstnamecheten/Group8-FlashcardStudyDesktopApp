@@ -48,8 +48,6 @@ import view.Dashtwo;
         Username_Text_Field = new javax.swing.JTextField();
         Pencil_label = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
-        update_password_Text_Field = new javax.swing.JTextField();
         Copy_Button = new javax.swing.JButton();
         UserID_Text_Field = new javax.swing.JTextField();
         ID_Label = new javax.swing.JLabel();
@@ -121,29 +119,6 @@ import view.Dashtwo;
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
         jPanel1.setLayout(null);
-
-        jTextField3.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField3.setText("Password");
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(this::jTextField3ActionPerformed);
-        jPanel1.add(jTextField3);
-        jTextField3.setBounds(30, 30, 120, 30);
-
-        update_password_Text_Field.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        update_password_Text_Field.setText(" Update password");
-        update_password_Text_Field.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        update_password_Text_Field.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                update_password_Text_FieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                update_password_Text_FieldFocusLost(evt);
-            }
-        });
-        update_password_Text_Field.addActionListener(this::update_password_Text_FieldActionPerformed);
-        jPanel1.add(update_password_Text_Field);
-        update_password_Text_Field.setBounds(30, 60, 200, 50);
 
         Copy_Button.setBackground(new java.awt.Color(254, 254, 254));
         Copy_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Screenshot 2025-12-17 225511.png"))); // NOI18N
@@ -231,10 +206,6 @@ import view.Dashtwo;
         // TODO add your handling code here:
     }//GEN-LAST:event_Save_ButtonActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void UserID_Text_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserID_Text_FieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UserID_Text_FieldActionPerformed
@@ -243,27 +214,9 @@ import view.Dashtwo;
         // TODO add your handling code here:
     }//GEN-LAST:event_Copy_ButtonActionPerformed
 
-    private void update_password_Text_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_password_Text_FieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_update_password_Text_FieldActionPerformed
-
     private void Username_Text_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Username_Text_FieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Username_Text_FieldActionPerformed
-
-    private void update_password_Text_FieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_update_password_Text_FieldFocusGained
-        // TODO add your handling code here:
-        if(update_password_Text_Field.getText().equals("Update password")){
-            update_password_Text_Field.setText("");
-        }
-    }//GEN-LAST:event_update_password_Text_FieldFocusGained
-
-    private void update_password_Text_FieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_update_password_Text_FieldFocusLost
-        // TODO add your handling code here:
-        if(update_password_Text_Field.getText().equals("")){
-            update_password_Text_Field.setText("Update password");
-        }
-    }//GEN-LAST:event_update_password_Text_FieldFocusLost
 
     public static void main(String args[]) {
         
@@ -287,9 +240,7 @@ import view.Dashtwo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel topPanel1;
-    private javax.swing.JTextField update_password_Text_Field;
     // End of variables declaration//GEN-END:variables
 
     public void setCurrentUser(UserModel currentUser) {
@@ -301,9 +252,6 @@ import view.Dashtwo;
     Home_Button.addActionListener(listener);
     }
 
-    public javax.swing.JTextField getPasswordField(){
-        return update_password_Text_Field; 
-    }
 
     public void showUserInfo(int userId, String username) {
         UserID_Text_Field.setText(""+userId);
