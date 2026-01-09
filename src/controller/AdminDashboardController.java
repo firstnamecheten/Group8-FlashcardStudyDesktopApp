@@ -152,7 +152,12 @@ public class AdminDashboardController {
 
     // Load methods
     private void loadSignupTable() {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return false; // 🔒 no cell can be edited
+    }
+};
         model.setColumnIdentifiers(new String[]{"user_id", "username", "password", "confirmpassword"});
         try (Connection conn = mysql.openConnection();
              Statement stmt = conn.createStatement();
@@ -172,7 +177,12 @@ public class AdminDashboardController {
     }
 
     private void loadLoginTable() {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return false; // 🔒 no cell can be edited
+    }
+};
         model.setColumnIdentifiers(new String[]{"login_id", "user_id", "username", "password", "login_time"});
         try (Connection conn = mysql.openConnection();
              Statement stmt = conn.createStatement();
@@ -193,7 +203,12 @@ public class AdminDashboardController {
     }
 
     private void loadLogoutTable() {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return false; // 🔒 no cell can be edited
+    }
+};
         model.setColumnIdentifiers(new String[]{"logout_id", "login_id", "user_id", "session_id", "logout_time"});
         try (Connection conn = mysql.openConnection();
              Statement stmt = conn.createStatement();
@@ -214,7 +229,12 @@ public class AdminDashboardController {
     }
 
     private void loadDeckTable() {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return false; // 🔒 no cell can be edited
+    }
+};
         model.setColumnIdentifiers(new String[]{"deck_id", "user_id", "deck_name", "created_at"});
         try (Connection conn = mysql.openConnection();
              Statement stmt = conn.createStatement();
@@ -234,7 +254,12 @@ public class AdminDashboardController {
     }
     
     private void loadFlashcardTable() {
-    DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel model = new DefaultTableModel() {
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return false; // 🔒 no cell can be edited
+    }
+};
     model.setColumnIdentifiers(new String[]{"card_id", "deck_id", "user_id", "front_text", "back_text", "created_at"});
 
     try (Connection conn = mysql.openConnection();
