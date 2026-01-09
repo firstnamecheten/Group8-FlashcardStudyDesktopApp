@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,4 +56,28 @@ public class DeckDao {
         }
         return false;
     }
+    
+    // Fetch all decks belonging to a specific user
+    public List<String[]> getDecksByUser(int userId) {
+    Connection conn = mysql.openConnection();
+    String sql = "SELECT deck_id, deck_name FROM decks WHERE user_id = ?";
+    List<String[]> decks = new ArrayList<>();
+
+    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        pstmt.setInt(1, userId);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            String[] deck = {
+                String.valueOf(rs.getInt("deck_id")),
+                rs.getString("deck_name")
+            };
+            decks.add(deck);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(DeckDao.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        mysql.closeConnection(conn);
+    }
+    return decks;
+}
 }

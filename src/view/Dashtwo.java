@@ -1,68 +1,14 @@
 package view;
 
-import controller.LoginController;
-import controller.UserBasedFlashcardOwnershipController;
-import java.awt.CardLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionListener;
-import model.UserModel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
-import view.Login;
 import view.Dashtwo;
 
 
 public class Dashtwo extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Dashtwo.class.getName());
-
-  private JPanel mainPanel;
-    private CardLayout cardLayout;
-    // Track the currently active dashboard
-    private static Dashtwo ACTIVE_DASHBOARD;
-   private boolean isDarkMode;
- //   private final UserModel currentUser;
-       // Keep track of the current logged-in user
-        private JButton createDeckButton;
-
-        private JButton createCardsButton; // grey button shown in image
-        private int createdDeckId = -1;
-        private final Login loginView = null;
-
-        private Dashtwo dashtwoView;
-   
-    private UserModel currentUser;
-    
-        public int getCreatedDeckId() { 
-            return createdDeckId; }
-
-        private JButton createButton;
-        private java.util.List<JButton> deckButtons = new ArrayList<>();
-     
-        // Track if user has any decks
-        private boolean hasDecks = false;
-
-        // Panel that holds deck buttons vertically
-        private JPanel deckContainer;
-
-        // Controls whether we auto-open CreateFlashcards after creating a deck
-        private boolean openFlashcardsOnCreate = false; // default: stay on Dashtwo
-        private Studycards2 studyPage;   // 🔑 keep one reference
-
     // === Constructors ===
     /** Creates new form Dashtwo (preferred: with user context) */
     public Dashtwo() {
@@ -133,20 +79,27 @@ public class Dashtwo extends javax.swing.JFrame {
 
         topPanel1.setBackground(new java.awt.Color(255, 255, 255));
         topPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        topPanel1.setLayout(null);
 
         Home_Button.setBackground(new java.awt.Color(254, 254, 254));
         Home_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Home_Button.setText("Home");
         Home_Button.setBorder(null);
         Home_Button.addActionListener(this::Home_ButtonActionPerformed);
+        topPanel1.add(Home_Button);
+        Home_Button.setBounds(190, 21, 60, 20);
 
         Logo_label.setBackground(new java.awt.Color(254, 254, 254));
         Logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/122.png"))); // NOI18N
+        topPanel1.add(Logo_label);
+        Logo_label.setBounds(100, 1, 80, 65);
 
         Library_Button.setBackground(new java.awt.Color(254, 254, 254));
         Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Library_Button.setText("Library");
         Library_Button.setBorder(null);
+        topPanel1.add(Library_Button);
+        Library_Button.setBounds(280, 11, 70, 40);
 
         accountButton.setBackground(new java.awt.Color(254, 254, 254));
         accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/13_1.png"))); // NOI18N
@@ -157,36 +110,10 @@ public class Dashtwo extends javax.swing.JFrame {
             }
         });
         accountButton.addActionListener(this::accountButtonActionPerformed);
-
-        javax.swing.GroupLayout topPanel1Layout = new javax.swing.GroupLayout(topPanel1);
-        topPanel1.setLayout(topPanel1Layout);
-        topPanel1Layout.setHorizontalGroup(
-            topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanel1Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(Logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 774, Short.MAX_VALUE)
-                .addComponent(accountButton)
-                .addGap(144, 144, 144))
-        );
-        topPanel1Layout.setVerticalGroup(
-            topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanel1Layout.createSequentialGroup()
-                .addGroup(topPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Logo_label)
-                    .addGroup(topPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(Home_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(topPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(accountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        topPanel1.add(accountButton);
+        accountButton.setBounds(1124, 1, 61, 65);
+        topPanel1.add(scrollbar2);
+        scrollbar2.setBounds(0, 0, 0, 0);
 
         getContentPane().add(topPanel1);
         topPanel1.setBounds(0, 0, 1330, 70);

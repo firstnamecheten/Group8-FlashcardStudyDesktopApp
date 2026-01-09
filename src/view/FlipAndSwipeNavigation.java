@@ -50,7 +50,7 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(72, 72, 72));
         jPanel1.setLayout(null);
 
         CardNumber.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -92,7 +92,7 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
         DeleteCardButton.setBounds(1000, 30, 30, 30);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1330, 680);
+        jPanel1.setBounds(0, 0, 1330, 670);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

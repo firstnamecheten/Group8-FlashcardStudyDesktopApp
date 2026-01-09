@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.UserModel;
+import view.AdminDashboard;
 import view.Signup;
 import view.Login;
 
@@ -34,17 +35,21 @@ public class UserController {
 
     // 🔹 When user clicks "Login" button on Signup page
     private class LoginListener implements ActionListener {
+
+        private AdminDashboard adminDashboardView;
         @Override
         public void actionPerformed(ActionEvent e) {
             Login log = new Login();
             close();
-            LoginController controller = new LoginController(log, signupView);      // Attach controller
+            LoginController controller = new LoginController(log, signupView, adminDashboardView);      // Attach controller
             controller.open();  
         }
     }
 
     // 🔹 When user clicks "Signup" button
     class SignUpListener implements ActionListener {
+
+        private AdminDashboard adminDashboardView;
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
@@ -83,7 +88,7 @@ public class UserController {
 
                 Login log = new Login();
                 close();
-                LoginController controller = new LoginController(log, signupView);      // Attach controller
+                LoginController controller = new LoginController(log, signupView, adminDashboardView);      // Attach controller
                 controller.open();  
                 
             

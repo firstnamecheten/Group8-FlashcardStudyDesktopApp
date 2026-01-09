@@ -15,24 +15,9 @@ public class UserModel {
         this.username = username;
         this.password = password;
         this.confirmpassword = confirmpassword;
-    }
-
-    // Constructor for LOGIN / DB (with user_id + password)
-    public UserModel(int user_id, String username, String password) {
-        this.user_id = user_id;
-        this.username = username;
-        this.password = password;
-    }
-
+    }   
+    
     // GETTERS & SETTERS
-    public int getUserId() {
-        return user_id;
-    }
-
-    public void setUserId(int user_id) {
-        this.user_id = user_id;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -57,6 +42,16 @@ public class UserModel {
         this.confirmpassword = confirmpassword;
     }
 
+    
+    
+    
+     // Constructor for LOGIN / DB (with user_id + password)
+    public UserModel(int user_id, String username, String password) {
+        this.user_id = user_id;
+        this.username = username;
+        this.password = password;
+    }
+    
     // ✅ loginId getter/setter
     public int getLoginId() {
         return loginId;
@@ -65,4 +60,12 @@ public class UserModel {
     public void setLoginId(int loginId) {
         this.loginId = loginId;
     }
+    public int getUserId() {
+        return user_id;
+    }
+
+    public void setUserId(int user_id) {
+        this.user_id = user_id;
+    }
+
 }
