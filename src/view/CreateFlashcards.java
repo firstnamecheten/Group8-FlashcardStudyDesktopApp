@@ -4,6 +4,14 @@
  */
 package view;
 
+<<<<<<< HEAD
+=======
+import java.awt.CardLayout;
+import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 import model.UserModel;
 
 /**
@@ -14,6 +22,7 @@ public class CreateFlashcards extends javax.swing.JFrame {
 
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CreateFlashcards.class.getName());
+<<<<<<< HEAD
     private final int deckId;
     private UserModel currentUser;
     /**
@@ -31,6 +40,30 @@ public class CreateFlashcards extends javax.swing.JFrame {
 
 
     }
+=======
+    
+    private JPanel mainPanel;
+    private CardLayout cardLayout;
+    private final int deckId;
+    private UserModel currentUser;
+    private String deckName;
+    private JTextField NumberOfCardsCreated;
+    /**
+     * Creates new form CreateFlashcards
+     */
+    public CreateFlashcards(Studycards2 studyPage, String deckName, UserModel currentUser, int deckId) {
+    this.deckId = deckId;          // keep ID hidden for database use
+    this.currentUser = currentUser; // ✅ store the user for later use
+    this.deckName = deckName;      // ✅ store the deck name
+    initComponents();
+    setSize(1285, 760);
+
+    NewDeckName.setText(deckName); // now works, deckName is a String
+
+    // ✅ Log the deckId for debugging
+    logger.info("Opened CreateFlashcards for deckId: " + deckId);
+}
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 
     // Default constructor (optional, for testing)
     public CreateFlashcards() {
@@ -59,11 +92,21 @@ public class CreateFlashcards extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+<<<<<<< HEAD
         Front_Text = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Back_Text = new javax.swing.JTextField();
         GoBackButton = new javax.swing.JButton();
         tickButton = new javax.swing.JButton();
+=======
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        FrontTextArea = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        BackTextArea = new javax.swing.JTextArea();
+        GoBackButton = new javax.swing.JButton();
+        SaveButton = new javax.swing.JButton();
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
         NewDeckName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,20 +114,35 @@ public class CreateFlashcards extends javax.swing.JFrame {
 
         topPanel1.setBackground(new java.awt.Color(255, 255, 255));
         topPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+<<<<<<< HEAD
+=======
+        topPanel1.setLayout(null);
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 
         Home_Button.setBackground(new java.awt.Color(254, 254, 254));
         Home_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Home_Button.setText("Home");
         Home_Button.setBorder(null);
         Home_Button.addActionListener(this::Home_ButtonActionPerformed);
+<<<<<<< HEAD
 
         Logo_label.setBackground(new java.awt.Color(254, 254, 254));
         Logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/122.png"))); // NOI18N
+=======
+        topPanel1.add(Home_Button);
+        Home_Button.setBounds(190, 21, 60, 20);
+
+        Logo_label.setBackground(new java.awt.Color(254, 254, 254));
+        Logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/122.png"))); // NOI18N
+        topPanel1.add(Logo_label);
+        Logo_label.setBounds(100, 1, 80, 65);
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 
         Library_Button.setBackground(new java.awt.Color(254, 254, 254));
         Library_Button.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         Library_Button.setText("Library");
         Library_Button.setBorder(null);
+<<<<<<< HEAD
 
         jLabel4.setBackground(new java.awt.Color(254, 254, 254));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/13.png"))); // NOI18N
@@ -119,6 +177,15 @@ public class CreateFlashcards extends javax.swing.JFrame {
                             .addComponent(Library_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+=======
+        topPanel1.add(Library_Button);
+        Library_Button.setBounds(280, 11, 70, 40);
+
+        jLabel4.setBackground(new java.awt.Color(254, 254, 254));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/13.png"))); // NOI18N
+        topPanel1.add(jLabel4);
+        jLabel4.setBounds(1123, 1, 61, 65);
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 
         getContentPane().add(topPanel1);
         topPanel1.setBounds(0, 0, 1330, 70);
@@ -161,6 +228,7 @@ public class CreateFlashcards extends javax.swing.JFrame {
         centerpanel.add(jLabel2);
         jLabel2.setBounds(80, 40, 80, 20);
 
+<<<<<<< HEAD
         Front_Text.setBackground(new java.awt.Color(213, 213, 213));
         Front_Text.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         Front_Text.setForeground(new java.awt.Color(152, 152, 152));
@@ -178,12 +246,15 @@ public class CreateFlashcards extends javax.swing.JFrame {
         centerpanel.add(Front_Text);
         Front_Text.setBounds(80, 70, 920, 210);
 
+=======
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText("Back side");
         centerpanel.add(jLabel3);
         jLabel3.setBounds(80, 280, 80, 30);
 
+<<<<<<< HEAD
         Back_Text.setBackground(new java.awt.Color(213, 213, 213));
         Back_Text.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         Back_Text.setForeground(new java.awt.Color(153, 153, 153));
@@ -200,6 +271,47 @@ public class CreateFlashcards extends javax.swing.JFrame {
         Back_Text.addActionListener(this::Back_TextActionPerformed);
         centerpanel.add(Back_Text);
         Back_Text.setBounds(80, 310, 920, 190);
+=======
+        jScrollPane1.setViewportView(null);
+
+        FrontTextArea.setBackground(new java.awt.Color(213, 213, 213));
+        FrontTextArea.setColumns(20);
+        FrontTextArea.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
+        FrontTextArea.setForeground(new java.awt.Color(153, 153, 153));
+        FrontTextArea.setRows(5);
+        FrontTextArea.setText("Enter text here");
+        FrontTextArea.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FrontTextAreaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FrontTextAreaFocusLost(evt);
+            }
+        });
+        jScrollPane1.setViewportView(FrontTextArea);
+
+        centerpanel.add(jScrollPane1);
+        jScrollPane1.setBounds(80, 70, 920, 180);
+
+        BackTextArea.setBackground(new java.awt.Color(213, 213, 213));
+        BackTextArea.setColumns(20);
+        BackTextArea.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
+        BackTextArea.setForeground(new java.awt.Color(153, 153, 153));
+        BackTextArea.setRows(5);
+        BackTextArea.setText("Enter text here");
+        BackTextArea.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BackTextAreaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BackTextAreaFocusLost(evt);
+            }
+        });
+        jScrollPane4.setViewportView(BackTextArea);
+
+        centerpanel.add(jScrollPane4);
+        jScrollPane4.setBounds(80, 320, 920, 170);
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 
         getContentPane().add(centerpanel);
         centerpanel.setBounds(100, 150, 1080, 530);
@@ -210,6 +322,7 @@ public class CreateFlashcards extends javax.swing.JFrame {
         getContentPane().add(GoBackButton);
         GoBackButton.setBounds(100, 90, 30, 30);
 
+<<<<<<< HEAD
         tickButton.setBackground(new java.awt.Color(0, 153, 255));
         tickButton.setForeground(new java.awt.Color(255, 255, 255));
         tickButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tick1.png"))); // NOI18N
@@ -217,6 +330,15 @@ public class CreateFlashcards extends javax.swing.JFrame {
         tickButton.addActionListener(this::tickButtonActionPerformed);
         getContentPane().add(tickButton);
         tickButton.setBounds(1110, 100, 70, 40);
+=======
+        SaveButton.setBackground(new java.awt.Color(0, 153, 255));
+        SaveButton.setForeground(new java.awt.Color(255, 255, 255));
+        SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tick1.png"))); // NOI18N
+        SaveButton.setBorder(null);
+        SaveButton.addActionListener(this::SaveButtonActionPerformed);
+        getContentPane().add(SaveButton);
+        SaveButton.setBounds(1110, 100, 70, 40);
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 
         NewDeckName.setBackground(new java.awt.Color(240, 240, 240));
         NewDeckName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -229,6 +351,7 @@ public class CreateFlashcards extends javax.swing.JFrame {
 
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         // Close this flashcards window
         this.dispose();
 
@@ -271,14 +394,58 @@ public class CreateFlashcards extends javax.swing.JFrame {
            Back_Text.setText("Enter text here");
         }
     }//GEN-LAST:event_Back_TextFocusLost
+=======
+       
+
+    }//GEN-LAST:event_Home_ButtonActionPerformed
+
+    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaveButtonActionPerformed
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 
     private void GoBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoBackButtonActionPerformed
         // TODO add your handling code here:
         // Same behavior for arrow/tick button: go back to Dashtwo
+<<<<<<< HEAD
        
 
     }//GEN-LAST:event_GoBackButtonActionPerformed
 
+=======
+        
+
+    }//GEN-LAST:event_GoBackButtonActionPerformed
+
+    private void FrontTextAreaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FrontTextAreaFocusGained
+        // TODO add your handling code here:
+        if(FrontTextArea.getText().equals("Enter text here")){
+            FrontTextArea.setText("");
+        }
+    }//GEN-LAST:event_FrontTextAreaFocusGained
+
+    private void FrontTextAreaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FrontTextAreaFocusLost
+        // TODO add your handling code here:
+        if(FrontTextArea.getText().equals("")){
+            FrontTextArea.setText("Enter text here");
+        }
+    }//GEN-LAST:event_FrontTextAreaFocusLost
+
+    private void BackTextAreaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BackTextAreaFocusGained
+        // TODO add your handling code here:
+        if(BackTextArea.getText().equals("Enter text here")){
+            BackTextArea.setText("");
+        }
+    }//GEN-LAST:event_BackTextAreaFocusGained
+
+    private void BackTextAreaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BackTextAreaFocusLost
+        // TODO add your handling code here:
+        if(BackTextArea.getText().equals("")){
+            BackTextArea.setText("Enter text here");
+        }
+    }//GEN-LAST:event_BackTextAreaFocusLost
+
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
     /**
      * @param args the command line arguments
      */
@@ -305,20 +472,57 @@ public class CreateFlashcards extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JTextField Back_Text;
     private javax.swing.JTextField Front_Text;
+=======
+    private javax.swing.JTextArea BackTextArea;
+    private javax.swing.JTextArea FrontTextArea;
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
     private javax.swing.JButton GoBackButton;
     private javax.swing.JButton Home_Button;
     private javax.swing.JButton Library_Button;
     private javax.swing.JLabel Logo_label;
     private javax.swing.JTextField NewDeckName;
+<<<<<<< HEAD
+=======
+    private javax.swing.JButton SaveButton;
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
     private javax.swing.JPanel centerpanel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
+<<<<<<< HEAD
     private javax.swing.JButton tickButton;
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
+=======
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JPanel topPanel1;
+    // End of variables declaration//GEN-END:variables
+
+    public JTextArea getFrontTextArea() {
+        return FrontTextArea;
+    }
+    public JTextArea getBackTextArea() {
+        return BackTextArea;
+    }
+    public JTextField getDeckNameField() {
+        return NewDeckName;
+    }
+    public void HomeButtonListener(ActionListener listener){
+    Home_Button.addActionListener(listener);
+    }
+    public void GoBackButtonListener(ActionListener listener){
+    GoBackButton.addActionListener(listener);
+    }
+    public void SaveButtonListener(ActionListener listener){
+    SaveButton.addActionListener(listener);
+    }
+    
+    
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 }

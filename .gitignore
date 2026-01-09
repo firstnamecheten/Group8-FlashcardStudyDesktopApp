@@ -1,5 +1,20 @@
-
+src/databasebuild/
+dist/
 nbproject/private/
 build/
+*.class
+// src/database
 
-src/database
+# Ignore MySQL data directories
+ProgramData/MySQL/
+mysql/
+data/
+
+# Ignore large binary assets
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.zip
+*.pdf

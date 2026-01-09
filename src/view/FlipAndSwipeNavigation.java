@@ -4,6 +4,15 @@
  */
 package view;
 
+<<<<<<< HEAD
+=======
+import controller.FlipAndSwipeNavigationController;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 /**
  *
  * @author LENOVO
@@ -11,12 +20,22 @@ package view;
 public class FlipAndSwipeNavigation extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FlipAndSwipeNavigation.class.getName());
+<<<<<<< HEAD
+=======
+    private JTextArea BackTextArea;
+
+    
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 
     /**
      * Creates new form FlipAndSwipeNavigation
      */
     public FlipAndSwipeNavigation() {
         initComponents();
+<<<<<<< HEAD
+=======
+        setSize(1285,760);
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
     }
 
     /**
@@ -28,6 +47,7 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         topPanel1 = new javax.swing.JPanel();
         Home_Button = new javax.swing.JButton();
         Logo_label = new javax.swing.JLabel();
@@ -134,10 +154,68 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
                     .addComponent(centerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
+=======
+        jPanel1 = new javax.swing.JPanel();
+        CardNumber = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        FrontTextArea = new javax.swing.JTextArea();
+        CrossButton = new javax.swing.JButton();
+        RightButton = new javax.swing.JButton();
+        LeftButton = new javax.swing.JButton();
+        DeleteCardButton = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jPanel1.setBackground(new java.awt.Color(72, 72, 72));
+        jPanel1.setLayout(null);
+
+        CardNumber.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        CardNumber.setForeground(new java.awt.Color(102, 102, 102));
+        CardNumber.setBorder(null);
+        jPanel1.add(CardNumber);
+        CardNumber.setBounds(610, 30, 110, 30);
+
+        FrontTextArea.setColumns(20);
+        FrontTextArea.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        FrontTextArea.setRows(5);
+        FrontTextArea.setBorder(null);
+        jScrollPane1.setViewportView(FrontTextArea);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(280, 70, 720, 550);
+
+        CrossButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x1.png"))); // NOI18N
+        CrossButton.setBorder(null);
+        CrossButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        CrossButton.setPreferredSize(new java.awt.Dimension(26, 32));
+        jPanel1.add(CrossButton);
+        CrossButton.setBounds(250, 30, 30, 30);
+
+        RightButton.setBackground(new java.awt.Color(150, 150, 150));
+        RightButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/r.png"))); // NOI18N
+        RightButton.setBorder(null);
+        jPanel1.add(RightButton);
+        RightButton.setBounds(1020, 297, 30, 50);
+
+        LeftButton.setBackground(new java.awt.Color(150, 150, 150));
+        LeftButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rr.png"))); // NOI18N
+        LeftButton.setBorder(null);
+        jPanel1.add(LeftButton);
+        LeftButton.setBounds(230, 300, 30, 50);
+
+        DeleteCardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dd.png"))); // NOI18N
+        jPanel1.add(DeleteCardButton);
+        DeleteCardButton.setBounds(1000, 30, 30, 30);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 1330, 670);
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void Home_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home_ButtonActionPerformed
         // TODO add your handling code here:
 
@@ -147,6 +225,8 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_QuickStart_labelActionPerformed
 
+=======
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
     /**
      * @param args the command line arguments
      */
@@ -173,6 +253,7 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JButton Home_Button;
     private javax.swing.JLabel Home_Label;
     private javax.swing.JButton Library_Button;
@@ -183,4 +264,37 @@ public class FlipAndSwipeNavigation extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel topPanel1;
     // End of variables declaration//GEN-END:variables
+=======
+    private javax.swing.JTextField CardNumber;
+    private javax.swing.JButton CrossButton;
+    private javax.swing.JButton DeleteCardButton;
+    private javax.swing.JTextArea FrontTextArea;
+    private javax.swing.JButton LeftButton;
+    private javax.swing.JButton RightButton;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    // End of variables declaration//GEN-END:variables
+
+    public void LeftButtonListener(ActionListener listener){
+    LeftButton.addActionListener(listener);
+    }
+    public void RightButtonListener(ActionListener listener){
+    RightButton.addActionListener(listener);
+    }
+    public void CrosstButtonListener(ActionListener listener){
+    CrossButton.addActionListener(listener);
+    }
+    public void DeleteCardButtonListener(ActionListener listener){
+        DeleteCardButton.addActionListener(listener);
+    }
+    public JTextField getCardNumberField() {
+    return CardNumber; // make sure this text field exists in your form
+    }
+    public JTextArea getFrontTextField() {
+    return FrontTextArea; // make sure this text field exists in your form
+    }
+    public JTextArea getBackTextField() {
+    return BackTextArea; // make sure this text field exists in your form
+    }
+>>>>>>> 8b81028a883609b0d62c98b8ac60ee61e2703396
 }
